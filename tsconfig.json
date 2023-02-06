@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,                // рапретить не явное Any
+    "module": "ESNext",                   // правило для модулей
+    "target": "es5",                      // компилировать в es6
+    "jsx": "react-jsx",                   // разрешить JSX
+    "allowJs": true,                      // разрешить JS
+    "moduleResolution": "node",           // по умолчанию импорт по правилам node
+    "esModuleInterop": true,              // включает import
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",               // указать правило для модулей TS, указывается явно, чтобы правило module работало
+      "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    }
+  }
+}
