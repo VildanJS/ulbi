@@ -1,14 +1,14 @@
 import webpack from 'webpack';
 import {BuildWebPackConfig} from "./config/build/buildWebPackConfig";
 import {IBuildEnv, IBuildPaths} from "./config/build/types/config";
-import buildPathFromRoot from "./utils/buildPathFromRoot";
+import path from 'path';
 
 export default (env: IBuildEnv): webpack.Configuration => {
   const paths: IBuildPaths = {
-    build: buildPathFromRoot('build'),
-    entry: buildPathFromRoot('src', 'index.tsx'),
-    html: buildPathFromRoot('public', 'index.html'),
-    src: buildPathFromRoot('src'),
+    build: path.join(__dirname, 'build'),
+    entry: path.join(__dirname, 'src', 'index.tsx'),
+    html: path.join(__dirname, 'public', 'index.html'),
+    src: path.join(__dirname, 'src'),
   }
   const mode = env.mode || 'development';
   const isDev = mode === 'development';
@@ -21,6 +21,5 @@ export default (env: IBuildEnv): webpack.Configuration => {
       port: PORT,
     }
   )
-
 };
 

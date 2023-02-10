@@ -1,0 +1,7 @@
+{
+  "title": "Welcome to react using react-i18next 2",
+  "description": {
+    "part1": "To get started, edit src/pages/MainPage.js and save to reload. 2",
+    "part2": "Switch language between english and german using buttons above. 2"
+  }
+}

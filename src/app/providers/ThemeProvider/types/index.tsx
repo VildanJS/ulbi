@@ -1,6 +1,6 @@
 export enum Theme {
-  dark = 'dark',
-  light = 'light',
+  DARK = 'dark',
+  LIGHT = 'light',
 }
 
 export interface ThemeContextProps {

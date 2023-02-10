@@ -1,5 +1,10 @@
+@import "global";
+
 .app.dark {
   --bg-color: #08020D;
+  --inverted-bg-color: #FFFFFF;
   --primary-color: #34C176;
-  --secondary-color: #FFFFFF;
+  --secondary-color: #EAEAEAFF;
+  --inverted-primary-color: #8A2689FF;
+  --inverted-secondary-color: #090909;
 }
