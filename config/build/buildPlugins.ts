@@ -16,7 +16,7 @@ export const buildPlugin = ({ paths, isDev }: IBuildOptions): webpack.WebpackPlu
     new webpack.DefinePlugin({
       IS_DEV: JSON.stringify(isDev)
     }),
-    new BundleAnalyzerPlugin({
+    isDev && new BundleAnalyzerPlugin({
       openAnalyzer: false
     })
   ].filter(Boolean)
