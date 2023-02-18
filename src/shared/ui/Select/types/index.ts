@@ -8,6 +8,7 @@ export enum SelectThemes {
 interface ISelect extends PropsWithChildren {
   className?: string,
   theme?: SelectThemes,
+  collapsed: boolean
 }
 
 export {

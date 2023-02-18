@@ -11,11 +11,15 @@
     "build:prod": "npx webpack --env mode=production",
     "build:dev": "npx webpack --env mode=development",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test",
-    "test:ui:ok": "npx loki approve",
+    "test:ui": "loki test",
+    "test:ui:update": "loki update",
+    "test:ui:ok": "loki approve",
     "test:ui:ci": "concurrently --kill-others --raw --success first \"loki --requireReference --reactUri file:./storybook-static\" \"deelay\" ",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "storybook:build": "build-storybook -c ./config/storybook"
+    "storybook:build": "build-storybook -c ./config/storybook",
+    "visual:report": "npm run visual:report:json && npm run visual:report:html",
+    "visual:report:json": "node scripts/generate-visual-json-report.js",
+    "visual:report:html": "reg-cli --from .loki/report.json --report .loki/report.html"
   },
   "keywords": [],
   "author": "",
@@ -63,6 +67,7 @@
     "mini-css-extract-plugin": "^2.7.2",
     "react-refresh": "^0.14.0",
     "react-refresh-typescript": "^2.0.7",
+    "reg-cli": "^0.17.7",
     "regenerator-runtime": "^0.13.11",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
@@ -92,7 +97,6 @@
     "react-router-dom": "^6.8.0"
   },
   "loki": {
-    "chromeSelector": ".wrapper > *, #root > *, .story-decorator > *",
     "diffingEngine": "pixelmatch",
     "configurations": {
       "chrome.laptop": {
@@ -103,13 +107,8 @@
       "chrome.iphone7": {
         "target": "chrome.docker",
         "preset": "iPhone 7"
-      },
-      "chrome.a4": {
-        "target": "chrome.docker",
-        "preset": "A4 Paper"
       }
     },
-    "chromeDockerUseCopy": true,
     "fetchFailIgnore": "localhost:1234/get"
   }
 }

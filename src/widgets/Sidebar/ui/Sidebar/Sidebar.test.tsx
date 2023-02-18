@@ -2,13 +2,12 @@ import { screen } from '@testing-library/react'
 import { withTranslation } from 'react-i18next'
 import { Sidebar } from './Sidebar'
 import 'shared/config/i18n/i18nForTest'
-import { renderWithTranslation } from 'shared/utils/tests/renderWithTranslation'
-
+import { renderWithOptions } from 'shared/utils/tests/renderWithOptions'
 
 describe('button', () => {
   test('button', () => {
     const WithTranslationSidebar = withTranslation()(Sidebar)
-    renderWithTranslation(<WithTranslationSidebar/>)
+    renderWithOptions(<WithTranslationSidebar/>, {route: '/'})
     expect(screen.getByTestId('sidebar')).toBeInTheDocument()
   })
 })

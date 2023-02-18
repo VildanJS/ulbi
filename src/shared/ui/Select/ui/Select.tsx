@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 
 export const Select: FC<ISelect> = (props) => {
-  const {className, children} = props
+  const {className, collapsed, children} = props
   const selectClass = classNames(className, cls.select)
 
   const { t, i18n } = useTranslation()
@@ -18,12 +18,17 @@ export const Select: FC<ISelect> = (props) => {
 
   return (
     <>
-      <label htmlFor="standard-select">{t('switchLanguage')}</label>
+      {
+        !collapsed
+          ? (<label htmlFor="standard-select">{t('switchLanguage')}</label>)
+          : <></>
+      }
+
       <div className={selectClass}>
         <select ref={langSelect} onChange={switchLanguage}>
-          <option value='ru'>Russian</option>
-          <option value='de'>German</option>
-          <option value='en'>English</option>
+          <option value='ru'>{collapsed ? t('ru') : t('Russian')}</option>
+          <option value='de'>{collapsed ? t('de') : t('German')}</option>
+          <option value='en'>{collapsed ? t('en') : t('English')}</option>
           {children}
         </select>
         <span className="focus"></span>

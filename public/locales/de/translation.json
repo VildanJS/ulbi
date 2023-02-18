@@ -1,4 +1,12 @@
 {
   "switchLanguage": "Sprache wechseln",
-  "notFound": "Geman page was not found"
+  "notFound": "Geman page was not found",
+  "German": "German",
+  "Russian": "Russian",
+  "English": "English",
+  "de": "de",
+  "en": "en",
+  "ru": "ru",
+  "Main": "Main",
+  "About": "About"
 }

@@ -1,7 +1,55 @@
 .button {
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 7px 15px;
   color: var(--primary-color);
+}
+
+.background-inverted {
+  color: var(--inverted-primary-color);
+  background: var(--inverted-bg-color);
+  border: none;
+}
+
+.background {
+  color: var(--primary-color);
+  background: var(--bg-color);
+  border: none;
+}
+
+.size-m {
+  font-size: var(--font-size-m);
+}
+
+.size-l {
+  font-size: var(--font-size-l);
+}
+
+.size-xl {
+  font-size: var(--font-size-xl);
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.square.size-m {
+  width: var(--font-size-m);
+  height: var(--font-size-m);
+}
+
+.square.size-l {
+  width: var(--font-size-l);
+  height: var(--font-size-l);
+  font-size: var(--font-size-l);
+}
+
+.square.size-xl {
+  width: var(--font-size-xl);
+  height: var(--font-size-xl);
+  font-size: var(--font-size-xl);
 }
 
 .clear {

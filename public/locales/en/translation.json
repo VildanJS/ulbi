@@ -1,4 +1,12 @@
 {
   "switchLanguage": "Switch language",
-  "notFound": "Page was not found"
+  "notFound": "Page was not found",
+  "German": "German",
+  "Russian": "Russian",
+  "English": "English",
+  "de": "de",
+  "en": "en",
+  "ru": "ru",
+  "Main": "Main",
+  "About": "About"
 }
