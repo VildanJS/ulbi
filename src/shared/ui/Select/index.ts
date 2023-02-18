@@ -1,4 +1,4 @@
-import {Select} from "./ui/Select";
+import {Select} from './ui/Select'
 
 export {
   Select,

@@ -1,17 +1,17 @@
-import {ChangeEvent, FC, useRef} from 'react';
-import cls from './Select.module.scss';
-import {ISelect} from "../types";
-import classNames from "classnames";
-import { useTranslation } from 'react-i18next';
+import {ChangeEvent, FC, useRef} from 'react'
+import cls from './Select.module.scss'
+import {ISelect} from '../types'
+import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 
 export const Select: FC<ISelect> = (props) => {
-  const {className, children} = props;
+  const {className, children} = props
   const selectClass = classNames(className, cls.select)
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation()
 
-  const langSelect = useRef(null);
+  const langSelect = useRef(null)
   const switchLanguage = (e: ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value)
   }
@@ -29,5 +29,5 @@ export const Select: FC<ISelect> = (props) => {
         <span className="focus"></span>
       </div>
     </>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import {PropsWithChildren} from "react";
+import {PropsWithChildren} from 'react'
 
 export enum ThemeSwitcherThemes {
   PRIMARY = 'primary',
@@ -12,4 +12,4 @@ interface IThemeSwitcher extends PropsWithChildren {
 
 export {
   IThemeSwitcher
-};
+}

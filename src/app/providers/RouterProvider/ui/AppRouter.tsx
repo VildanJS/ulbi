@@ -1,6 +1,5 @@
-import React from 'react';
-import {Route, Routes, RouteProps} from "react-router-dom";
-import {AppRouteConfig} from "shared/config/routeConfig/routeConfig";
+import {Route, Routes, RouteProps} from 'react-router-dom'
+import {AppRouteConfig} from 'shared/config/routeConfig/routeConfig'
 
 const AppRouter = () => {
   return (
@@ -13,7 +12,7 @@ const AppRouter = () => {
         />
       ))}
     </Routes>
-  );
-};
+  )
+}
 
-export default AppRouter;
+export default AppRouter

@@ -1,14 +1,15 @@
-import {ButtonHTMLAttributes} from "react";
+import { ButtonHTMLAttributes } from 'react'
 
 export enum ButtonThemes {
   CLEAR = 'clear',
+  OUTLINE = 'outline'
 }
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string,
-  theme?: ButtonThemes,
+  className?: string
+  theme?: ButtonThemes
 }
 
-export {
+export type {
   IButton
-};
+}

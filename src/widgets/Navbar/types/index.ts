@@ -4,4 +4,4 @@ interface INavbar {
 
 export {
   INavbar
-};
+}

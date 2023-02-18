@@ -1,4 +1,4 @@
-import {PropsWithChildren} from "react";
+import {PropsWithChildren} from 'react'
 
 export enum SidebarThemes {
   PRIMARY = 'primary',
@@ -12,4 +12,4 @@ interface ISidebar extends PropsWithChildren {
 
 export {
   ISidebar
-};
+}

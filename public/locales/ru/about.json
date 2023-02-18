@@ -1,5 +1,5 @@
 {
-  "title": "Добро пожаловать в react вместе с react-i18next 2",
+  "title": "Добро пожаловать в react вместе с react-i18next на About page",
   "description": {
     "part1": "Чтобы начать, отредактируйте src/pages/MainPage.js и сохраните, чтобы перезагрузить 2",
     "part2": "Переключайте языки: русский, english and german используя выпадающий списко ниже 2"

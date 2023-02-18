@@ -1,10 +1,9 @@
-import React from 'react';
 import cls from './AboutPage.module.scss'
 import classNames from 'classnames'
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
 const AboutPage = () => {
-  const { t } = useTranslation('about');
+  const { t } = useTranslation('about')
   const aboutPageClassName = classNames(cls.aboutPage)
   return (
     <div className={aboutPageClassName}>
@@ -12,7 +11,7 @@ const AboutPage = () => {
       <p>{t('description.part1')}</p>
       <p>{t('description.part2')}</p>
     </div>
-  );
-};
+  )
+}
 
-export default AboutPage;
+export default AboutPage

@@ -4,11 +4,11 @@ export enum Theme {
 }
 
 export interface ThemeContextProps {
-  theme?: Theme;
-  setTheme?: (theme: Theme) => void;
+  theme?: Theme
+  setTheme?: (theme: Theme) => void
 }
 
 export interface UseThemeResult {
-  toggleTheme: () => void;
-  theme: Theme;
+  toggleTheme: () => void
+  theme: Theme
 }
