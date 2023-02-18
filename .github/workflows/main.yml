@@ -1,5 +1,5 @@
 name: BuildTestLint
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: BuildTestLint
 on:
   push:
     branches: [ master ]
