@@ -1,3 +1,4 @@
+/* eslint-disable */
 const {promisify} = require('util')
 const {readdir, writeFile} = require('fs')
 const {join: joinPath, relative} = require('path')
