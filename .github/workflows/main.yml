@@ -1,5 +1,5 @@
 name: BuildTestLint
-run-name: BuildTestLint
+run-name: Building Testing Linting
 on:
   - push
   - pull_request
