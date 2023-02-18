@@ -13,7 +13,7 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "concurrently --kill-others --raw --success first \"loki --requireReference --reactUri file:./storybook-static\" \"deelay\" ",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook"
   },
@@ -109,6 +109,7 @@
         "preset": "A4 Paper"
       }
     },
+    "chromeDockerUseCopy": true,
     "fetchFailIgnore": "localhost:1234/get"
   }
 }
