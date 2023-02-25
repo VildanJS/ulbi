@@ -4,7 +4,7 @@ on:
   - push
   - pull_request
 concurrency:
-  group: ${{ GITHUB_HEAD_REF }}
+  group: GITHUB_HEAD_REF
   cancel-in-progress: true
 jobs:
   install-cache:
