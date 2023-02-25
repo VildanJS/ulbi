@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 19.x ]
+        node-version: [ 19 ]
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v3
@@ -17,9 +17,7 @@ jobs:
 
       - name: Cache node modules
         uses: actions/cache@v3
-        id: cache-npm
-        env:
-          cache-name: cache-node-modules
+        id: cache-dependencies
         with:
           path: node_modules
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
@@ -34,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [19]
+        node: [ 19 ]
     needs: install-cache
     steps:
       - name: Checkout Commit
@@ -58,12 +56,37 @@ jobs:
         run: |
           npm run lint:scss
 
+  unit-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [19]
+    needs: install-cache
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Test unit
+        run: |
+          npm run test:unit
+
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [19]
-    needs: lint-format
+    needs: [lint-format, unit-test]
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v3
@@ -86,12 +109,12 @@ jobs:
         run: |
           npm run storybook:build
 
-  test:
+  build-storybook:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [19]
-    needs: build
+        node: [ 19 ]
+    needs: [lint-format, unit-test]
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v3
@@ -107,11 +130,30 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-      - name: Test unit
+      - name: Run build storybook
         run: |
-          npm run test:unit
+          npm run storybook:build
+
+
+  test-ui:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 19 ]
+    needs: build-storybook
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: test ui (storybook screenshots)
-        run: |
-          npm run test:ui:ci
-
-
+        run: npm run test:ui:ci
