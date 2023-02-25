@@ -143,10 +143,15 @@ jobs:
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v3
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - name: test ui (storybook screenshots)
         run: npm run test:ui:ci
