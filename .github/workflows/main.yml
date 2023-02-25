@@ -55,7 +55,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Run test
+      - name: Run build
         run: |
           npm run build:prod
       - name: lint ts and tsx
