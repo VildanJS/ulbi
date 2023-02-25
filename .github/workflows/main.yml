@@ -29,15 +29,6 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         run: |
           npm ci
-      - name: run build
-        run: npm run build:prod
-      - name: build storybook
-        run: npm run storybook:build
-      - name: test unit
-        run: npm run test:unit
-      - name: test ui (storybook screenshots)
-
-        run: npm run test:ui:ci
 
   lint-format:
     runs-on: ubuntu-latest
@@ -57,9 +48,9 @@ jobs:
         id: cache-dependencies
         with:
           path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
       - name: Run lint
         run: |
           npm run lint:ts
@@ -67,5 +58,60 @@ jobs:
         run: |
           npm run lint:scss
 
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [19]
+    needs: lint-format
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Run build
+        run: |
+          npm run build:prod
+      - name: Run build storybook
+        run: |
+          npm run storybook:build
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [19]
+    needs: build
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Test unit
+        run: |
+          npm run test:unit
+      - name: test ui (storybook screenshots)
+        run: |
+          npm run test:ui:ci
 
 
