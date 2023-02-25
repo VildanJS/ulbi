@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
 
-      - name: Cache node modules
+      - name: Restore dependencies
         uses: actions/cache@v3
         id: cache-dependencies
         with:
@@ -45,7 +45,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - name: Restore yarn dependencies
+      - name: Restore dependencies
         uses: actions/cache@v3
         id: cache-dependencies
         with:
@@ -73,7 +73,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - name: Restore yarn dependencies
+      - name: Restore dependencies
         uses: actions/cache@v3
         id: cache-dependencies
         with:
@@ -98,7 +98,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - name: Restore yarn dependencies
+      - name: Restore dependencies
         uses: actions/cache@v3
         id: cache-dependencies
         with:
@@ -113,41 +113,40 @@ jobs:
         run: |
           npm run storybook:build
 
-#  build-storybook:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        node: [ 19.x ]
-#    needs: install-cache
-#    steps:
-#      - name: Checkout Commit
-#        uses: actions/checkout@v3
-#      - name: Use Node.js ${{ matrix.node }}
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node }}
-#      - name: Restore yarn dependencies
-#        uses: actions/cache@v3
-#        id: cache-dependencies
-#        with:
-#          path: node_modules
-#          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-npm-
-#      - name: Run build storybook
-#        run: |
-#          npm run storybook:build
+  build-storybook:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 19.x ]
+    needs: install-cache
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Run build storybook
+        run: |
+          npm run storybook:build
+          | npm run test:ui:ci
 
 
 #  test-ui:
 #    runs-on: ubuntu-latest
 #    strategy:
 #      matrix:
-#        node-version: [ 19 ]
-#    needs: [install-cache, build-storybook]
+#        node-version: [ 19.x ]
+#    needs: build-storybook
 #    steps:
-#      - name: Checkout Commit
-#        uses: actions/checkout@v3
 #      - name: Cache node modules
 #        uses: actions/cache@v3
 #        id: cache-dependencies
@@ -156,7 +155,11 @@ jobs:
 #          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 #          restore-keys: |
 #            ${{ runner.os }}-npm-
+#      - name: Checkout Commit
+#        uses: actions/checkout@v3
+#
 #      - name: Use Node.js ${{ matrix.node }}
 #        uses: actions/setup-node@v3
 #      - name: test ui (storybook screenshots)
-#        run: npm run test:ui:ci
+#        run: |
+#          npm run test:ui:ci
