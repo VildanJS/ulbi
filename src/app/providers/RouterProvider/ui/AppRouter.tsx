@@ -1,5 +1,5 @@
 import {Route, Routes, RouteProps} from 'react-router-dom'
-import {AppRouteConfig} from 'shared/config/routeConfig/routeConfig'
+import {AppRouteConfig} from 'app/config/routeConfig/routeConfig'
 
 const AppRouter = () => {
   return (

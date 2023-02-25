@@ -7,7 +7,7 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { Select } from 'shared/ui/Select'
 import { Button, ButtonThemes } from 'shared/ui/Button'
 import { AppLink, AppLinkThemes } from 'shared/ui/AppLink'
-import { AppRoutePaths } from 'shared/config/routeConfig/routeConfig'
+import { AppRoutePaths } from 'app/config/routeConfig/routeConfig'
 import AboutIcon from 'shared/assets/icons/about.svg'
 import HomeIcon from 'shared/assets/icons/home.svg'
 

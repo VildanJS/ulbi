@@ -8,6 +8,7 @@ export enum LoaderThemes {
 interface ILoader extends PropsWithChildren {
   className?: string,
   theme?: LoaderThemes,
+
 }
 
 export {

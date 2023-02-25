@@ -1,5 +1,5 @@
 import 'loki/configure-react'
-import '../../src/styles/style.scss' // чтобы стили появились в сторибук
+import '../../src/app/styles/style.scss' // чтобы стили появились в сторибук
 import { addDecorator, Story } from '@storybook/react'
 import { Theme } from '../../src/app/providers/ThemeProvider'
 import { BrowserRouter } from 'react-router-dom'
@@ -7,14 +7,14 @@ import { withThemes } from 'storybook-addon-themes'
 
 export const parameters = {
   themes: {
-    default: 'dark-theme',
+    default: Theme.DARK,
     list: [
       {
-        name: 'light-theme',
+        name: Theme.LIGHT,
         class: ['app', Theme.LIGHT]
       },
       {
-        name: 'dark-theme',
+        name: Theme.DARK,
         class: ['app', Theme.DARK]
       },
     ],

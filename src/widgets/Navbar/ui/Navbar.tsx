@@ -1,19 +1,40 @@
 import cls from './Navbar.module.scss'
-import {INavbar} from '../types'
+import { INavbar } from '../types'
 import classNames from 'classnames'
-import {AppLink, AppLinkThemes} from 'shared/ui/AppLink'
+import { LoginModal } from 'features/AuthByUserName'
+import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
+import { Button, ButtonThemes } from 'shared/ui/Button'
 
-export const Navbar = ({className}: INavbar) => {
+
+export const Navbar = ({ className }: INavbar) => {
+  const [isAuthModal, setAuthModal] = useState(false)
+  const { t } = useTranslation()
+
+  const onCloseModal = () => {
+    setAuthModal(false)
+  }
+
+  const onShowModal = () => {
+    setAuthModal(true)
+  }
 
   const navbarClass = classNames(className, cls.navbar)
-  const linksClass = classNames('mr-2', cls.links)
+  const btnClass = classNames('mr-2', cls.btn)
 
   return (
     <div className={navbarClass}>
-      <div className={linksClass}>
-        <AppLink theme={AppLinkThemes.INVERTED} to='/'>Main</AppLink>
-        <AppLink theme={AppLinkThemes.INVERTED} to='about'>About</AppLink>
-      </div>
+      <Button
+        theme={ButtonThemes.BACKGROUND_INVERTED}
+        onClick={onShowModal}
+
+        className={btnClass}>
+        {t('Log-in')}
+      </Button>
+
+      {isAuthModal && (
+        <LoginModal isOpen={isAuthModal} onClose={onCloseModal}/>
+      )}
     </div>
   )
 }
