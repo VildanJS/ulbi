@@ -21,18 +21,15 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-npm-
 
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: npm ci
-        continue-on-error: true
-        run: npm install
-      - name: Run build
+      - if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+      - name: run build
         run: npm run build:prod
       - name: lint ts and tsx
         run: npm run lint:ts
