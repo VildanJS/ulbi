@@ -29,7 +29,7 @@ jobs:
             ${{ runner.os }}-
 
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: List the state of node modules
+        name: npm ci
         continue-on-error: true
         run: |
           npm ci
@@ -45,9 +45,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - name: build prod version of project
-        run: npm run build:prod
+      - name: Restore npm dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Run test
+        run: |
+          npm run build:prod
       - name: lint ts and tsx
         run: npm run lint:ts
       - name: lint style scss
