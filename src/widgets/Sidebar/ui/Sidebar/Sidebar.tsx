@@ -1,18 +1,15 @@
-import { FC, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import {FC, memo, useState} from 'react'
 import cls from './Sidebar.module.scss'
 import { ISidebar } from '../../types'
 import classNames from 'classnames'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { Select } from 'shared/ui/Select'
 import { Button, ButtonThemes } from 'shared/ui/Button'
-import { AppLink, AppLinkThemes } from 'shared/ui/AppLink'
-import { AppRoutePaths } from 'app/config/routeConfig/routeConfig'
-import AboutIcon from 'shared/assets/icons/about.svg'
-import HomeIcon from 'shared/assets/icons/home.svg'
+import {SidebarItemList} from '../SidebarItem/model'
+import {SidebarItem} from '../SidebarItem'
 
-export const Sidebar: FC<ISidebar> = (props) => {
-  const { t } = useTranslation()
+
+export const Sidebar: FC<ISidebar> = memo((props) => {
   const [collapsed, setCollapsed] = useState(false)
   const { className } = props
   const sidebarClass = classNames(className, cls.sidebar, { [cls.collapsed]: collapsed })
@@ -33,15 +30,12 @@ export const Sidebar: FC<ISidebar> = (props) => {
       </Button>
 
       <div className={cls.links}>
-        <AppLink className={cls.linkAndIconWrap} theme={AppLinkThemes.INVERTED} to={AppRoutePaths.main}>
-          <HomeIcon className={cls.icon}/>
-          <span className={cls.link}>{t('Main')}</span>
-        </AppLink>
-
-        <AppLink className={cls.linkAndIconWrap} theme={AppLinkThemes.INVERTED} to={AppRoutePaths.about}>
-          <AboutIcon className={cls.icon}/>
-          <span className={cls.link}>{t('About')}</span>
-        </AppLink>
+        {SidebarItemList.map((item) => (
+          <SidebarItem
+            item={item}
+            collapsed={collapsed}
+            key={item.path}/>
+        )) }
       </div>
 
       <div className={cls.switchers}>
@@ -50,4 +44,4 @@ export const Sidebar: FC<ISidebar> = (props) => {
       </div>
     </div>
   )
-}
+})

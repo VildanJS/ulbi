@@ -1,10 +1,14 @@
-import { StoreProvider } from './ui/StoreProvider'
-import {creteReduxStore} from './config/store'
-import type { StateSchema } from './config/StateSchema'
+import {StoreProvider} from './ui/StoreProvider'
+import type {ReduxStoreWithManager} from './config/StateSchema'
+import {createReduxStore} from './config/store'
+import type {StateSchema} from './config/StateSchema'
+import type {AppDispatch} from './config/store'
 
 
 export {
   StoreProvider,
-  creteReduxStore,
-  StateSchema
+  ReduxStoreWithManager,
+  createReduxStore,
+  StateSchema,
+  AppDispatch
 }

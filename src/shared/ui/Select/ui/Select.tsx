@@ -1,11 +1,11 @@
-import {ChangeEvent, FC, useRef} from 'react'
+import {ChangeEvent, FC, memo, useRef} from 'react'
 import cls from './Select.module.scss'
 import {ISelect} from '../types'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 
 
-export const Select: FC<ISelect> = (props) => {
+export const Select: FC<ISelect> = memo((props) => {
   const {className, collapsed, children} = props
   const selectClass = classNames(className, cls.select)
 
@@ -35,4 +35,4 @@ export const Select: FC<ISelect> = (props) => {
       </div>
     </>
   )
-}
+})

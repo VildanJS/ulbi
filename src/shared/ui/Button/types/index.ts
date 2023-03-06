@@ -20,6 +20,7 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonThemes,
   square?: boolean,
   size?: ButtonSize,
+  disabled?: boolean
 }
 
 export type {

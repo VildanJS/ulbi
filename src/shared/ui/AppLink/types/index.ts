@@ -6,7 +6,7 @@ export enum AppLinkThemes {
 }
 
 interface IAppLink extends LinkProps {
-  className?: 'string',
+  className?: string,
   theme?: AppLinkThemes,
 }
 

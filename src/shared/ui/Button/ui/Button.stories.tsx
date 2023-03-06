@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
 import { Button } from './Button'
 import { ButtonThemes } from '../types'
+
 
 export default {
   title: 'Shared/Button',
@@ -81,4 +81,11 @@ SquareSuperLarge.args = {
   square: true,
   size: 'XL',
   theme: ButtonThemes.BACKGROUND_INVERTED
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  children: 'Disabled',
+  theme: ButtonThemes.OUTLINE,
+  disabled: true
 }

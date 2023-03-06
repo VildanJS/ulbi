@@ -1,9 +1,9 @@
 import 'loki/configure-react'
 import '../../src/app/styles/style.scss' // чтобы стили появились в сторибук
-import { addDecorator, Story } from '@storybook/react'
-import { Theme } from '../../src/app/providers/ThemeProvider'
-import { BrowserRouter } from 'react-router-dom'
-import { withThemes } from 'storybook-addon-themes'
+import {addDecorator, Story} from '@storybook/react'
+import {Theme} from '../../src/app/providers/ThemeProvider'
+import {withThemes} from 'storybook-addon-themes'
+import {BrowserRouter} from 'react-router-dom'
 
 export const parameters = {
   themes: {
