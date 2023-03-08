@@ -1,6 +1,7 @@
 import {FC, PropsWithChildren} from 'react'
 import cls from './Text.module.scss'
 import classNames from 'classnames'
+import { DefaultTFuncReturn } from 'i18next'
 
 export enum TextThemes {
   PRIMARY = 'primary',
@@ -11,7 +12,7 @@ interface TextProps extends PropsWithChildren {
   className?: 'string',
   theme?: TextThemes,
   title?: string,
-  text?: string
+  text?: DefaultTFuncReturn
 }
 
 export const Text: FC<TextProps> = (props) => {

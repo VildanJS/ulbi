@@ -1,24 +1,25 @@
 import {FC, memo, useCallback} from 'react'
 import classNames from 'classnames'
-import { useSelector} from 'react-redux'
-import {useTranslation} from 'react-i18next'
 import cls from './LoginForm.module.scss'
 import {ILoginForm} from '../types'
+import { useSelector} from 'react-redux'
+import {useTranslation} from 'react-i18next'
 import {Button, ButtonThemes} from 'shared/ui/Button'
 import {Input} from 'shared/ui/Input'
-import {loginActions, loginReducer} from '../../../model/slice/loginSlice'
-import {loginByUserName} from '../../../model/services/loginByUserName/loginByUserName'
+import {setUsername, setPassword, loginReducer} from '../../../model/slice/loginSlice'
+import loginByUserName from '../../../model/services/loginByUserName/loginByUserName'
 import {useAppDispatch} from 'shared/utils/hooks/useAppDispatch/useAppDispatch'
 import {TextThemes, Text} from 'shared/ui/Text/Text'
 import {getLoginUsername} from '../../../model/selectors/getLoginUsername/getLoginUsername'
 import {getLoginPassword} from '../../../model/selectors/getLoginPassword/getLoginPassword'
 import {getLoginIsLoading} from '../../../model/selectors/getLoginIsLoading/getLoginIsLoading'
 import {getLoginError} from '../../../model/selectors/getLoginError/getLoginError'
-import {DynamicModuleLoader, ReducerList} from 'shared/utils/components/DynamicModuleLoader'
+import {DynamicModuleLoader, ReducersList} from 'shared/utils/components/DynamicModuleLoader'
+import { useNavigate } from 'react-router-dom'
 
 
 
-const initialReducers: ReducerList = {
+const initialReducers: ReducersList = {
   loginForm: loginReducer,
 }
 const LoginForm: FC<ILoginForm> = memo((props) => {
@@ -32,24 +33,26 @@ const LoginForm: FC<ILoginForm> = memo((props) => {
   const isLoading = useSelector(getLoginIsLoading)
   const error = useSelector(getLoginError)
 
+  const navigate = useNavigate()
 
   const {t} = useTranslation()
   const dispatch = useAppDispatch()
 
   const onChangeUserName = useCallback((value: string) => {
-    dispatch(loginActions.setUsername(value))
+    dispatch(setUsername(value))
   }, [dispatch])
 
   const onChangePassword = useCallback((value: string) => {
-    dispatch(loginActions.setPassword(value))
+    dispatch(setPassword(value))
   }, [dispatch])
 
   const onLoginClick = useCallback(async () => {
     const res = await dispatch(loginByUserName({username, password}))
     if (res.meta.requestStatus === 'fulfilled') {
       onSuccess()
+      navigate('/')
     }
-  }, [dispatch, username, password, onSuccess])
+  }, [dispatch, username, password, onSuccess, navigate])
 
 
   const loginFormClass = classNames(className, cls.loginForm)

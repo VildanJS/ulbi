@@ -10,7 +10,7 @@ interface IModal extends PropsWithChildren {
   children: React.ReactNode
   theme?: ModalThemes,
   isOpen: boolean,
-  onClose: () => void
+  onClose?: () => void
 }
 
 export {

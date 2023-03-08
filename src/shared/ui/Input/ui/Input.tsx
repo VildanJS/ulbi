@@ -16,12 +16,10 @@ export const Input: FC<InputProps> = memo((props) => {
   const [isFocused, setIsFocused] = useState(false)
   const [caretPosition, setCaretPosition] = useState(0)
 
-  const input = useRef<HTMLInputElement>()
+  const input = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if(autofocus) input.current?.focus()
   }, [autofocus])
-
-
 
   const onBlur = () => {
     setIsFocused(false)

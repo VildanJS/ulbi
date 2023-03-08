@@ -17,5 +17,9 @@ declare module '*.png' {
   export default content
 }
 
+type DeepPartial<T> = T extends object ? {
+  [P in keyof T]?: DeepPartial<T[P]>;
+} : T;
 
 declare const IS_DEV: boolean
+declare const API_URL: string

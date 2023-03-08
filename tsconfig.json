@@ -3,6 +3,7 @@
     "baseUrl": ".",                       // базовый каталог для разрешения не относительных имен модулей
     "outDir": "./dist/",
     "noImplicitAny": true,                // рапретить не явное Any
+    "strict": true,
 //  "strictNullChecks": true,             // запрет null и undefined в иерархии типов
     "module": "ESNext",                   // правило для модулей
     "target": "ESNext",                   // компилировать в es6

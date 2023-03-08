@@ -3,5 +3,9 @@
   "description": {
     "part1": "To get started, edit src/pages/MainPage.js and save to reload.",
     "part2": "Switch language between english and german using buttons above."
-  }
+  },
+  "Profile": "Profile",
+  "Edit": "Edit",
+  "Enter your firstname": "Enter your firstname",
+  "Enter your lastname": "Enter your lastname"
 }

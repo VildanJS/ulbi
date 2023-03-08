@@ -2,20 +2,20 @@ import { FC } from 'react'
 import { CounterSchema } from '../model/types'
 import { Button } from 'shared/ui/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { counterActions } from '../model/slice/counterSlice'
+import { incremented, decremented } from '../model/slice/counterSlice'
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue'
 
-export const Counter: FC<CounterSchema> = () => {
+export const Counter = () => {
 
   const dispatch = useDispatch()
   const counterValue = useSelector(getCounterValue)
 
   const increment = () => {
-    dispatch(counterActions.incremented())
+    dispatch(incremented())
   }
 
   const decrement = () => {
-    dispatch(counterActions.decremented())
+    dispatch(decremented())
   }
 
   return (

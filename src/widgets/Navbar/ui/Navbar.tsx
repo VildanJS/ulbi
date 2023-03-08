@@ -1,12 +1,13 @@
 import cls from './Navbar.module.scss'
-import {INavbar} from '../types'
 import classNames from 'classnames'
+import {INavbar} from '../types'
 import {LoginModal} from 'features/AuthByUserName'
 import {useTranslation} from 'react-i18next'
+import {useDispatch, useSelector} from 'react-redux'
 import {memo, useCallback, useState} from 'react'
 import {Button, ButtonThemes} from 'shared/ui/Button'
-import {useDispatch, useSelector} from 'react-redux'
-import {getUserAuthData, userActions} from 'entities/User'
+import {logout} from 'entities/User' // action
+import {getUserAuthData} from 'entities/User' //selector
 
 
 export const Navbar = memo(({className}: INavbar) => {
@@ -24,8 +25,7 @@ export const Navbar = memo(({className}: INavbar) => {
   }
 
   const onLogout = useCallback(() => {
-    // @ts-ignore
-    dispatch(userActions.logout())
+    dispatch(logout())
   }, [dispatch])
 
   const navbarClass = classNames(className, cls.navbar)

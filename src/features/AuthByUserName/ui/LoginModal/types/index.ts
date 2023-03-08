@@ -9,7 +9,7 @@ interface ILoginModal extends PropsWithChildren {
   className?: string,
   theme?: LoginModalThemes,
   isOpen: boolean,
-  onClose?: () => void
+  onClose: () => void
 }
 
 export {

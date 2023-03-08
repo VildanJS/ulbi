@@ -13,12 +13,11 @@ export const userSlice = createSlice({
     setAuthData: (state, action: PayloadAction<IUser>) => {
       state.authData = action.payload
     },
-    recoveryAuthData: (state, action: PayloadAction<IUser>) => {
+    recoveryAuthData: (state) => {
       const user = localStorage.getItem(USER_LOCALSTORAGE_KEY)
       if (user) {
         state.authData = JSON.parse(user)
       }
-      state.authData = action.payload
     },
     logout: (state) => {
       state.authData = null
@@ -27,9 +26,9 @@ export const userSlice = createSlice({
   }
 })
 
-export const { actions: userActions } = userSlice
-export const { reducer: userReducer } = userSlice
+export const {actions: userActions} = userSlice
 
-
+export const { setAuthData, recoveryAuthData, logout } = userSlice.actions
+export default userSlice.reducer
 
 

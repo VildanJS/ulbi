@@ -20,6 +20,7 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
+    returnNull: false, // Type 'DefaultTFuncReturn' is not assignable to type 'string | undefined'.
     fallbackLng: 'ru',
     debug: IS_DEV ? true : false,
     interpolation: {

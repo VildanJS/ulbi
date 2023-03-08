@@ -1,6 +1,6 @@
 import {FC, memo} from 'react'
 import cls from './Button.module.scss'
-import { EButtonSize, IButton } from '../types'
+import { ButtonThemes, EButtonSize, IButton } from '../types'
 import classNames from 'classnames'
 
 export const Button: FC<IButton> = memo((props) => {
@@ -8,8 +8,8 @@ export const Button: FC<IButton> = memo((props) => {
     children,
     disabled,
     square,
-    size,
-    theme,
+    size = 'M',
+    theme = ButtonThemes.OUTLINE,
     className,
     onClick,
     ...other } = props

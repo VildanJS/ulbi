@@ -1,4 +1,6 @@
-import { counterReducer, counterActions } from './counterSlice'
+import { incremented, decremented } from './counterSlice'
+import counterReducer from './counterSlice'
+
 import { CounterSchema } from '../types'
 
 describe('counterSlice.test', () => {
@@ -7,12 +9,12 @@ describe('counterSlice.test', () => {
   }
 
   test('increment', () => {
-    expect(counterReducer(counter as CounterSchema, counterActions.incremented())).toEqual({ value: 11 })
+    expect(counterReducer(counter as CounterSchema, incremented())).toEqual({ value: 11 })
   })
   test('decrement', () => {
-    expect(counterReducer(counter as CounterSchema, counterActions.decremented())).toEqual({ value: 9})
+    expect(counterReducer(counter as CounterSchema, decremented())).toEqual({ value: 9})
   })
   test('should work with empty state', () => {
-    expect(counterReducer(undefined, counterActions.incremented())).toEqual({ value: 1})
+    expect(counterReducer(undefined, incremented())).toEqual({ value: 1})
   })
 })

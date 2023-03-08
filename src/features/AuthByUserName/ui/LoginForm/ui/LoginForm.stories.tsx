@@ -8,7 +8,8 @@ export default {
   decorators: [StoreDecorator({
     loginForm: {
       username: 'admin',
-      password: '123'
+      password: '123',
+      isLoading: false,
     }
   })]
 } as ComponentMeta<typeof LoginForm>
@@ -23,7 +24,8 @@ withError.decorators = [StoreDecorator({
   loginForm: {
     username: 'admin',
     password: '123',
-    error: 'error', }
+    isLoading: false,
+    error: 'error' }
 })]
 
 export const isLoading = Template.bind({})

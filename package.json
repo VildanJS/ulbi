@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:server": "node ./server/index.js",
-    "start": "npx webpack serve --env port=3000 --hot",
+    "start": "npx webpack serve --env port=3000  --hot",
     "lint:ts": "npx eslint \"**/*.{ts,tsx}\" ",
     "lint:ts:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\" --fix",
@@ -60,6 +60,7 @@
     "eslint": "^8.33.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-redux": "^4.0.0",
     "eslint-plugin-storybook": "^0.6.10",
     "fork-ts-checker-webpack-plugin": "^7.3.0",
     "html-webpack-plugin": "^5.5.0",
