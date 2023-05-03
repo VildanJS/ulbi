@@ -7,7 +7,77 @@
   gap: 15px;
 }
 
-.btn {
+.align-right {
   display: flex;
   margin-left: auto;
 }
+
+.btn {
+  background: none;
+  cursor: pointer;
+}
+
+.link-to-create {
+  text-decoration: none;
+  margin-left: 260px;
+}
+
+.my-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45 0 0 / .3);
+  backdrop-filter: blur(10px);
+
+  &[data-entering] {
+    animation: blur 300ms;
+  }
+
+  &[data-exiting] {
+    animation: blur 300ms reverse ease-in;
+  }
+}
+
+.my-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  background: white;
+  overflow: auto;
+  outline: none;
+  padding: 30px;
+  border-left: 1px solid var(--spectrum-global-color-gray-400);
+  box-shadow: -8px 0 20px rgba(0 0 0 / 0.1);
+
+  &[data-entering] {
+    animation: slide 300ms;
+  }
+
+  &[data-exiting] {
+    animation: slide 300ms reverse forwards;
+  }
+}
+
+@keyframes blur {
+  from {
+    background: rgba(45 0 0 / 0);
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    background: rgba(45 0 0 / .3);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
+}
+

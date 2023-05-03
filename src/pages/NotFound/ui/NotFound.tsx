@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 
 export const NotFound: FC<INotFound> = (props) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('notFound')
   const {
     className,
   } = props
@@ -13,7 +13,7 @@ export const NotFound: FC<INotFound> = (props) => {
 
   return (
     <h1 className={notFoundClass}>
-      {t('notFound')}
+      {t('No')}
     </h1>
   )
 }

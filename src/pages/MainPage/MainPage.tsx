@@ -1,8 +1,10 @@
 import classNames from 'classnames'
 import cls from './MainPage.module.scss'
 import { useTranslation } from 'react-i18next'
-import { BugButton } from 'widgets/BugButton'
-import { Counter } from 'entities/Counter'
+import { BugButton } from '@/widgets/BugButton'
+import { Counter } from '@/entities/Counter'
+import React from 'react'
+
 
 
 const MainPage = () => {
@@ -10,11 +12,11 @@ const MainPage = () => {
   const mainPageClassName = classNames(cls.mainPage)
   return (
     <div className={mainPageClassName}>
-      <BugButton/>
+      <BugButton />
       <h1>{t('title')}</h1>
       <p>{t('description.part1')}</p>
       <p>{t('description.part2')}</p>
-      <Counter/>
+      <Counter />
     </div>
   )
 }

@@ -1,0 +1,16 @@
+.star-icon {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.active {
+  fill: var(--inverted-primary-color);
+  color: #000;
+}
+
+.notActive {
+  color: #ccc;
+  fill: none;
+}
+
+/*# sourceMappingURL=StarRating.module.css.map */

@@ -22,7 +22,7 @@ i18n
   .init({
     returnNull: false, // Type 'DefaultTFuncReturn' is not assignable to type 'string | undefined'.
     fallbackLng: 'ru',
-    debug: IS_DEV ? true : false,
+    // debug: IS_DEV ? true : false,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     }

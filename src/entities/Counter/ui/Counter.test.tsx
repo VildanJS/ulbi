@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react'
 import { Counter } from './Counter'
-import { renderWithOptions } from 'shared/utils/tests/renderWithOptions'
+import { renderWithOptions } from '@/shared/utils/tests/renderWithOptions'
 
 describe('counter', () => {
   test('increment', () => {

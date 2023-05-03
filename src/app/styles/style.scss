@@ -7,6 +7,7 @@ body {
   color: var(--primary-color);
 }
 
+
 .app {
   background-color: var(--bg-color);
   min-height: 100vh;
@@ -31,4 +32,22 @@ body {
 
 .mr-2 {
   margin-right: 2rem;
+}
+
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--inverted-bg-color);
+}
+*::-webkit-scrollbar {
+  width: 10px; /* в основном для вертикальных полос прокрутки */
+  height: 10px; /* в основном для горизонтальных полос прокрутки */
+}
+*::-webkit-scrollbar-thumb { /* плашка-бегунок */
+  background: var(--primary-color);
+  border-radius: 6px;
+
+}
+*::-webkit-scrollbar-track { /* фон */
+  background: var(--inverted-bg-color);
 }

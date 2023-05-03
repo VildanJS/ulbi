@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import {RouterDecorator} from '@/shared/config/storybook/RouterDecorator'
 
 import { AppLink } from './AppLink'
 import { AppLinkThemes } from '../types'
@@ -6,6 +7,7 @@ import { AppLinkThemes } from '../types'
 export default {
   title: 'Shared/AppLink',
   component: AppLink,
+  decorators: [RouterDecorator],
   argTypes: {
     backgroundColor: { control: 'color' },
   },

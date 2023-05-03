@@ -1,0 +1,15 @@
+.article-details-page {
+  overflow-y: scroll;
+  height: calc(100vh - var(--navbar-height));
+}
+
+.comments-wrapper {
+  margin: 1em 0;
+}
+
+.recommendations {
+  flex-wrap: nowrap;
+  margin-top: 20px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}

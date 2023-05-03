@@ -1,5 +1,5 @@
 @import "global";
-
+$test: #f7f7f7;
 .app.light {
   --bg-color: #f1f1f1;
   --inverted-bg-color: #08020d;
@@ -7,4 +7,14 @@
   --secondary-color: #090909;
   --inverted-primary-color: #36bd5c;
   --inverted-secondary-color: #34c176;
+
+  // skeleton
+  --skeleton-color: #fff;
+  --skeleton-shadow: rgba(0 0 0 / 20%);
+
+  // code
+  --code-bg: #fff;
+
+  // articles
+  --article-bg: #e7dbe7
 }

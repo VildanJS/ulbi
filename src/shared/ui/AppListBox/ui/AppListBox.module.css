@@ -1,0 +1,72 @@
+@charset "UTF-8";
+.list-box {
+  --highlight-background: slateblue;
+  --highlight-foreground: white;
+  --text-color: var(--spectrum-alias-text-color);
+  --text-color-disabled: var(--spectrum-alias-text-color-disabled);
+  max-height: inherit;
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 2px;
+  outline: none;
+  background: white;
+  width: var(--trigger-width);
+}
+.list-box .section:not(:first-child) {
+  margin-top: 12px;
+}
+.list-box .header {
+  font-size: 1.143rem;
+  font-weight: bold;
+  padding: 0 0.571rem 0 1.571rem;
+}
+.list-box .item {
+  margin: 2px;
+  padding: 0.286rem 0.571rem 0.286rem 1.571rem;
+  border-radius: 6px;
+  outline: none;
+  cursor: default;
+  color: var(--text-color);
+  font-size: 1.072rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.list-box .item[aria-selected=true] {
+  font-weight: 600;
+}
+.list-box .item[aria-selected=true]::before {
+  content: "✓";
+  content: "✓"/"";
+  alt: " ";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.list-box .item[data-focused], .list-box .item[data-pressed] {
+  background: var(--highlight-background);
+  color: var(--highlight-foreground);
+}
+.list-box .item[aria-disabled] {
+  color: var(--text-color-disabled);
+}
+.list-box .item [slot=label] {
+  font-weight: bold;
+}
+.list-box .item [slot=description] {
+  font-size: small;
+}
+
+@media (forced-colors: active) {
+  .list-box {
+    forced-color-adjust: none;
+    --highlight-background: Highlight;
+    --highlight-foreground: HighlightText;
+    --border-color: ButtonBorder;
+    --background-color: ButtonFace;
+    --text-color: ButtonText;
+    --text-color-disabled: GrayText;
+  }
+}
+
+/*# sourceMappingURL=AppListBox.module.css.map */

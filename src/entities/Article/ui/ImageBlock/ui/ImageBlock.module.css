@@ -1,0 +1,13 @@
+.image-block {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=ImageBlock.module.css.map */

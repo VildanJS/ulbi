@@ -11,6 +11,8 @@
   --font-xl: var(--font-size-xl) / var(--line-height-xl) var(--font-family-main);
 }
 
+
+
 .app {
   // navbar sizes
   --navbar-height: 50px;
@@ -30,4 +32,7 @@
   // colors
   --red-light: #cc3838;
   --red-dark: #962323;
+
+  //overlay
+  --overlay-color: rgba(0 0 0 / 60%);
 }

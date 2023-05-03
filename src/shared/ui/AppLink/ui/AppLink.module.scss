@@ -1,5 +1,9 @@
 /* stylelint-disable-next-line block-no-empty  */
-.app-link {}
+.app-link {
+  &:hover {
+    opacity: 0.7;
+  }
+}
 
 .primary {
   color: var(--primary-color);

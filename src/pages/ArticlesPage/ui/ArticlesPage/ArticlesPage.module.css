@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.full {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/*# sourceMappingURL=ArticlesPage.module.css.map */

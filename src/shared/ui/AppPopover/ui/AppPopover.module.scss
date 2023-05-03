@@ -1,0 +1,41 @@
+.popover {
+  --background-color: var(--page-background);
+  --border-color: var(--spectrum-global-color-gray-400);
+
+  border: 1px solid var(--border-color);
+  width: var(--trigger-width);
+  max-width: 250px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(0 0 0 / 0.1);
+  border-radius: 6px;
+  background: var(--background-color);
+  outline: none;
+
+  &[data-placement=top] {
+    --origin: translateY(8px);
+  }
+
+  &[data-placement=bottom] {
+    --origin: translateY(-8px);
+  }
+
+  &[data-entering] {
+    animation: slide 200ms;
+  }
+
+  //&[data-exiting] {
+  //  animation: slide 200ms reverse ease-in;
+  //}
+}
+
+@keyframes slide {
+  from {
+    transform: var(--origin);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

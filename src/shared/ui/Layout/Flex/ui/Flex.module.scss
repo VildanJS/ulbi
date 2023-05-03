@@ -1,0 +1,54 @@
+.flex {
+  display: flex;
+}
+
+$justifyPositions: 'start', 'end', 'center', 'left', 'right', 'space-between', 'space-around', 'space-evenly', 'stretch', 'baseline';
+$alignItemsPositions: 'Start', 'End', 'Center', 'Stretch', 'Self-start', 'Self-end', 'Baseline';
+$flexDirections: 'Row', 'Column', 'Row-reverse', 'Column-reverse';
+$flexGaps: '4', '8', '16', '32';
+
+@mixin justifyContentMixin($position){
+.justify-content-#{$position} {
+  justify-content: #{$position};
+}
+
+}
+
+@mixin alignItemsMixin($position) {
+  .align-items-#{$position} {
+    align-items: #{$position};
+  }
+}
+
+@mixin flexDirectionMixin($direction) {
+  .flex-direction-#{$direction} {
+    flex-direction: #{$direction};
+  }
+}
+
+@mixin flexGapMixin($gap) {
+  .flex-gap-#{$gap} {
+    gap: #{$gap}px;
+  }
+}
+
+
+@each $position in $justifyPositions {
+  @include justifyContentMixin($position);
+}
+
+@each $position in $alignItemsPositions {
+  @include alignItemsMixin($position);
+}
+
+@each $position in $alignItemsPositions {
+  @include alignItemsMixin($position);
+}
+
+@each $direction in $flexDirections {
+  @include flexDirectionMixin($direction);
+}
+
+@each $gap in $flexGaps {
+  @include flexGapMixin($gap);
+}

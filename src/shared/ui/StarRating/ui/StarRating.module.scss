@@ -1,0 +1,17 @@
+.star-rating {
+
+}
+
+.star-icon {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.active {
+  fill: var(--inverted-primary-color);
+  color: #000;
+}
+.notActive {
+  color: #ccc;
+  fill: none;
+}

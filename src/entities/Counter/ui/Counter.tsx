@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { CounterSchema } from '../model/types'
-import { Button } from 'shared/ui/Button'
+import { CounterSchema } from '../../Counter/model/types'
+import { Button } from '@/shared/ui/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { incremented, decremented } from '../model/slice/counterSlice'
-import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue'
+import { incremented, decremented } from '../../Counter/model/slice/counterSlice'
+import { getCounterValue } from '../../Counter/model/selectors/getCounterValue/getCounterValue'
 
 export const Counter = () => {
 

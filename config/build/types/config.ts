@@ -11,7 +11,8 @@ export interface IBuildOptions {
   paths: IBuildPaths,
   isDev: boolean,
   port: number,
-  apiUrl: string
+  apiUrl: string,
+  projectName: 'storybook' | 'frontend' | 'jest'
 
 }
 

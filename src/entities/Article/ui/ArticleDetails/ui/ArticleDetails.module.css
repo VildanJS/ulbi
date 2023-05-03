@@ -1,0 +1,23 @@
+.article-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  align-self: center;
+}
+
+.info-wrapper {
+  display: flex;
+  gap: 0.5em;
+}
+.info-wrapper .icon {
+  fill: var(--secondary-color);
+  justify-self: center;
+  align-self: center;
+}
+.info-wrapper:first-child {
+  margin-top: 1em;
+}
+
+/*# sourceMappingURL=ArticleDetails.module.css.map */

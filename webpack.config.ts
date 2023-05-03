@@ -21,6 +21,7 @@ export default (env: IBuildEnv): webpack.Configuration => {
       paths,
       isDev,
       port: PORT,
+      projectName: 'frontend'
     }
   )
 }

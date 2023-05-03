@@ -2,10 +2,10 @@ import {FC, Suspense} from 'react'
 import cls from './LoginModal.module.scss'
 import { ILoginModal } from '../types'
 import classNames from 'classnames'
-import { Modal } from 'shared/ui/Modal'
+import { Modal } from '@/shared/ui/Modal'
 
-import {Loader} from 'shared/ui/Loader'
-import {LoginFormAsync} from 'features/AuthByUserName/ui/LoginForm'
+import {Loader} from '@/shared/ui/Loader'
+import {LoginFormAsync} from '@/features/AuthByUserName/ui/LoginForm'
 
 export const LoginModal: FC<ILoginModal> = (props) => {
   const {

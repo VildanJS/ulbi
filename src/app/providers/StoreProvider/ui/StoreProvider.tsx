@@ -2,7 +2,8 @@ import { ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { createReduxStore } from '../config/store'
 import { StateSchema } from '../config/StateSchema'
-import {DeepPartial, ReducersMapObject} from '@reduxjs/toolkit'
+import {  ReducersMapObject } from '@reduxjs/toolkit'
+import { useTraceUpdate } from '@/shared/utils/hooks/useTraceUpdate/useTraceUpdate'
 
 
 interface StoreProviderProps {
@@ -23,6 +24,8 @@ export const StoreProvider = (props: StoreProviderProps) => {
     initialState as StateSchema,
     asyncReducers as ReducersMapObject<StateSchema>
   )
+
+  useTraceUpdate(props)
 
   return (
     <Provider store={store}>

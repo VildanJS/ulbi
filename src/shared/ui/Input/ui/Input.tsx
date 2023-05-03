@@ -1,24 +1,28 @@
-import React, { FC, memo, useEffect, useRef, useState } from 'react'
+import React, {FC, memo, useEffect, useRef, useState} from 'react'
 import cls from './Input.module.scss'
-import { InputProps } from '../types'
+import {InputProps} from '../types'
+import classNames from 'classnames'
 
-export const Input: FC<InputProps> = memo((props) => {
+export const Input: FC<InputProps> = (props) => {
   const {
     autofocus,
     placeholder,
     value,
     onChange,
     type = 'text',
+    readonly = false,
     ...otherProps
   } = props
 
+
+  const inputClassName = classNames(cls.input, )
 
   const [isFocused, setIsFocused] = useState(false)
   const [caretPosition, setCaretPosition] = useState(0)
 
   const input = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    if(autofocus) input.current?.focus()
+    if (autofocus) input.current?.focus()
   }, [autofocus])
 
   const onBlur = () => {
@@ -49,8 +53,9 @@ export const Input: FC<InputProps> = memo((props) => {
       <div className={cls.caretWrapper}>
         <input
           {...otherProps}
+          readOnly={readonly}
           ref={input}
-          className={cls.input}
+          className={inputClassName}
           type={type}
           value={value}
           onChange={onChangeHandler}
@@ -68,4 +73,4 @@ export const Input: FC<InputProps> = memo((props) => {
       </div>
     </div>
   )
-})
+}

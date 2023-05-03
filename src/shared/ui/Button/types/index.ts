@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 
 export enum ButtonThemes {
   CLEAR = 'clear',
@@ -14,6 +14,7 @@ export enum EButtonSize {
   L = 'size-l',
   XL = 'size-xl'
 }
+
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string

@@ -1,0 +1,18 @@
+import { FC, memo } from 'react'
+import cls from './ImageBlock.module.scss'
+import { IImageBlock } from '../types'
+import classNames from 'classnames'
+import { Text } from '@/shared/ui/Text/Text'
+
+
+export const ImageBlock: FC<IImageBlock> = memo((props) => {
+  const { className, block } = props
+  const imageBlockClass = classNames(className, cls.imageBlock)
+
+  return (
+    <div className={imageBlockClass}>
+      <img className={cls.img} src={block.src} alt='' />
+      {block.title && <Text title={block.title} align='center' />}
+    </div>
+  )
+})

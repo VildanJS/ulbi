@@ -1,4 +1,4 @@
-import {FC, memo} from 'react'
+import { FC, memo } from 'react'
 import cls from './Button.module.scss'
 import { ButtonThemes, EButtonSize, IButton } from '../types'
 import classNames from 'classnames'
@@ -22,11 +22,11 @@ export const Button: FC<IButton> = memo((props) => {
 
   return (
     <button
-      {...other}
       type="button"
       onClick={onClick}
       className={buttonClass}
       disabled={disabled}
+      {...other}
     >
       {children}
     </button>

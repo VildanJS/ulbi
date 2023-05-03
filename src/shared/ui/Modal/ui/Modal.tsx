@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect } from 'react'
 import cls from './Modal.module.scss'
 import { IModal } from '../types'
 import classNames from 'classnames'
+import { Overlay } from '@/shared/ui/Overlay/Overlay'
 // import { Portal } from 'shared/ui/Portal'
 
 export const Modal: FC<IModal> = (props) => {
@@ -38,10 +39,10 @@ export const Modal: FC<IModal> = (props) => {
 
   return (
     <div className={modalClass}>
-      <div className={cls.overlay} onClick={closeHandler}>
-        <div className={cls.content} onClick={contentClickHandler}>
-          {children}
-        </div>
+      <Overlay className={cls.overlay} onClick={closeHandler} />
+
+      <div className={cls.content} onClick={contentClickHandler}>
+        {children}
       </div>
     </div>
   )

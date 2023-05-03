@@ -1,0 +1,21 @@
+.article-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  align-self: center;
+}
+
+.info-wrapper {
+  display: flex;
+  gap: 0.5em;
+  .icon {
+    fill: var(--secondary-color);
+    justify-self: center;
+    align-self: center;
+  }
+  &:first-child {
+    margin-top: 1em;
+  }
+}

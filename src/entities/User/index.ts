@@ -1,20 +1,31 @@
-import { User } from './ui/User'
 import userReducer from './model/slice/userSlice'
-import {setAuthData, recoveryAuthData, logout} from './model/slice/userSlice'
-import {userActions} from './model/slice/userSlice'
-import type {UserSchema, IUser} from './model/types'
-import { getUserAuthData } from './model/selectors/getUserAuthData'
 
+// reducer
+export default userReducer
+// types
+export type {
+  IUser,
+  UserSchema
+} from './model'
+
+export { UserRole } from './model'
+
+// selectors
 export {
-  User,
-  userReducer,
-  userActions,
+  getUserInited,
+  getUserAuthData,
+  getUserRoles,
+  isUserManager,
+  isUserAdmin
+} from './model'
+
+// actions
+export {
   setAuthData,
   recoveryAuthData,
-  logout,
-  getUserAuthData
-}
-export type {
-  UserSchema,
-  IUser
-}
+  logout
+} from './model'
+
+
+
+

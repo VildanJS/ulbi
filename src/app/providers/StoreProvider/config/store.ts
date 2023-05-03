@@ -1,9 +1,13 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-import { counterReducer } from 'entities/Counter'
-import { userReducer } from 'entities/User'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
-import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager'
-import { $api } from 'shared/api/api'
+import { createReducerManager } from '@/app/providers/StoreProvider/config/reducerManager'
+import { $api } from '@/shared/api/api'
+import { counterReducer } from '@/entities/Counter'
+import userReducer from '@/entities/User'
+import { UIReducer } from '@/features/scrollPositionSaver'
+import { articlesFiltersReducer } from '@/features/articles/filtersAndView/ArticlesFilters'
+import { rtkApi } from '@/shared/api/rtkApi'
+
 
 export const createReduxStore = (
   initialState?: StateSchema,
@@ -13,11 +17,16 @@ export const createReduxStore = (
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    ui: UIReducer,
+    articlesFilters: articlesFiltersReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer
   }
 
   const reducerManager = createReducerManager(rootReducers)
 
-  const extraArgument: ThunkExtraArg = {api: $api}
+  const extraArgument: ThunkExtraArg = {
+    api: $api
+  }
 
   const store = configureStore({
     reducer: reducerManager.reduce,
@@ -30,13 +39,15 @@ export const createReduxStore = (
         thunk: {
           extraArgument
         }
-      })
+      }).concat(rtkApi.middleware)
   })
 
   // NEED TO GET TYPED!!!
   // eslint-disable-next-line
   // @ts-ignore
+
   store.reducerManager = reducerManager
+
 
   return store
 }

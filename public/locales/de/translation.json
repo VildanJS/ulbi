@@ -1,6 +1,6 @@
 {
   "switchLanguage": "Sprache wechseln",
-  "notFound": "Geman page was not found",
+  "No Found": "No",
   "German": "German",
   "Russian": "Russian",
   "English": "English",
@@ -8,5 +8,18 @@
   "en": "en",
   "ru": "ru",
   "Main": "Main",
-  "About": "About"
+  "About": "About",
+  "Profile": "Profile",
+  "Admin Panel": "Admin Panel",
+  "Login Form": "Login Form",
+  "Log-in": "Log-in",
+  "Log-out": "Log-out",
+  "Please try to reload the page": "Please try to reload the page",
+  "Something went wrong": "Something went wrong",
+  "Comments": "Comments",
+  "No comments": "No comments",
+  "Article": "Статья",
+  "Edit": "Edit",
+  "Cancel": "Cancel",
+  "Read": "Read"
 }

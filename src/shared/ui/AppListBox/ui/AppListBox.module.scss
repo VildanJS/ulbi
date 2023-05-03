@@ -1,0 +1,79 @@
+.list-box {
+  --highlight-background: slateblue;
+  --highlight-foreground: white;
+  --text-color: var(--spectrum-alias-text-color);
+  --text-color-disabled: var(--spectrum-alias-text-color-disabled);
+  max-height: inherit;
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 2px;
+  outline: none;
+  background: white;
+  width: var(--trigger-width);
+
+  .section:not(:first-child) {
+    margin-top: 12px;
+  }
+
+  .header {
+    font-size: 1.143rem;
+    font-weight: bold;
+    padding: 0 0.571rem 0 1.571rem;
+  }
+
+  .item {
+    margin: 2px;
+    padding: 0.286rem 0.571rem 0.286rem 1.571rem;
+    border-radius: 6px;
+    outline: none;
+    cursor: default;
+    color: var(--text-color);
+    font-size: 1.072rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &[aria-selected=true] {
+      font-weight: 600;
+
+      &::before {
+        content: '✓';
+        content: '✓' / '';
+        alt: ' ';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+    }
+
+    &[data-focused],
+    &[data-pressed] {
+      background: var(--highlight-background);
+      color: var(--highlight-foreground);
+    }
+
+    &[aria-disabled] {
+      color: var(--text-color-disabled);
+    }
+
+    [slot=label] {
+      font-weight: bold;
+    }
+
+    [slot=description] {
+      font-size: small;
+    }
+  }
+}
+@media (forced-colors: active) {
+  .list-box {
+    forced-color-adjust: none;
+
+    --highlight-background: Highlight;
+    --highlight-foreground: HighlightText;
+    --border-color: ButtonBorder;
+    --background-color: ButtonFace;
+    --text-color: ButtonText;
+    --text-color-disabled: GrayText;
+  }
+}

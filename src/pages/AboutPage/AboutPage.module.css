@@ -1,0 +1,59 @@
+.about-page {
+  padding: 1rem;
+  color: var(--inverted-primary-color);
+  flex-grow: 1;
+}
+
+.trigger {
+  margin-left: 200px;
+}
+
+.my-modal {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: fit-content;
+  height: fit-content;
+  background: white;
+  outline: none;
+  padding: 30px;
+  border-left: 1px solid var(--spectrum-global-color-gray-400);
+  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.animation-on {
+  animation: slideX 300ms;
+}
+
+.animation-off {
+  animation: slideX 300ms reverse forwards;
+}
+
+@keyframes slideX {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+.element {
+  height: 100px;
+  width: 100px;
+  background: #ff6d6d;
+  border-radius: 8px;
+}
+.element:hover {
+  animation: animation-color 1000ms forwards;
+}
+
+@keyframes animation-color {
+  from {
+    color: black;
+  }
+  to {
+    color: white;
+  }
+}
+
+/*# sourceMappingURL=AboutPage.module.css.map */

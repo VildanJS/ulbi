@@ -3,5 +3,7 @@
   "description": {
     "part1": "Um loszulegen, ändere src/pages/MainPage.js und speichere um neuzuladen.",
     "part2": "Wechsle die Sprache zwischen deutsch und englisch mit Hilfe der beiden Schalter."
-  }
+  },
+  "Log-in": "Log-in",
+  "Log-out": "Log-out"
 }

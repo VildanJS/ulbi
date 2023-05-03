@@ -1,0 +1,40 @@
+:root {
+  --font-family-main: consolas, "Times New Roman", serif;
+  --font-size-m: 16px;
+  --line-height-m: 24px;
+  --font-m: var(--font-size-m) / var(--line-height-m) var(--font-family-main);
+  --font-size-l: 24px;
+  --line-height-l: 32px;
+  --font-l: var(--font-size-l) / var(--line-height-l) var(--font-family-main);
+  --font-size-xl: 32px;
+  --line-height-xl: 40px;
+  --font-xl: var(--font-size-xl) / var(--line-height-xl) var(--font-family-main);
+}
+
+.app {
+  --navbar-height: 50px;
+  --sidebar-width: 300px;
+  --sidebar-width-collapsed: 80px;
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: #777;
+  --modal-z-index: 10;
+  --red-light: #cc3838;
+  --red-dark: #962323;
+  --overlay-color: rgba(0 0 0 / 60%);
+}
+
+.app.dark {
+  --bg-color: #08020d;
+  --inverted-bg-color: #fff;
+  --primary-color: #34c176;
+  --secondary-color: #eaeaeaff;
+  --inverted-primary-color: #5855b9;
+  --inverted-secondary-color: #090909;
+  --skeleton-color: #1515ad;
+  --skeleton-shadow: #2b2be8;
+  --code-bg: #1212a1;
+  --article-bg: #232625 ;
+}
+
+/*# sourceMappingURL=dark.css.map */

@@ -3,7 +3,7 @@ import '../../src/app/styles/style.scss' // чтобы стили появили
 import {addDecorator, Story} from '@storybook/react'
 import {Theme} from '../../src/app/providers/ThemeProvider'
 import {withThemes} from 'storybook-addon-themes'
-import {BrowserRouter} from 'react-router-dom'
+
 
 export const parameters = {
   themes: {
@@ -23,13 +23,13 @@ export const parameters = {
 }
 
 // декораторы для роутера
-export const decorators = [
-  (StoryComponent: Story) => (
-    <BrowserRouter>
-      <StoryComponent/>
-    </BrowserRouter>
-  )
-]
+// export const decorators = [
+//   (StoryComponent: Story) => (
+//     <BrowserRouter>
+//       <StoryComponent/>
+//     </BrowserRouter>
+//   )
+// ]
 
 // добавляем декоратор для поддержки тем
 addDecorator(withThemes)

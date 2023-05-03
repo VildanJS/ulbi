@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { IProfile } from '../../../model/types/IProfile'
+import { IProfile } from '../../../model/types'
 
 export enum ProfileCardThemes {
   PRIMARY = 'primary',
@@ -9,7 +9,9 @@ export enum ProfileCardThemes {
 interface IProfileCard extends PropsWithChildren {
   className?: string,
   theme?: ProfileCardThemes,
-  data?: IProfile
+  data: IProfile,
+  isLoading?: boolean,
+  error?: string | null,
 }
 
 export {

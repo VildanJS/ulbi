@@ -1,0 +1,15 @@
+.switch-articles-view {
+  display: flex;
+  justify-content: center;
+
+}
+
+.icon {
+  fill: var(--primary-color);
+
+}
+
+.not-selected {
+  fill: var(--secondary-color);
+  opacity: 0.5;
+}

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import loginByUserName from './loginByUserName' // thunk
-import { setAuthData } from 'entities/User' // action
-import { TestAsyncThunk } from 'shared/utils/tests/TestAsyncThunk'
+import {setAuthData} from '@/entities/User' // action
+import {TestAsyncThunk} from '@/shared/utils/tests/TestAsyncThunk'
 
 jest.mock('axios')
 const mockedAxios = jest.mocked(axios)
@@ -17,7 +17,7 @@ describe('loginByUserName.test', () => {
     }
 
     const thunk = new TestAsyncThunk(loginByUserName)
-    thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }))
+    thunk.api.post.mockReturnValue(Promise.resolve({data: userValue}))
     const result = await thunk.callThunk({
       username: '123',
       password: '123'
@@ -35,7 +35,7 @@ describe('loginByUserName.test', () => {
 
     // mockedAxios.post.mockReturnValue(Promise.resolve({status: 403}))
     const thunk = new TestAsyncThunk(loginByUserName)
-    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
+    thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
     const result = await thunk.callThunk({
       username: '123',
       password: '123'

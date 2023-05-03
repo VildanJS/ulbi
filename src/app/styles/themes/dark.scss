@@ -1,5 +1,5 @@
 @import "global";
-
+$test: #303846;
 .app.dark {
   --bg-color: #08020d;
   --inverted-bg-color: #fff;
@@ -7,4 +7,14 @@
   --secondary-color: #eaeaeaff;
   --inverted-primary-color: #5855b9;
   --inverted-secondary-color: #090909;
+
+  // skeleton
+  --skeleton-color: #1515ad;
+  --skeleton-shadow: #2b2be8;
+
+  // code
+  --code-bg: #1212a1;
+  // articles
+  --article-bg: #232625
+
 }

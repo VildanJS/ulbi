@@ -7,7 +7,6 @@ export const Portal: FC<IPortal> = (props) => {
     children,
     element = document.body
   } = props
-  console.log(element)
 
   return createPortal(children, element)
 }

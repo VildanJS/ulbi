@@ -21,5 +21,13 @@ type DeepPartial<T> = T extends object ? {
   [P in keyof T]?: DeepPartial<T[P]>;
 } : T;
 
+type OptionalRecord<K extends keyof any, T> = {
+  [P in K]?: T;
+};
+
+
+
 declare const IS_DEV: boolean
 declare const API_URL: string
+declare const PROJECT_NAME: 'storybook' | 'frontend' | 'jest'
+

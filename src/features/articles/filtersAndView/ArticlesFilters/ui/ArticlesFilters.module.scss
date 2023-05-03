@@ -1,0 +1,27 @@
+.articles-filter {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sort {
+  max-width: 20%;
+}
+
+.filters-wrapper {
+  display: flex;
+  gap: 10px
+}
+
+.search-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+
+  margin-bottom: 30px;
+}
+
+.search {
+  flex-grow: 0.6;
+}

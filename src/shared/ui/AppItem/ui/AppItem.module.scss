@@ -1,0 +1,43 @@
+.app-item {
+  margin: 2px;
+  padding: 4px 8px 4px 22px;
+  border-radius: 6px;
+  outline: none;
+  cursor: default;
+
+  font-size: 1.072rem;
+  position: relative;
+
+  &.dark {
+    color: #5855b9;
+  }
+
+  &.light {
+    color: #36bd5c;
+  }
+
+  &.selected {
+    font-weight: 600;
+
+    &::before {
+      content: '✓';
+      content: '✓' / '';
+      alt: ' ';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+    }
+  }
+
+  &.focused {
+    background: #e70073;
+    color: white;
+  }
+}
+
+@media (forced-colors: active) {
+  .app-item.focused {
+    background: Highlight;
+    color: HighlightText;
+  }
+}

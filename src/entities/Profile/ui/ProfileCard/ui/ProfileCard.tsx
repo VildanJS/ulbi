@@ -1,40 +1,239 @@
 import { FC } from 'react'
+import * as Yup from 'yup'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+import classNames from 'classnames'
 import cls from './ProfileCard.module.scss'
 import { IProfileCard } from '../types'
-import classNames from 'classnames'
-import { useTranslation } from 'react-i18next'
-import { Text } from 'shared/ui/Text/Text'
-import { Button, ButtonThemes } from 'shared/ui/Button'
-import { Input } from 'shared/ui/Input'
+
+import { Formik, ErrorMessage, Field, Form } from 'formik'
+import ContentLoader from 'react-content-loader'
+
+import { Avatar } from '@/shared/ui/Avatar'
+import { AppSelect } from '@/shared/ui/AppSelect'
+import { AppItem } from '@/shared/ui/AppItem'
+import { Text, TextThemes } from '@/shared/ui/Text/Text'
+import { Country, Currency } from '@/shared/const/common'
+
+import { updateProfileData } from '@/features/profile/getProfileCardData'
+import { getProfileIsReadonly } from '@/features/profile/getProfileCardData'
+import { Button, ButtonThemes } from '@/shared/ui/Button'
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+export const MyLoader: FC = (props) => (
+  <ContentLoader
+    speed={2}
+    width={500}
+    height={150}
+    viewBox="0 0 265 230"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#6d6969"
+    {...props}
+  >
+    <rect x="15" y="15" rx="4" ry="4" width="350" height="25" />
+    <rect x="15" y="50" rx="2" ry="2" width="350" height="150" />
+    <rect x="15" y="230" rx="2" ry="2" width="170" height="20" />
+    <rect x="60" y="230" rx="2" ry="2" width="170" height="20" />
+  </ContentLoader>
+)
+
 
 export const ProfileCard: FC<IProfileCard> = (props) => {
+  const readonly = useSelector(getProfileIsReadonly)
   const { t } = useTranslation('profile')
   const {
+    isLoading,
+    data,
+    error,
     className,
-    data
   } = props
-  const profileCardClass = classNames(className, cls.profileCard)
+
+
+  const profileCardClass = classNames(className, cls.profileCard, { [cls.readonly]: readonly })
+  const loadingProfileCardClass = classNames(profileCardClass, cls.loading)
+
+  const dispatch = useAppDispatch()
+
+  if (isLoading) {
+    return (
+      <div className={loadingProfileCardClass}>
+        <MyLoader />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className={loadingProfileCardClass}>
+        <Text
+          theme={TextThemes.ERROR}
+          title={t('Try to reload the page')}
+          text={t('An error occurred while loading the profile')}
+          align="center"
+          data-testid={'ProfileCard.Error'}
+        ></Text>
+      </div>
+    )
+  }
 
   return (
     <div className={profileCardClass}>
-      <div className={cls.header}>
-        <Text text={t('Profile')}></Text>
-        <Button className={cls.editBtn} theme={ButtonThemes.OUTLINE}>
-          {t('Edit')}
-        </Button>
-      </div>
-      <div className={cls.content}>
-        <Input
-          value={data?.firstname}
-          placeholder={t('Enter your firstname')}
-          className={cls.profileInput}>
-        </Input>
-        <Input
-          value={data?.lastname}
-          placeholder={t('Enter your lastname')}
-          className={cls.profileInput}>
-        </Input>
-      </div>
+      <Formik
+        initialValues={data}
+        enableReinitialize={true}
+        validationSchema={Yup.object({
+          username: Yup.string()
+            .max(15, 'Must be 15 characters or less')
+            .required('Please enter a username'),
+          firstname: Yup.string()
+            .max(15, 'Must be 15 characters or less')
+            .required('Please enter a firstname'),
+          lastname: Yup.string()
+            .max(20, 'Must be 20 characters or less')
+            .required('Please enter a lastname'),
+          age: Yup.number()
+            .typeError('That doesn\'t look like an age')
+            .required('Please enter a age')
+            .positive()
+            .integer()
+        })}
+        onSubmit={async (values, actions) => {
+          await sleep(500)
+          console.log({ values, actions })
+          alert(JSON.stringify(values, null, 2))
+          actions.setSubmitting(false)
+          if (PROJECT_NAME !== 'storybook') dispatch(updateProfileData(values))
+        }}
+      >
+        {({
+          values,
+          // errors,
+          // touched,
+          // handleChange,
+          // handleBlur,
+          // handleSubmit,
+          isSubmitting,
+          resetForm
+        }) => {
+          return (
+            <Form>
+              <h2>Профиль</h2>
+              <fieldset className={cls.content}>
+                <legend>Персональные данные</legend>
+
+                {values?.avatar && (
+                  <div className={cls.avatarWrapper}>
+                    <Avatar src={values?.avatar} alt="аватар пользователя"></Avatar>
+                  </div>)
+                }
+
+                <li className={cls.inputWrapper}>
+                  <label htmlFor="username">Username</label>
+                  <Field
+                    name="username"
+                    id="username"
+                    className={cls.gridInput}
+                    readOnly={readonly}
+                    type="text"
+                  />
+                  <ErrorMessage className={cls.gridError} name="username" component="div" />
+                </li>
+
+                <li className={cls.inputWrapper}>
+                  <label htmlFor="firstname">First Name</label>
+                  <Field
+                    className={cls.gridInput}
+                    readOnly={readonly}
+                    id="firstName"
+                    type="text"
+                    name="firstname"
+                    data-testid="ProfileCard.firstname"
+                    placeholder="First Name"
+                  />
+                  <ErrorMessage className={cls.gridError} name="firstname" component="div" />
+                </li>
+
+                <li className={cls.inputWrapper}>
+                  <label htmlFor="lastName">Last Name</label>
+                  <Field
+                    data-testid="ProfileCard.lastname"
+                    className={cls.gridInput}
+                    readOnly={readonly}
+                    id="lastName"
+                    type="text"
+                    name="lastname"
+                    placeholder="Last Name"
+                  />
+                  <ErrorMessage className={cls.gridError} name="lastname" component="div" />
+                </li>
+                <li className={cls.inputWrapper}>
+                  <label htmlFor="age">Age</label>
+                  <Field
+                    className={cls.gridInput}
+                    readOnly={readonly}
+                    id="age"
+                    type="number"
+                    name="age"
+                    placeholder="Age"
+                  />
+                  <ErrorMessage className={cls.gridError} name="age" component="div" />
+                </li>
+              </fieldset>
+              <fieldset className={cls.content}>
+                <legend>Место жительсвта</legend>
+
+                <li className={cls.inputWrapper}>
+                  <AppSelect
+                    label={'Country'}
+                    id={'country'}
+                    name={'country'}
+                  >
+                    <AppItem id={Country.Russia} textValue={Country.Russia}>{Country.Russia}</AppItem>
+                    <AppItem id={Country.Kazakhstan} textValue={Country.Kazakhstan}>{Country.Kazakhstan}</AppItem>
+                    <AppItem id={Country.Armenia} textValue={Country.Armenia}>{Country.Armenia}</AppItem>
+                    <AppItem id={Country.Belarus} textValue={Country.Belarus}>{Country.Belarus}</AppItem>
+                    <AppItem id={Country.Ukraine} textValue={Country.Ukraine}>{Country.Ukraine}</AppItem>
+                  </AppSelect>
+                </li>
+
+                <li className={cls.inputWrapper}>
+                  <label htmlFor="city">City</label>
+                  <Field className={cls.gridInput} readOnly={readonly} id="city" type="text" name="city"
+                    placeholder="City" />
+                  <ErrorMessage className={cls.gridError} name="city" component="div" />
+                </li>
+
+                <li className={cls.inputWrapper}>
+                  <AppSelect
+                    label={'Currency'}
+                    id={'currency'}
+                    name={'currency'}
+                  >
+                    <AppItem id={Currency.USD} textValue={Currency.USD}>{Currency.USD}</AppItem>
+                    <AppItem id={Currency.RUB} textValue={Currency.RUB}>{Currency.RUB}</AppItem>
+                    <AppItem id={Currency.TNG} textValue={Currency.TNG}>{Currency.TNG}</AppItem>
+                  </AppSelect>
+                </li>
+              </fieldset>
+              <div className={cls.buttonsWrapper}>
+                <Button
+                  data-testid="ProfileCard.ResetButton"
+                  theme={ButtonThemes.OUTLINE}
+                  type="button"
+                  onClick={() => resetForm({ values: data })}
+                >Reset
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                >Submit
+                </Button>
+              </div>
+            </Form>
+          )
+        }}
+      </Formik>
     </div>
   )
 }

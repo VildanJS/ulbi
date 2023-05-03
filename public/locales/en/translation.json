@@ -1,6 +1,6 @@
 {
   "switchLanguage": "Switch language",
-  "notFound": "Page was not found",
+  "Not found": "Not Found",
   "German": "German",
   "Russian": "Russian",
   "English": "English",
@@ -10,7 +10,14 @@
   "Main": "Main",
   "About": "About",
   "Profile": "Profile",
+  "Admin Panel": "Admin Panel",
   "Login Form": "Login Form",
   "Log-in": "Log-in",
-  "Log-out": "Log-out"
+  "Log-out": "Log-out",
+  "Please try to reload the page": "Please try to reload the page",
+  "Something went wrong": "Something went wrong",
+  "Article": "Article",
+  "Edit": "Edit",
+  "Cancel": "Cansel",
+  "Read": "Read"
 }

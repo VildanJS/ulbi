@@ -1,9 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Sidebar } from './Sidebar'
+import {RouterDecorator} from '@/shared/config/storybook/RouterDecorator'
 
 export default {
   title: 'widgets/Sidebar',
   component: Sidebar,
+  decorators: [RouterDecorator],
   argTypes: {
     backgroundColor: { control: 'color' },
   },

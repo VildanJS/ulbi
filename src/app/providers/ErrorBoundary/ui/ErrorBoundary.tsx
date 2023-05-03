@@ -2,7 +2,7 @@ import { Component, ErrorInfo } from 'react'
 import cls from './ErrorBoundary.module.scss'
 import { ErrorBoundaryProps, ErrorBoundaryState } from '../types'
 import classNames from 'classnames'
-import { PageError } from 'widgets/PageError'
+import { PageError } from '@/widgets/PageError'
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor (props: ErrorBoundaryProps) {

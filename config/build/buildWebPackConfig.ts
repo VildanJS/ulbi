@@ -1,4 +1,4 @@
-import { IBuildOptions } from './types/config'
+import { IBuildOptions, IBuildPaths } from './types/config'
 import webpack from 'webpack'
 import { buildResolvers } from './buildResolvers'
 import { buildLoaders } from './buildLoaders'
@@ -8,14 +8,17 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 
 export const BuildWebPackConfig = (options: IBuildOptions): webpack.Configuration => {
   const { paths, mode, isDev } = options
+
   return {
     mode,
     entry: paths.entry,
     output: {
       filename: '[name].[contenthash].js',
       path: paths.build,
-      clean: isDev && true
+      clean: isDev && true,
+      publicPath: '/'
     },
+    plugins: buildPlugin(options),
     resolve: buildResolvers(options),
     module: {
       rules: buildLoaders(options)
@@ -27,8 +30,8 @@ export const BuildWebPackConfig = (options: IBuildOptions): webpack.Configuratio
         new CssMinimizerPlugin()
       ]
     },
-    plugins: buildPlugin(options),
+
     devtool: isDev ? 'inline-source-map' : undefined,
-    devServer: buildDevServer(options)
+    devServer: isDev ? buildDevServer(options) : undefined,
   }
 }

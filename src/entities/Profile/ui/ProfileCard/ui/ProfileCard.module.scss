@@ -3,18 +3,52 @@
   border: 2px solid var(--inverted-primary-color);
 }
 
-.header {
-  display: flex;
-}
-
-.edit-btn {
-  margin-left: auto;
-}
-
 .content {
-  margin-top: 30px;
+  margin-top: 1em;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex: auto 1 1;
+  justify-content: space-between;
+  margin-top: 1em;
 }
 
 .profile-input {
   margin-top: 10px;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.readonly {
+  opacity: 0.5;
+}
+
+.input-wrapper {
+  list-style: none;
+}
+
+.grid-error {
+  grid-column: 1/4;
+  grid-row: -1
+}
+
+.grid-input {
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+
+.avatar-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0;
 }
