@@ -105,7 +105,6 @@ jobs:
           path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
-        if: always()
         uses: actions/deploy-pages@v1
 
   build:
