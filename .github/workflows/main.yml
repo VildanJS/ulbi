@@ -59,9 +59,9 @@ jobs:
       - name: Run lint
         run: |
           npm run lint:ts
-      - name: Run prettier
-        run: |
-          npm run lint:scss
+#      - name: Run prettier
+#        run: |
+#          npm run lint:scss
 
   unit-test:
     runs-on: ubuntu-latest

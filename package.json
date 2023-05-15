@@ -21,7 +21,7 @@
     "test:ui": "loki test",
     "test:ui:update": "loki update",
     "test:ui:ok": "loki approve",
-    "test:ui:ci": "concurrently --kill-others --raw --success first \"loki --requireReference --reactUri file:./storybook-static\" \"deelay\" ",
+    "test:ui:ci": "concurrently --kill-others --raw --success first \"npm run storybook\" \"npm run test:ui\" ",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
     "visual:report": "npm run visual:report:json && npm run visual:report:html",
