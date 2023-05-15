@@ -144,7 +144,7 @@ jobs:
         run: |
           npm run test:ui:ci
       - name: Generate HTML test ui report
-        run: npm run test:ui:report
+        run: npm run visual:report
         if: always()
       - name: move loki
         run: mv .loki reports/
