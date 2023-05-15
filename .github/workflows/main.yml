@@ -150,10 +150,6 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-      - name: Test unit
-        run: |
-          npm run test:unit
-            - name: Setup Pages
       - name: test ui (storybook screenshots)
         run: |
           npm run test:ui:ci
@@ -163,6 +159,10 @@ jobs:
       - name: move loki
         run: mv .loki reports/
         if: always()
+      - name: Test unit
+        run: |
+          npm run test:unit
+            - name: Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v2
         if: always()
