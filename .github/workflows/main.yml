@@ -3,6 +3,10 @@ run-name: Building Testing Linting.
 on:
   - push
   - pull_request
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 concurrency:
   group: GITHUB_HEAD_REF
   cancel-in-progress: true
