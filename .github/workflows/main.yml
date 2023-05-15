@@ -143,7 +143,7 @@ jobs:
       - name: test ui (storybook screenshots)
         run: |
           npm run test:ui:ci
-      - name: Generate HTML test ui report
+      - name: Generate HTML (test ui) report
         run: npm run visual:report
         if: always()
       - name: move loki
