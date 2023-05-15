@@ -15,3 +15,6 @@ export { ArticlesFilters } from './filtersAndView/ArticlesFilters/'
 export { SwitchArticlesView } from './filtersAndView/SwitchArticlesView/'
 export { articlesFiltersReducer } from './filtersAndView/ArticlesFilters/'
 export { articleDetailsCommentAdd } from './articleDetails/ArticleDetailsCommentList'
+
+export { setOrder, setSort, setSearch, setType } from './filtersAndView/ArticlesFilters'
+export { ArticleDetailsAddComment } from './articleDetails/ArticleDetailsAddComment'

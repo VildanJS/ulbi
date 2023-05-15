@@ -19,6 +19,6 @@ export const ArticleEditPageSlice = createSlice({
 })
 
 
-export const { setArticleEditPage } = ArticleEditPageSlice.actions
+// export const { setArticleEditPage } = ArticleEditPageSlice.actions
 
 export default ArticleEditPageSlice.reducer
