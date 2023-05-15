@@ -41,6 +41,10 @@ jobs:
 
   lint-format:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node: [ 19.x ]
@@ -149,16 +153,12 @@ jobs:
           npm run test:ui:ci
       - name: Generate HTML (test ui) report
         run: npm run visual:report
-        if: always()
       - name: move loki
         run: mv .loki reports/
-        if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2
-        if: always()
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        if: always()
         with:
           path: 'reports'
       - name: Deploy to GitHub Pages
