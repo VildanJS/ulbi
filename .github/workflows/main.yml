@@ -67,47 +67,35 @@ jobs:
 #        run: |
 #          npm run lint:scss
 
-  unit-test:
-    runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    strategy:
-      matrix:
-        node: [19.x]
-    needs: install-cache
-    steps:
-      - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Restore dependencies
-        uses: actions/cache@v3
-        id: cache-dependencies
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-      - name: Test unit
-        run: |
-          npm run test:unit
-            - name: Setup Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-        if: always()
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        if: always()
-        with:
-          path: 'reports'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        if: always()
-        uses: actions/deploy-pages@v1
+#  unit-test:
+#    runs-on: ubuntu-latest
+#    concurrency: ci-${{ github.ref }}
+#    environment:
+#      name: github-pages
+#      url: ${{ steps.deployment.outputs.page_url }}
+#    strategy:
+#      matrix:
+#        node: [19.x]
+#    needs: install-cache
+#    steps:
+#      - name: Checkout Commit
+#        uses: actions/checkout@v3
+#      - name: Use Node.js ${{ matrix.node }}
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node }}
+#      - name: Restore dependencies
+#        uses: actions/cache@v3
+#        id: cache-dependencies
+#        with:
+#          path: node_modules
+#          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-npm-
+#      - name: Test unit
+#        run: |
+#          npm run test:unit
+#            - name: Setup Pages
 
   build:
     runs-on: ubuntu-latest
@@ -162,9 +150,10 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-      - name: Run build storybook
+      - name: Test unit
         run: |
-          npm run storybook:build
+          npm run test:unit
+            - name: Setup Pages
       - name: test ui (storybook screenshots)
         run: |
           npm run test:ui:ci
