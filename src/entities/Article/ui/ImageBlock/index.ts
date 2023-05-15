@@ -1,4 +1,4 @@
-import {ImageBlock} from './ui/ImageBlock'
+import { ImageBlock } from './ui/ImageBlock'
 
 export {
   ImageBlock,

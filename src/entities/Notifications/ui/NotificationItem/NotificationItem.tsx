@@ -1,10 +1,13 @@
 import { FC } from 'react'
-import cls from './NotificationItem.module.scss'
+
 import classNames from 'classnames'
-import { useGetNotifications } from '../../api/notificationsApi'
 import { Dialog, Heading, DialogProps  } from 'react-aria-components'
+
+import { Text } from '@/shared/ui/Text'
+
+import cls from './NotificationItem.module.scss'
 import { INotification } from '../../model/types'
-import { Text } from '@/shared/ui/Text/Text'
+
 
 interface NotificationItemProps extends DialogProps {
   notification: INotification,

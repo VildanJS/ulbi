@@ -1,6 +1,7 @@
-import {fetchProfileData} from './fetchProfileData'
-import {TestAsyncThunk} from '@/shared/utils/tests/TestAsyncThunk'
-import {Country, Currency} from '@/shared/const/common'
+import { Country, Currency } from '@/shared/const/common'
+import { TestAsyncThunk } from '@/shared/utils/tests/TestAsyncThunk'
+
+import { fetchProfileData } from './fetchProfileData'
 
 
 const data = {
@@ -16,7 +17,7 @@ describe('fetchProfileData.test', () => {
   // should have been called with "123" and "123" values and return "fulfilled status"
   test('login', async () => {
     const thunk = new TestAsyncThunk(fetchProfileData)
-    thunk.api.get.mockReturnValue(Promise.resolve({data: data}))
+    thunk.api.get.mockReturnValue(Promise.resolve({ data: data }))
     const result = await thunk.callThunk('1')
     expect(thunk.api.get).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('fulfilled')

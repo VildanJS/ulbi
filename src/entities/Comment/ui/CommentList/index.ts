@@ -1,4 +1,4 @@
-import {CommentList} from './ui/CommentList'
+import { CommentList } from './ui/CommentList'
 
 export {
   CommentList,

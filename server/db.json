@@ -629,6 +629,12 @@
       "userId": "1",
       "text": "Пиздык чирик ку-ку",
       "id": "mj7mVsY"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "Привет",
+      "id": "-czBuf5"
     }
   ],
   "users": [
@@ -657,8 +663,8 @@
       "firstname": "Вильдан",
       "lastname": "Хабибов",
       "age": 31,
-      "currency": "TNG",
-      "country": "Armenia",
+      "currency": "USD",
+      "country": "Kazakhstan",
       "city": "Oktyabrsky",
       "username": "admin",
       "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
@@ -679,8 +685,8 @@
     {
       "userId": "1",
       "articleId": "7",
-      "rate": 1,
-      "feedback": "плохо",
+      "rate": 4,
+      "feedback": "отлично",
       "id": 1
     },
     {
@@ -693,7 +699,7 @@
     {
       "userId": "1",
       "articleId": "4",
-      "rate": 1,
+      "rate": 3,
       "feedback": "Ухудшился",
       "id": 3
     },
@@ -730,6 +736,25 @@
       "rate": 3,
       "feedback": " об Ява",
       "id": 8
+    },
+    {
+      "userId": "1",
+      "articleId": "17",
+      "rate": 5,
+      "feedback": "Привет",
+      "id": 9
+    },
+    {
+      "userId": "1",
+      "articleId": "17",
+      "rate": 5,
+      "id": 10
+    },
+    {
+      "userId": "1",
+      "articleId": "17",
+      "rate": 3,
+      "id": 11
     }
   ]
 }

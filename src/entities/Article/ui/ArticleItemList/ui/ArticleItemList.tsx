@@ -1,11 +1,13 @@
 import { FC } from 'react'
-import cls from './ArticleItemList.module.scss'
-import { IArticleItemList } from '../types'
+
 import classNames from 'classnames'
+
+import cls from './ArticleItemList.module.scss'
 import { ArticleViewType, IArticle } from '../../../model/types'
 import { ArticleItem } from '../../ArticleItem/ui/ArticleItem'
 import { SkeletonItem } from '../../ArticleItem/ui/ArticleItemSkeleton'
-import { Virtuoso } from 'react-virtuoso'
+import { IArticleItemList } from '../types'
+
 
 const numberOfCards = 8
 const numberOfFullCards = 3

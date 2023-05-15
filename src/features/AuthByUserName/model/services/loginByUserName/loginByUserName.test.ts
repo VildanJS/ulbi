@@ -1,10 +1,13 @@
+/* eslint-disable-next-line unused-imports/no-unused-imports */
 import axios from 'axios'
+
+import { setAuthData } from '@/entities/User' // action
+import { TestAsyncThunk } from '@/shared/utils/tests/TestAsyncThunk'
+
 import loginByUserName from './loginByUserName' // thunk
-import {setAuthData} from '@/entities/User' // action
-import {TestAsyncThunk} from '@/shared/utils/tests/TestAsyncThunk'
 
 jest.mock('axios')
-const mockedAxios = jest.mocked(axios)
+// const mockedAxios = jest.mocked(axios)
 describe('loginByUserName.test', () => {
 
   // should have been called with "123" and "123" values and return "fulfilled status"
@@ -17,7 +20,7 @@ describe('loginByUserName.test', () => {
     }
 
     const thunk = new TestAsyncThunk(loginByUserName)
-    thunk.api.post.mockReturnValue(Promise.resolve({data: userValue}))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }))
     const result = await thunk.callThunk({
       username: '123',
       password: '123'
@@ -35,7 +38,7 @@ describe('loginByUserName.test', () => {
 
     // mockedAxios.post.mockReturnValue(Promise.resolve({status: 403}))
     const thunk = new TestAsyncThunk(loginByUserName)
-    thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
+    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const result = await thunk.callThunk({
       username: '123',
       password: '123'

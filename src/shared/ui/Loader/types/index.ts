@@ -1,9 +1,6 @@
 import { PropsWithChildren } from 'react'
 
-export enum LoaderThemes {
-  PRIMARY = 'primary',
-  INVERTED = 'inverted',
-}
+type LoaderThemes = 'primary' | 'inverted'
 
 interface ILoader extends PropsWithChildren {
   className?: string,

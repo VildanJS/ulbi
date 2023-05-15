@@ -1,14 +1,14 @@
-import { FC } from 'react'
-import cls from './AppMenu.module.scss'
-import { IAppMenu } from '../types'
+/* eslint-disable @typescript-eslint/ban-ts-comment*/
 import classNames from 'classnames'
 import {
   Menu, MenuTrigger,
   MenuProps, MenuTriggerProps, Popover, Button,
 } from 'react-aria-components'
-import { AppButton } from '@/shared/ui/AppButton'
-import { AppPopover } from '@/shared/ui/AppPopover'
-import { Theme, useTheme } from '@/app/providers/ThemeProvider'
+
+import { Theme } from '@/shared/const/theme'
+import useTheme from '@/shared/utils/hooks/useTheme/useTheme'
+
+import cls from './AppMenu.module.scss'
 
 
 // @ts-ignore
@@ -28,7 +28,7 @@ export const AppMenu = <T extends object>(
     <MenuTrigger {...props}>
       <Button className={appMenuClass}>{label}</Button>
       <Popover>
-        <Menu {...props}>
+        <Menu  className={cls.menu} {...props}>
           {children}
         </Menu>
       </Popover>

@@ -1,5 +1,7 @@
-import webpack, { RuleSetRule, DefinePlugin } from 'webpack'
 import path from 'path'
+
+import webpack, { RuleSetRule, DefinePlugin } from 'webpack'
+
 import { buildCssLoader } from '../build/loaders/buildCssLoaders'
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader'
 
@@ -7,7 +9,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
   const src = path.resolve(__dirname, '..', '..', 'src')
 
   config.resolve?.modules?.push(src)
-  config!.resolve?.extensions?.push('.tsx', '.ts', '.js')
+  config!.resolve?.extensions?.push('.tsx', '.ts')
   config!.resolve!.alias = {
     ...config.resolve!.alias,
     '@': src
@@ -15,6 +17,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
 
   const rules = config.module?.rules as RuleSetRule[]
+
   config.module!.rules = rules.map((rule) => (
     /svg/.test(rule.test as string)
       ? { ...rule, exclude: /\.svg$/i }

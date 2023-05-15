@@ -1,4 +1,4 @@
-import {IArticle} from './index'
+import { IArticle } from './index'
 
 export interface ArticleDetailsSchema {
   data?: IArticle,

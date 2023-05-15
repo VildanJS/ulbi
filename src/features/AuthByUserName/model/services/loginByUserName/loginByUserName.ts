@@ -1,17 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+
+import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { IUser } from '@/entities/User'
 import { setAuthData } from '@/entities/User' // action
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage'
-import { ThunkConfig } from '@/app/providers/StoreProvider'
-import { AxiosError } from 'axios'
 
 interface loginByUserNameProps {
   username: string,
   password: string
-}
-
-interface error {
-  message: string
 }
 
 // First, create the thunk
@@ -30,7 +26,7 @@ const loginByUserName = createAsyncThunk<IUser, loginByUserNameProps, ThunkConfi
       dispatch(setAuthData(response.data))
       return response.data
     } catch (error: unknown) {
-      const err = error as AxiosError
+      // const err = error as AxiosError
       return rejectWithValue('error')
     }
   }

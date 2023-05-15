@@ -1,16 +1,22 @@
-import { FC, useCallback } from 'react'
-import cls from './ArticleItem.module.scss'
-import { IArticleItem } from '../types'
+import { FC } from 'react'
+
 import classNames from 'classnames'
-import { Text } from '@/shared/ui/Text/Text'
-import EyeIcon from '@/shared/assets/icons/eye.svg'
-import { Avatar } from '@/shared/ui/Avatar'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
 import { useTranslation } from 'react-i18next'
+import { getRouteArticleDetails } from 'shared/const/router'
+import { Skeleton } from 'shared/ui/Skeleton'
+
+import EyeIcon from '@/shared/assets/icons/eye.svg'
+import { AppButton } from '@/shared/ui/AppButton'
+import { AppImage } from '@/shared/ui/AppImage'
+import { AppLink } from '@/shared/ui/AppLink'
+import { Avatar } from '@/shared/ui/Avatar'
+import { Text } from '@/shared/ui/Text'
+
+
+import cls from './ArticleItem.module.scss'
 import { ArticleTextBlock } from '../../../model/types'
 import { TextBlock } from '../../TextBlock'
-import { AppRoutePaths } from '@/app/config/routeConfig/routeConfig'
-import { AppLink } from '@/shared/ui/AppLink'
+import { IArticleItem } from '../types'
 
 export const ArticleItem: FC<IArticleItem> = (props) => {
   const { className, article, view  } = props
@@ -35,19 +41,30 @@ export const ArticleItem: FC<IArticleItem> = (props) => {
       <div className={articleItemClass}>
         <div className={cls.card}>
           <div className={cls.header}>
-            <Avatar alt={article.user.username} size={30} src={article.user.avatar} className={cls.avatar} />
+            <Avatar
+              invertedFallback
+              alt={article.user.username}
+              size={30} src={article.user.avatar}
+              className={cls.avatar}
+            />
             <Text text={article.user.username} className={cls.username} />
             <Text text={article.createdAt} className={cls.createdAt} />
           </div>
           <Text title={article.title}></Text>
           {types}
-          <img src={article.img} alt={article.title} className={cls.image} />
+          <AppImage
+            fallback={<Skeleton width='100%' height='250px' />}
+            src={article.img}
+            alt={article.title}
+            className={cls.image}
+          />
           {textBlock && <TextBlock block={textBlock} className={cls.textBlock} />}
           <div className={cls.footer}>
-            <AppLink className={cls.link} to={AppRoutePaths.article_details + article.id}>
-              <Button
-                theme={ButtonThemes.OUTLINE}
-              >{t('read')}</Button>
+            <AppLink className={cls.link} to={getRouteArticleDetails(article.id)}>
+              <AppButton
+                theme='outline'
+              >{t('read')}
+              </AppButton>
             </AppLink>
             {views}
           </div>
@@ -58,10 +75,15 @@ export const ArticleItem: FC<IArticleItem> = (props) => {
   return (
     <AppLink
       className={classNames(articleItemClass, cls.resetLink)}
-      to={AppRoutePaths.article_details + article.id}>
+      to={getRouteArticleDetails(article.id)}>
       <div className={cls.card}>
         <div className={cls.imageWrapper}>
-          <img src={article.img} alt={article.title} className={cls.image} />
+          <AppImage
+            fallback={<Skeleton width='250px' height='200px' />}
+            src={article.img}
+            alt={article.title}
+            className={cls.image}
+          />
           <Text text={article.createdAt} className={cls.createdAt} />
         </div>
         <div className={cls.infoWrapper}>

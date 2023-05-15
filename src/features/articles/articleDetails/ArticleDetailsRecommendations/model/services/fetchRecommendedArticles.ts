@@ -1,12 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from '@/app/providers/StoreProvider'
-import { IArticle } from '@/entities/Article'
 import { AxiosError } from 'axios/index'
 
-
-interface error {
-  message: string
-}
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import { IArticle } from '@/entities/Article'
 
 // First, create the thunk
 const fetchRecommendedArticles = createAsyncThunk<IArticle[], void, ThunkConfig<string>>(

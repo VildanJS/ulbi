@@ -1,5 +1,1 @@
-import { AppListBox } from './ui/AppListBox'
-
-export {
-  AppListBox,
-}
+export { AppListBox } from './ui/AppListBox'

@@ -1,11 +1,23 @@
+import { useEffect } from 'react'
+
 import classNames from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { useTheme } from '@/app/providers/ThemeProvider'
-import { AppRouter } from '@/app/providers/RouterProvider'
+import useTheme from 'shared/utils/hooks/useTheme/useTheme'
+
+import { getUserInited, recoveryAuthData } from '@/entities/User'
 import { Navbar } from '@/widgets/Navbar'
 import { Sidebar } from '@/widgets/Sidebar'
-import { getUserInited, recoveryAuthData } from '@/entities/User' // action
+
+import { AppRouter } from './providers/RouterProvider'
+
+
+
+
+
+
+
+
+
 
 const App = () => {
   const dispatch = useDispatch()

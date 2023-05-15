@@ -1,12 +1,15 @@
 import { FC } from 'react'
+
+import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
+
+import { ArticleDetailsAddComment } from '@/features/articles'
+import { ArticleDetailsCommentList } from '@/features/articles'
+import { Text } from '@/shared/ui/Text'
+
 import cls from './ArticleDetailsComments.module.scss'
 import { IArticleDetailsComments } from '../types'
-import classNames from 'classnames'
-import { Text } from '@/shared/ui/Text/Text'
-import { ArticleDetailsAddComment } from '@/features/articles/articleDetails/ArticleDetailsAddComment'
-import { ArticleDetailsCommentList } from '@/features/articles/articleDetails/ArticleDetailsCommentList'
-import { useParams } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+
 
 
 export const ArticleDetailsComments: FC<IArticleDetailsComments> = (props) => {

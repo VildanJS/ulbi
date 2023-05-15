@@ -1,24 +1,29 @@
+// TODO refactor for updateProfileData and getProfileIsReadonly
+/* eslint-disable vildan/layer-imports */
 import { FC } from 'react'
-import * as Yup from 'yup'
-import { useSelector } from 'react-redux'
-import { useTranslation } from 'react-i18next'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
-import classNames from 'classnames'
-import cls from './ProfileCard.module.scss'
-import { IProfileCard } from '../types'
 
+import classNames from 'classnames'
+import { updateProfileData } from 'features/profile'
+import { getProfileIsReadonly } from 'features/profile'
 import { Formik, ErrorMessage, Field, Form } from 'formik'
 import ContentLoader from 'react-content-loader'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { forFormikField } from 'shared/ui/AppSelect/ui/AppSelect/ui/AppSelect'
+import * as Yup from 'yup'
 
-import { Avatar } from '@/shared/ui/Avatar'
-import { AppSelect } from '@/shared/ui/AppSelect'
-import { AppItem } from '@/shared/ui/AppItem'
-import { Text, TextThemes } from '@/shared/ui/Text/Text'
+
+
 import { Country, Currency } from '@/shared/const/common'
+import { AppButton } from '@/shared/ui/AppButton'
+import { AppSelect } from '@/shared/ui/AppSelect'
+import { AppItem } from '@/shared/ui/AppSelect'
+import { Avatar } from '@/shared/ui/Avatar'
+import { Text } from '@/shared/ui/Text'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
-import { updateProfileData } from '@/features/profile/getProfileCardData'
-import { getProfileIsReadonly } from '@/features/profile/getProfileCardData'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
+import cls from './ProfileCard.module.scss'
+import { IProfileCard } from '../types'
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 export const MyLoader: FC = (props) => (
@@ -39,6 +44,8 @@ export const MyLoader: FC = (props) => (
 )
 
 
+const AppSelectWithFormik = forFormikField(AppSelect)
+
 export const ProfileCard: FC<IProfileCard> = (props) => {
   const readonly = useSelector(getProfileIsReadonly)
   const { t } = useTranslation('profile')
@@ -49,11 +56,13 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
     className,
   } = props
 
-
   const profileCardClass = classNames(className, cls.profileCard, { [cls.readonly]: readonly })
   const loadingProfileCardClass = classNames(profileCardClass, cls.loading)
 
   const dispatch = useAppDispatch()
+
+  // const [, , { setValue: setCurrency }] = useField('currency' || '')
+  // const [, , { setValue: setCountry }] = useField('country' || '')
 
   if (isLoading) {
     return (
@@ -67,7 +76,7 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
     return (
       <div className={loadingProfileCardClass}>
         <Text
-          theme={TextThemes.ERROR}
+          theme='error'
           title={t('Try to reload the page')}
           text={t('An error occurred while loading the profile')}
           align="center"
@@ -76,6 +85,8 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
       </div>
     )
   }
+
+
 
   return (
     <div className={profileCardClass}>
@@ -116,6 +127,8 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
           isSubmitting,
           resetForm
         }) => {
+
+
           return (
             <Form>
               <h2>Профиль</h2>
@@ -184,7 +197,8 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
                 <legend>Место жительсвта</legend>
 
                 <li className={cls.inputWrapper}>
-                  <AppSelect
+                  <AppSelectWithFormik
+                    formikField={'country'}
                     label={'Country'}
                     id={'country'}
                     name={'country'}
@@ -194,7 +208,7 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
                     <AppItem id={Country.Armenia} textValue={Country.Armenia}>{Country.Armenia}</AppItem>
                     <AppItem id={Country.Belarus} textValue={Country.Belarus}>{Country.Belarus}</AppItem>
                     <AppItem id={Country.Ukraine} textValue={Country.Ukraine}>{Country.Ukraine}</AppItem>
-                  </AppSelect>
+                  </AppSelectWithFormik>
                 </li>
 
                 <li className={cls.inputWrapper}>
@@ -205,7 +219,8 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
                 </li>
 
                 <li className={cls.inputWrapper}>
-                  <AppSelect
+                  <AppSelectWithFormik
+                    formikField={'currency'}
                     label={'Currency'}
                     id={'currency'}
                     name={'currency'}
@@ -213,22 +228,23 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
                     <AppItem id={Currency.USD} textValue={Currency.USD}>{Currency.USD}</AppItem>
                     <AppItem id={Currency.RUB} textValue={Currency.RUB}>{Currency.RUB}</AppItem>
                     <AppItem id={Currency.TNG} textValue={Currency.TNG}>{Currency.TNG}</AppItem>
-                  </AppSelect>
+                  </AppSelectWithFormik>
                 </li>
               </fieldset>
               <div className={cls.buttonsWrapper}>
-                <Button
-                  data-testid="ProfileCard.ResetButton"
-                  theme={ButtonThemes.OUTLINE}
+                <AppButton
                   type="button"
-                  onClick={() => resetForm({ values: data })}
+                  theme='outline'
+                  data-testid="ProfileCard.ResetButton"
+                  onPress={() => resetForm({ values: data })}
                 >Reset
-                </Button>
-                <Button
+                </AppButton>
+                <AppButton
                   type="submit"
+                  theme='outline'
                   disabled={isSubmitting}
                 >Submit
-                </Button>
+                </AppButton>
               </div>
             </Form>
           )

@@ -1,4 +1,5 @@
 import { HTMLAttributeAnchorTarget, PropsWithChildren } from 'react'
+
 import { ArticleViewType, IArticle } from '../../../model/types'
 
 export enum ArticleItemListThemes {

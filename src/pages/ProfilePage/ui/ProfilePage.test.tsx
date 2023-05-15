@@ -1,13 +1,14 @@
+import '@/shared/config/i18n/i18nForTest'
 import { screen } from '@testing-library/react'
-import { withTranslation } from 'react-i18next'
-import ProfilePage from './ProfilePage'
-import '@/app/config/i18n/i18nForTest'
-import { renderWithOptions } from '@/shared/utils/tests/renderWithOptions'
-import { Country, Currency } from '@/shared/const/common'
 import userEvent from '@testing-library/user-event'
-import profileReducer from '@/features/profile/getProfileCardData'
-import { IProfile } from '@/entities/Profile'
+import profileReducer from 'features/profile/testing'
+import { withTranslation } from 'react-i18next'
 
+import { IProfile } from '@/entities/Profile'
+import { Country, Currency } from '@/shared/const/common'
+import { renderWithOptions } from '@/shared/utils/tests/renderWithOptions'
+
+import ProfilePage from './ProfilePage'
 
 const data = {
   id: '1',

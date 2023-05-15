@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useRef } from 'react'
-
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const useDebounce = (callback: (...args: any[]) => void, delay: number) => {
   const timer = useRef(true) as MutableRefObject<any>
 

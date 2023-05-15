@@ -1,8 +1,11 @@
 import { FC } from 'react'
+
+import classNames from 'classnames'
+
+import { Loader } from '@/shared/ui/Loader'
+
 import cls from './PageLoader.module.scss'
 import { IPageLoader } from '../types'
-import classNames from 'classnames'
-import { Loader } from '@/shared/ui/Loader'
 
 export const PageLoader: FC<IPageLoader> = (props) => {
   const {

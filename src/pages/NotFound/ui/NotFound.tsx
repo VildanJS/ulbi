@@ -1,8 +1,11 @@
 import { FC } from 'react'
-import cls from './NotFound.module.scss'
-import { INotFound } from '../types'
+
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
+import { Page } from 'shared/ui/Page'
+
+import cls from './NotFound.module.scss'
+import { INotFound } from '../types'
 
 export const NotFound: FC<INotFound> = (props) => {
   const { t } = useTranslation('notFound')
@@ -12,8 +15,10 @@ export const NotFound: FC<INotFound> = (props) => {
   const notFoundClass = classNames(className, cls.notFound)
 
   return (
-    <h1 className={notFoundClass}>
-      {t('No')}
-    </h1>
+    <Page data-testid={'NotFoundPage'}>
+      <h1 className={notFoundClass}>
+        {t('No')}
+      </h1>
+    </Page>
   )
 }

@@ -1,5 +1,1 @@
-import { Loader } from './ui/Loader'
-
-export {
-  Loader,
-}
+export { Loader } from './ui/Loader'

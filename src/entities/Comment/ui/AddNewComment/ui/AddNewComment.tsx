@@ -1,8 +1,10 @@
-import { FC, useCallback } from 'react'
-import cls from './AddNewComment.module.scss'
-import { IAddNewComment } from '../types'
+import { FC } from 'react'
+
 import classNames from 'classnames'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
+
+import cls from './AddNewComment.module.scss'
+import { IAddNewComment } from '../types'
 
 export const AddNewComment: FC<IAddNewComment> = (props) => {
   const { className, sendComment } = props

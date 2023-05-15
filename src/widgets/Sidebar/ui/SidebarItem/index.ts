@@ -1,4 +1,4 @@
-import {SidebarItem} from './ui/SidebarItem'
+import { SidebarItem } from './ui/SidebarItem'
 
 export {
   SidebarItem,

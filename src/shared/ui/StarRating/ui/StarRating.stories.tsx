@@ -1,14 +1,19 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { Meta, StoryObj } from '@storybook/react'
+
 import { StarRating } from './StarRating'
 
-export default {
-  title: 'widgets/StarRating',
+const meta: Meta<typeof StarRating> = {
+  title: 'Shared/StarRating',
   component: StarRating,
-} as ComponentMeta<typeof StarRating>
+}
+export default meta
 
-const Template: ComponentStory<typeof StarRating> = (args) => <StarRating {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Primary'
+type Story = StoryObj<typeof StarRating>
+export const Default: Story = {
+  render: () => (
+    <StarRating
+      onSelectStar={action('onSelectStar')}
+    />
+  )
 }

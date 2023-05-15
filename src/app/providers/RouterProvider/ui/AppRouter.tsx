@@ -1,8 +1,14 @@
-import { Route, Routes, RouteProps } from 'react-router-dom'
-import { AppRouteConfig, AppRoutesProps } from '@/app/config/routeConfig/routeConfig'
 import { Suspense, useCallback } from 'react'
-import { RequireAuth } from './RequireAuth'
+
+import { Route, Routes } from 'react-router-dom'
+import { AppRoutesProps } from 'shared/types/router'
+
 import { PageLoader } from '@/widgets/PageLoader'
+
+import { RequireAuth } from './RequireAuth'
+import { AppRouteConfig } from '../../../config/routeConfig/routeConfig'
+
+
 
 const AppRouter = () => {
   const renderRouteWithAuth = useCallback((route: AppRoutesProps) => {

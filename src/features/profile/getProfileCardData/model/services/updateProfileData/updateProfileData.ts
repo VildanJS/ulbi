@@ -1,6 +1,6 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { IProfile } from '@/entities/Profile'
 
@@ -10,7 +10,6 @@ export const updateProfileData = createAsyncThunk<IProfile, IProfile, ThunkConfi
     const {
       extra,
       rejectWithValue,
-      getState
     } = thunkAPI
     try {
       const response = await extra.api.put<IProfile>(`/profile/${profile.id}`, profile)

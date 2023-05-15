@@ -1,9 +1,13 @@
 import { FC } from 'react'
+
+import classNames from 'classnames'
+import { useParams } from 'react-router-dom'
+
+import { Page } from '@/shared/ui/Page'
+
 import cls from './ArticleEditPage.module.scss'
 import { IArticleEditPage } from '../types'
-import classNames from 'classnames'
-import { Page } from '@/shared/ui/Page'
-import { useParams } from 'react-router-dom'
+
 
 
 const ArticleEditPage: FC<IArticleEditPage> = (props) => {

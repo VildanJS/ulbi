@@ -12,8 +12,8 @@
     "moduleResolution": "node",           // по умолчанию импорт по правилам node
     "esModuleInterop": true,              // включает import
     "paths": {
+      "@/*": ["./src/*"],
       "*": ["./src/*"],
-      "@/*": ["./src/*"]
     }
   },
   "ts-node": {

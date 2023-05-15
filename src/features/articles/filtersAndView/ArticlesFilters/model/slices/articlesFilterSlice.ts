@@ -1,6 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+
+import { ArticlesSortFields } from '@/entities/Article'
+
 import { ArticlesFiltersSchema } from '../types'
-import { ArticlesSortFields, ArticleType } from '@/entities/Article'
 
 const initialState: ArticlesFiltersSchema = {
   order: 'ask',
@@ -25,20 +27,6 @@ export const articlesFilterSlice = createSlice({
       state.type = action.payload
     }
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(NAME_OF_THUNK.pending, (state) => {
-  //       state.error = null
-  //       state.isLoading = true
-  //     })
-  //     .addCase(NAME_OF_THUNK.rejected, (state, { payload }) => {
-  //       state.isLoading = false
-  //       state.error = payload as string
-  //     })
-  //     .addCase(NAME_OF_THUNK.fulfilled, (state) => {
-  //       state.isLoading = false
-  //     })
-  // },
 })
 
 

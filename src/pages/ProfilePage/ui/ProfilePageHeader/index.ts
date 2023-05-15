@@ -1,4 +1,4 @@
-import {ProfilePageHeader} from './ui/ProfilePageHeader'
+import { ProfilePageHeader } from './ui/ProfilePageHeader'
 
 export {
   ProfilePageHeader,

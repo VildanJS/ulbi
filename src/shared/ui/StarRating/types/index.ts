@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { IRating } from '@/entities/Rating'
+
 
 export enum StarRatingThemes {
   PRIMARY = 'primary',

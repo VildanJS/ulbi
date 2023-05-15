@@ -1,6 +1,7 @@
-import {TestAsyncThunk} from '@/shared/utils/tests/TestAsyncThunk'
-import {updateProfileData} from './updateProfileData'
-import {Country, Currency} from '@/shared/const/common'
+import { Country, Currency } from '@/shared/const/common'
+import { TestAsyncThunk } from '@/shared/utils/tests/TestAsyncThunk'
+
+import { updateProfileData } from './updateProfileData'
 
 const profile = {
   username: 'admin',
@@ -16,7 +17,7 @@ const profile = {
 describe('updateProfileData.test', () => {
   test('success', async () => {
     const thunk = new TestAsyncThunk(updateProfileData)
-    thunk.api.put.mockReturnValue(Promise.resolve({data: profile}))
+    thunk.api.put.mockReturnValue(Promise.resolve({ data: profile }))
 
     const result = await thunk.callThunk(profile)
 

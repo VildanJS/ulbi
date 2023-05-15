@@ -1,5 +1,1 @@
-import { AppMenu } from './ui/AppMenu'
-
-export {
-  AppMenu,
-}
+export { AppMenu } from './ui/AppMenu'

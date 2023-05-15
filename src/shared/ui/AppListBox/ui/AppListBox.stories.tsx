@@ -1,14 +1,24 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
+
 import { AppListBox } from './AppListBox'
+import { AppItem } from '../../AppSelect'
 
-export default {
-  title: 'widgets/ListBox',
+const meta: Meta<typeof AppListBox> = {
+  title: 'Shared/AppListBox',
   component: AppListBox,
-} as ComponentMeta<typeof AppListBox>
+}
+export default meta
 
-const Template: ComponentStory<typeof AppListBox> = (args) => <AppListBox {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Primary'
+type Story = StoryObj<typeof AppListBox>
+export const Default: Story = {
+  render: () => (
+    <AppListBox>
+      <AppItem>Aardvark</AppItem>
+      <AppItem>Cat</AppItem>
+      <AppItem>Dog</AppItem>
+      <AppItem>Kangaroo</AppItem>
+      <AppItem>Panda</AppItem>
+      <AppItem>Snake</AppItem>
+    </AppListBox>
+  )
 }

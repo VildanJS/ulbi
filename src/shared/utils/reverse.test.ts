@@ -1,4 +1,4 @@
-import reverse from '@/shared/utils/reverse'
+import reverse from './reverse'
 
 describe('reverse', () => {
   test('reverse', () => {

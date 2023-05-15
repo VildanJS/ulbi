@@ -1,59 +1,56 @@
-.Flex {
-    display: flex;
+.flex {
+  display: flex;
 }
 
-.justifyStart {
-    justify-content: flex-start;
+$justifyPositions: "start", "end", "center", "left", "right", "space-between", "space-around", "space-evenly", "stretch", "baseline";
+$alignItemsPositions: "Start", "End", "Center", "Stretch", "Self-start", "Self-end", "Baseline";
+$flexDirections: "Row", "Column", "Row-reverse", "Column-reverse";
+$flexGaps: "4", "8", "16", "32";
+
+@mixin justifyContentMixin($position) {
+  .justify-content-#{$position} {
+    justify-content: #{$position};
+  }
 }
 
-.justifyCenter {
-    justify-content: center;
+@mixin alignItemsMixin($position) {
+  .align-items-#{$position} {
+    align-items: #{$position};
+  }
 }
 
-.justifyEnd {
-    justify-content: flex-end;
+@mixin flexDirectionMixin($direction) {
+  .flex-direction-#{$direction} {
+    flex-direction: #{$direction};
+  }
 }
 
-.justifyBetween {
-    justify-content: space-between;
+@mixin flexGapMixin($gap) {
+  .flex-gap-#{$gap} {
+    gap: #{$gap}px;
+  }
 }
 
-.alignStart {
-    align-items: flex-start;
+@each $position in $justifyPositions {
+  @include justifyContentMixin($position);
 }
 
-.alignCenter {
-    align-items: center;
+@each $position in $alignItemsPositions {
+  @include alignItemsMixin($position);
 }
 
-.alignEnd {
-    align-items: flex-end;
+@each $position in $alignItemsPositions {
+  @include alignItemsMixin($position);
 }
 
-.directionRow {
-    flex-direction: row;
+@each $direction in $flexDirections {
+  @include flexDirectionMixin($direction);
 }
 
-.directionColumn {
-    flex-direction: column;
-}
-
-.gap4 {
-    gap: 4px;
-}
-
-.gap8 {
-    gap: 8px;
-}
-
-.gap16 {
-    gap: 16px;
-}
-
-.gap32 {
-    gap: 32px;
+@each $gap in $flexGaps {
+  @include flexGapMixin($gap);
 }
 
 .max {
-    width: 100%;
+  width: 100%;
 }

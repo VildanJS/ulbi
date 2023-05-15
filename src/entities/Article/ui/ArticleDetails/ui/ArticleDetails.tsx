@@ -1,28 +1,29 @@
 import { FC, memo, useEffect } from 'react'
+
 import classNames from 'classnames'
-import cls from './ArticleDetails.module.scss'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+
+import CalendarIcon from '@/shared/assets/icons/calendar.svg'
+import EyeIcon from '@/shared/assets/icons/eye.svg'
+import { Avatar } from '@/shared/ui/Avatar'
+import { Skeleton } from '@/shared/ui/Skeleton'
+import { Text } from '@/shared/ui/Text/'
 import { DynamicModuleLoader, ReducersList } from '@/shared/utils/components/DynamicModuleLoader'
-import ArticleDetailsReducer from '../../../model/slice/articleSlice'
-import { IArticleDetails } from '../types'
-import { Text } from '@/shared/ui/Text/Text'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
-import { fetchArticleById } from '../../../model/services/fetchArticleById'
-
+import cls from './ArticleDetails.module.scss'
 import {
   getArticleDetailsData, getArticleDetailsError,
   getArticleDetailsIsLoading
 } from '../../../model/selectors/getCounter/getArticleDetails'
-import { useTranslation } from 'react-i18next'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { Avatar } from '@/shared/ui/Avatar'
-import EyeIcon from '@/shared/assets/icons/eye.svg'
-import CalendarIcon from '@/shared/assets/icons/calendar.svg'
+import { fetchArticleById } from '../../../model/services/fetchArticleById'
+import ArticleDetailsReducer from '../../../model/slice/articleSlice'
 import { ArticleBlock } from '../../../model/types'
 import { CodeBlock } from '../../CodeBlock'
-import { TextBlock } from '../../TextBlock'
 import { ImageBlock } from '../../ImageBlock'
+import { TextBlock } from '../../TextBlock'
+import { IArticleDetails } from '../types'
 
 const reducers: ReducersList = {
   articleDetails: ArticleDetailsReducer
@@ -78,7 +79,10 @@ export const ArticleDetails: FC<IArticleDetails> = memo((props) => {
   } else {
     content = (
       <>
-        <Avatar src={article?.img} alt={'аватар пользовтеля'} className={cls.avatar} />
+        <Avatar
+          src={article?.img}
+          alt={'аватар пользовтеля'}
+          className={cls.avatar} />
         <Text title={article?.title} text={article?.subtitle} />
         <div>
           <div className={cls.infoWrapper}>

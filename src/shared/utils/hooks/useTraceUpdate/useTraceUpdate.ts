@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+/* eslint-disable @typescript-eslint/ban-ts-comment*/
 
 export function useTraceUpdate(props: React.PropsWithChildren) {
   const prev = useRef(props)

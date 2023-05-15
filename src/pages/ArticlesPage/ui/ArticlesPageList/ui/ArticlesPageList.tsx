@@ -1,8 +1,10 @@
 import React from 'react'
-import cls from './ArticlesPageList.module.scss'
+
 import classNames from 'classnames'
-import { Components } from 'react-virtuoso'
 import { useSelector } from 'react-redux'
+import { Components } from 'react-virtuoso'
+
+import cls from './ArticlesPageList.module.scss'
 import { getArticlesPageView } from '../../../model/selectors/articlesPageSelectors'
 
 export const ArticlesPageList: Components['List'] = React.forwardRef(({ style, children }, ref) => {

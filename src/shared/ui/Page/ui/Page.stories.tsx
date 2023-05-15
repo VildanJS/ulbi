@@ -1,14 +1,19 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
+import { RouterDecorator } from 'shared/config/storybook/RouterDecorator'
+
 import { Page } from './Page'
 
-export default {
-  title: 'widgets/Page',
+const meta: Meta<typeof Page> = {
+  title: 'Shared/Page',
   component: Page,
-} as ComponentMeta<typeof Page>
+  decorators: [RouterDecorator]
+}
+export default meta
 
-const Template: ComponentStory<typeof Page> = (args) => <Page {...args} />
+type Story = StoryObj<typeof Page>
 
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Primary'
+export const Default: Story = {
+  args: {
+    children: 'Some text'
+  },
 }

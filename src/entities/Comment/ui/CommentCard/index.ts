@@ -1,4 +1,4 @@
-import {CommentCard} from './ui/CommentCard'
+import { CommentCard } from './ui/CommentCard'
 
 export {
   CommentCard,

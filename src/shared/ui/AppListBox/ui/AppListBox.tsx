@@ -1,7 +1,7 @@
-import { ListBox, ListBoxProps, ItemProps } from 'react-aria-components'
-import cls from './AppListBox.module.scss'
 import classNames from 'classnames'
-import React from 'react'
+import { ListBox, ListBoxProps } from 'react-aria-components'
+
+import cls from './AppListBox.module.scss'
 
 export function AppListBox(props: ListBoxProps<object>) {
   const { className } = props

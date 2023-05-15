@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+
 import { IProfile } from '../../../model/types'
 
 export enum ProfileCardThemes {

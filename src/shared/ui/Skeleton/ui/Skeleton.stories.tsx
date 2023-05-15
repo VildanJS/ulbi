@@ -1,24 +1,28 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react'
-import {Skeleton} from './Skeleton'
+import { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'shared/Skeleton',
+import { Skeleton } from './Skeleton'
+
+const meta: Meta<typeof Skeleton> = {
+  title: 'Shared/Skeleton',
   component: Skeleton,
-} as ComponentMeta<typeof Skeleton>
+}
+export default meta
 
-const Template: ComponentStory<typeof Skeleton> = (args) => <Skeleton {...args} />
+type Story = StoryObj<typeof Skeleton>
 
-export const Circle = Template.bind({})
-Circle.args = {
-  children: 'Circle',
-  border: '50%',
-  width: 100,
-  height: 100
+export const Normal: Story = {
+  args: {
+    width: '100%',
+    height: 200,
+  },
 }
 
-export const Rectangular = Template.bind({})
-Rectangular.args = {
-  children: 'Rectangular',
-  width: '100%',
-  height: 200
+export const Circle: Story = {
+  args: {
+    border: '50%',
+    width: 100,
+    height: 100,
+  },
 }
+
+

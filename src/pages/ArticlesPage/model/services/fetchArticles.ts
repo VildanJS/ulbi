@@ -1,8 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { AxiosError } from 'axios'
-import { ArticlesSortFields, IArticle } from '@/entities/Article'
+import { getRouteArticles } from 'shared/const/router'
 
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import { IArticle } from '@/entities/Article'
+import {
+  getArticlesFiltersSort,
+  getArticlesFiltersOrder,
+  getArticlesFiltersSearch,
+  getArticlesFiltersType
+} from '@/features/articles'
 import { addQueryParams } from '@/shared/utils/url/addQueryParams'
 
 import {
@@ -10,12 +17,6 @@ import {
   getArticlesPageNumber,
 } from '../selectors/articlesPageSelectors'
 
-import {
-  getArticlesFiltersSort,
-  getArticlesFiltersOrder,
-  getArticlesFiltersSearch, getArticlesFiltersType
-} from '@/features/articles/filtersAndView/ArticlesFilters/model/selectors/getArticlesFilters'
-import { AppRoutePaths } from '@/app/config/routeConfig/routeConfig'
 
 interface FetchArticlesListProps {
   replace?: boolean;
@@ -49,7 +50,7 @@ const fetchArticles = createAsyncThunk<IArticle[], FetchArticlesListProps, Thunk
         type: type === 'ALL' ? undefined : type
       }
 
-      const response = await extra.api.get<IArticle[]>(AppRoutePaths.articles, {
+      const response = await extra.api.get<IArticle[]>(getRouteArticles(), {
         params
       })
 

@@ -1,12 +1,13 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import '@/shared/config/i18n/i18next'
 import { createRoot } from 'react-dom/client'
-import '@/app/config/i18n/i18next'
+import { BrowserRouter } from 'react-router-dom'
+
 import App from '@/app/App'
-import { Theme, ThemeProvider } from '@/app/providers/ThemeProvider'
 import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
-import '@/app/styles/style.scss'
 import { StoreProvider } from '@/app/providers/StoreProvider'
+import { ThemeProvider } from '@/app/providers/ThemeProvider'
+import '@/app/styles/style.scss'
+import { Theme } from '@/shared/const/theme'
 
 const root = createRoot(document.getElementById('root') as Element)
 
@@ -21,3 +22,4 @@ root.render(
     </StoreProvider>
   </BrowserRouter>
 )
+export { Theme } from 'shared/const/theme'

@@ -1,14 +1,17 @@
-import React, { FC, memo, useCallback } from 'react'
+import { FC, memo } from 'react'
+
+import classNames from 'classnames'
+import { useParams } from 'react-router-dom'
+
+import { ArticleDetails } from '@/entities/Article'
+import { ArticleDetailsRating } from '@/features/articles'
+import { Page } from '@/shared/ui/Page'
+
 import cls from './ArticleDetailsPage.module.scss'
 import { IArticleDetailsPage } from '../../types'
-import classNames from 'classnames'
-import { ArticleDetails } from '@/entities/Article'
-import { useParams } from 'react-router-dom'
-import { ArticleDetailsRecommendations } from '@/features/articles/articleDetails/ArticleDetailsRecommendations'
-import { Page } from '@/shared/ui/Page'
-import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader'
 import { ArticleDetailsComments } from '../ArticleDetailsComments'
-import { ArticleDetailsRating } from '@/features/articles/articleDetails/ArticleDetailsRating'
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader'
+
 
 const ArticleDetailsPage: FC<IArticleDetailsPage> = (props) => {
   const { className } = props

@@ -1,5 +1,3 @@
-import { AppButton } from './ui/AppButton'
+import AppButton from './ui/AppButton'
 
-export {
-  AppButton,
-}
+export { AppButton }

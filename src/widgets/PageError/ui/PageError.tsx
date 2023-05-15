@@ -1,8 +1,10 @@
 import { FC } from 'react'
-import cls from './PageError.module.scss'
-import { IPageError } from '../types'
+
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
+
+import cls from './PageError.module.scss'
+import { IPageError } from '../types'
 
 export const PageError: FC<IPageError> = (props) => {
   const { t } = useTranslation()

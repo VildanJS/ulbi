@@ -1,105 +1,69 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
-import { Flex } from './Flex';
+import { Flex } from './Flex'
 
-export default {
-    title: 'shared/Flex',
-    component: Flex,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as ComponentMeta<typeof Flex>;
 
-const Template: ComponentStory<typeof Flex> = (args) => <Flex {...args} />;
+const meta: Meta<typeof Flex> = {
+  title: 'Shared/Flex',
+  component: Flex,
+}
+export default meta
 
-export const Row = Template.bind({});
-Row.args = {
+type Story = StoryObj<typeof Flex>
+
+export const Default: Story = {
+  args: {
     children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
+      <>
+        <div>first</div>
+        <div>second</div>
+        <div>third</div>
+        <div>forth</div>
+      </>
     ),
-};
+  },
+}
 
-export const RowGap4 = Template.bind({});
-RowGap4.args = {
+export const RowGap4: Story = {
+  args: {
+    ...Default.args,
     gap: '4',
-    children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
-    ),
-};
-export const RowGap8 = Template.bind({});
-RowGap8.args = {
+  },
+}
+
+export const RowGap8: Story = {
+  args: {
+    ...Default.args,
     gap: '8',
-    children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
-    ),
-};
+  },
+}
 
-export const RowGap16 = Template.bind({});
-RowGap16.args = {
+export const RowGap16: Story = {
+  args: {
+    ...Default.args,
     gap: '16',
-    children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
-    ),
-};
+  },
+}
 
-export const Column = Template.bind({});
-Column.args = {
-    direction: 'column',
-    children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
-    ),
-};
+export const Column: Story = {
+  args: {
+    ...Default.args,
+    direction: 'Column',
+  },
+}
 
-export const ColumnGap16 = Template.bind({});
-ColumnGap16.args = {
+export const ColumnGap16: Story = {
+  args: {
+    ...Default.args,
+    direction: 'Column',
     gap: '16',
-    direction: 'column',
-    children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
-    ),
-};
+  },
+}
 
-export const ColumnAlignEnd = Template.bind({});
-ColumnAlignEnd.args = {
-    direction: 'column',
-    align: 'end',
-    children: (
-        <>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-            <div>first</div>
-        </>
-    ),
-};
+export const ColumnAlignEnd: Story = {
+  args: {
+    ...Default.args,
+    direction: 'Column',
+    align: 'End',
+  },
+}

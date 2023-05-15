@@ -8,19 +8,21 @@ extends:
   - plugin:react/jsx-runtime
   - plugin:@typescript-eslint/recommended
   - plugin:react-redux/recommended
-overrides: [ ]
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
   sourceType: module
 plugins:
-  - react
+  - 'react'
   - '@typescript-eslint'
   - 'react-redux'
   - 'react-hooks'
   - 'vildan'
-
+  - 'unused-imports'
+  - 'import'
 rules:
+  unused-imports/no-unused-imports:
+    - error
   react-hooks/rules-of-hooks:
     - error
   react-hooks/exhaustive-deps:
@@ -47,6 +49,40 @@ rules:
     - beforeSelfClosing: always
   react/prop-types: 'off'
   react/display-name: 'off'
+  import/order:
+    - error
+    - groups:
+        - builtin
+        - external
+        - internal
+      pathGroups:
+        - pattern: react
+          group: external
+          position: before
+        - pattern: '@/**'
+          group: external
+          position: after
+      pathGroupsExcludedImportTypes:
+        - react
+      newlines-between: always
+      alphabetize:
+        order: asc
+        caseInsensitive: true
   vildan/path-checker:
     - 'error'
     - alias: '@'
+  vildan/public-api:
+    - 'error'
+    - alias: '@'
+      ignoreImportPatterns: [ '**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx' ]
+  vildan/layer-imports:
+    - 'error'
+    - alias: '@'
+      ignoreImportPatterns: [ '**/StoreProvider', '**/testing', '**/routeConfig.tsx']
+overrides:
+- files:
+  - '**/src/**/*.{test,stories}.{ts,tsx}'
+  rules:
+    i18next/no-literal-string: off
+    max-len: off
+    import/no-default-export: off

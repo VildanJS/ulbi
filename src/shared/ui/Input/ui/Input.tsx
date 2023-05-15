@@ -1,7 +1,10 @@
-import React, {FC, memo, useEffect, useRef, useState} from 'react'
-import cls from './Input.module.scss'
-import {InputProps} from '../types'
+import React, { FC, useEffect, useRef, useState } from 'react'
+
+/* eslint-disable @typescript-eslint/no-explicit-any*/
 import classNames from 'classnames'
+
+import cls from './Input.module.scss'
+import { InputProps } from '../types'
 
 export const Input: FC<InputProps> = (props) => {
   const {
@@ -33,7 +36,7 @@ export const Input: FC<InputProps> = (props) => {
     setIsFocused(true)
   }
 
-  const onSelect = (e: any) => {
+  const onSelect = (e: any ) => {
     setCaretPosition(e.target.selectionStart || 0)
   }
 
@@ -66,7 +69,7 @@ export const Input: FC<InputProps> = (props) => {
         {
           isFocused &&
           <span
-            style={{left: `${caretPosition * 9}px`}}
+            style={{ left: `${caretPosition * 9}px` }}
             className={cls.caret}>
           </span>
         }

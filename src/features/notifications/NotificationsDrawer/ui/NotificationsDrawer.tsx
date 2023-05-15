@@ -1,18 +1,21 @@
 import { FC } from 'react'
+
+
+import classNames from 'classnames'
+
+import { Notifications } from '@/entities/Notifications'
+import { AppDrawer } from '@/shared/ui/AppDrawer'
+
 import cls from './NotificationsDrawer.module.scss'
 import { INotificationsDrawer } from '../types'
-import classNames from 'classnames'
-import { AppDrawer } from '@/shared/ui/AppDrawer'
-import { Notifications } from '@/entities/Notifications'
-import { AnimationProvider } from '@/shared/utils/components/AnimationProvider'
 
 
 export const NotificationsDrawer: FC<INotificationsDrawer> = (props) => {
-  const { className, children } = props
+  const { className } = props
   const notificationsDrawerClass = classNames(className, cls.notificationsDrawer)
 
   return (
-    <AppDrawer label={'News'}>
+    <AppDrawer className={notificationsDrawerClass} label={'News'}>
       <Notifications />
     </AppDrawer>
   )

@@ -1,9 +1,12 @@
 import { ReactNode } from 'react'
-import { Provider } from 'react-redux'
-import { createReduxStore } from '../config/store'
-import { StateSchema } from '../config/StateSchema'
+
 import {  ReducersMapObject } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+
 import { useTraceUpdate } from '@/shared/utils/hooks/useTraceUpdate/useTraceUpdate'
+
+import { StateSchema } from '../config/StateSchema'
+import { createReduxStore } from '../config/store'
 
 
 interface StoreProviderProps {

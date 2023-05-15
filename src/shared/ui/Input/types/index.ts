@@ -1,5 +1,4 @@
-import {DefaultTFuncReturn} from 'i18next'
-import {InputHTMLAttributes} from 'react'
+import { InputHTMLAttributes } from 'react'
 
 export enum InputThemes {
   PRIMARY = 'primary',

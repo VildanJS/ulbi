@@ -1,31 +1,58 @@
-import { Button, ButtonProps } from 'react-aria-components'
-import React, { CSSProperties, MutableRefObject, PropsWithChildren, useRef } from 'react'
-import { Theme, useTheme } from '@/app/providers/ThemeProvider'
-import cls from './AppButton.module.scss'
+import { memo, MutableRefObject, useRef } from 'react'
+
+
 import classNames from 'classnames'
 import { AriaButtonProps, useButton } from 'react-aria'
 
+import cls from './AppButton.module.scss'
+
+
+type ButtonSize = 'm' | 'l' | 'xl'
+type ButtonThemes = 'clear' | 'outline' | 'background' | 'background-inverted'
 
 interface AppButtonProps extends AriaButtonProps {
   className?: string,
-  buttonRef?: MutableRefObject<HTMLButtonElement | null>;
+  theme?: ButtonThemes,
+  square?: boolean,
+  size?: ButtonSize,
+  disabled?: boolean,
+  angular?: boolean,
+  buttonRef?: MutableRefObject<HTMLButtonElement | null> // react-aria prop
 }
 
-export function AppButton(props: AppButtonProps) {
+function AppButton(props: AppButtonProps) {
   const ref = useRef(null)
-  const { className, children, buttonRef = ref, ...otherProps } = props
-  const { theme } = useTheme()
-  const themeClass = theme === Theme.DARK ? 'dark' : 'light'
+  const {
+    className,
+    children,
+    disabled,
+    angular,
+    square,
+    theme = 'background',
+    size = 'M',
+    buttonRef = ref,
+    ...otherProps } = props
+
+  // const { theme } = useTheme()
+  // const themeClass = theme === Theme.DARK ? 'dark' : 'light'
 
   const { buttonProps } = useButton(otherProps, ref)
+
+  const buttonClass = classNames(
+    cls.appButton, className,
+    cls[theme], cls[size],
+    { [cls.square]: square, [cls.disabled]: disabled, [cls.angular]: angular }
+  )
 
   return (
     <button
       {...buttonProps}
       ref={buttonRef}
-      className={classNames(cls.appButton, cls[themeClass], className)}
+      className={buttonClass}
     >
       {children}
     </button>
   )
 }
+
+export default memo(AppButton)

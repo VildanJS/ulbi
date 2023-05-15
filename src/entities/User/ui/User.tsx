@@ -1,7 +1,9 @@
 import { FC } from 'react'
+
+import classNames from 'classnames'
+
 import cls from './User.module.scss'
 import { IUser } from '../types'
-import classNames from 'classnames'
 
 export const User: FC<IUser> = (props) => {
   const {

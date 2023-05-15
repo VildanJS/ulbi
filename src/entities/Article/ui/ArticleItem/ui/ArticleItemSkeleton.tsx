@@ -1,8 +1,12 @@
-import { ArticleViewType } from '@/entities/Article/model/types'
 import { FC } from 'react'
+
 import classNames from 'classnames'
-import cls from './ArticleItem.module.scss'
+
 import { Skeleton } from '@/shared/ui/Skeleton'
+
+import cls from './ArticleItem.module.scss'
+import { ArticleViewType } from '../../../model/types'
+
 
 export interface SkeletonProps {
   view: ArticleViewType,

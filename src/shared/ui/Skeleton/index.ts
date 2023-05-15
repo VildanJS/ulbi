@@ -1,5 +1,1 @@
-import {Skeleton} from './ui/Skeleton'
-
-export {
-  Skeleton,
-}
+export { Skeleton } from './ui/Skeleton'

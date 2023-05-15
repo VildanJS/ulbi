@@ -1,10 +1,12 @@
-import { IBuildOptions, IBuildPaths } from './types/config'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import webpack from 'webpack'
-import { buildResolvers } from './buildResolvers'
+
+import { buildDevServer } from './buildDevServer'
 import { buildLoaders } from './buildLoaders'
 import { buildPlugin } from './buildPlugins'
-import { buildDevServer } from './buildDevServer'
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import { buildResolvers } from './buildResolvers'
+import { IBuildOptions } from './types/config'
+
 
 export const BuildWebPackConfig = (options: IBuildOptions): webpack.Configuration => {
   const { paths, mode, isDev } = options
@@ -31,7 +33,7 @@ export const BuildWebPackConfig = (options: IBuildOptions): webpack.Configuratio
       ]
     },
 
-    devtool: isDev ? 'inline-source-map' : undefined,
+    devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
   }
 }

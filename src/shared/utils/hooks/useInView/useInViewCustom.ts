@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect, useRef } from 'react'
-import { IArticle } from '@/entities/Article'
+
 
 export interface UseInfiniteScrollOptions {
   callback?: () => void;
@@ -17,12 +17,12 @@ export function useInViewCustom({ isLoading, callback, wrapperRef, triggerRef }:
 
     if (callback ) {
       const options = {
-        root: null,
+        root: wrapperElement,
         rootMargin: '0px',
         threshold: 1.0,
       }
 
-      observer.current = new IntersectionObserver(([entry], observer) => {
+      observer.current = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           console.log('-> entry.isIntersecting', entry.isIntersecting)
           callback()

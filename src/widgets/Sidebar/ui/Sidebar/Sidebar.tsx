@@ -1,37 +1,47 @@
-import { FC, memo, useState } from 'react'
+import { FC, Key, memo, useState } from 'react'
+
+import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+
+import { ThemeSwitcher } from '@/features/ThemeSwitcher'
+import { AppButton } from '@/shared/ui/AppButton'
+import { AppItem, AppSelect } from '@/shared/ui/AppSelect'
+import { Flex } from '@/shared/ui/Stack'
+
 import cls from './Sidebar.module.scss'
 import { ISidebar } from '../../types'
-import classNames from 'classnames'
-import { ThemeSwitcher } from '@/widgets/ThemeSwitcher'
-import { Select } from '@/shared/ui/Select'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
 import { SidebarItem } from '../SidebarItem'
 import { getSideBarItems } from '../SidebarItem/model/selectors/getSideBarItems'
-import { useSelector } from 'react-redux'
-import { Flex } from '@/shared/ui/Layout'
 
 
 export const Sidebar: FC<ISidebar> = memo((props) => {
+  const { t, i18n } = useTranslation()
   const [collapsed, setCollapsed] = useState(false)
   const { className } = props
   const sidebarClass = classNames(className, cls.sidebar, { [cls.collapsed]: collapsed })
   const sidebarItemList = useSelector(getSideBarItems)
 
 
+  const switchLanguage = (key: Key) => {
+    i18n.changeLanguage(key as string)
+  }
+
   return (
     <div
       data-testid='sidebar'
       className={sidebarClass}
     >
-      <Button
-        theme={ButtonThemes.BACKGROUND_INVERTED}
+      <AppButton
+        theme='background-inverted'
         square
-        size={'L'}
+        angular
+        size='l'
         className={cls.collapsedBtn}
-        onClick={() => setCollapsed(prev => !prev)}
+        onPress={() => setCollapsed(prev => !prev)}
       >
         {collapsed ? '>' : '<'}
-      </Button>
+      </AppButton>
 
       <Flex className={cls.links} direction={'Column'} align={'Start'} gap={'32'}>
         {sidebarItemList.map((item) => (
@@ -43,7 +53,11 @@ export const Sidebar: FC<ISidebar> = memo((props) => {
       </Flex>
 
       <div className={cls.switchers}>
-        <Select collapsed={collapsed} />
+        <AppSelect onSelectionChange={switchLanguage} collapsed={collapsed} >
+          <AppItem id={'ru'} textValue={'Russian'}>{collapsed ? t('ru') : t('Russian')}</AppItem>
+          <AppItem id={'de'} textValue={'German'}>{collapsed ? t('de') : t('German')}</AppItem>
+          <AppItem id={'en'} textValue={'English'}>{collapsed ? t('en') : t('English')}</AppItem>
+        </AppSelect>
         <ThemeSwitcher />
       </div>
     </div>

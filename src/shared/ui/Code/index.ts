@@ -1,5 +1,1 @@
-import {Code} from './ui/Code'
-
-export {
-  Code,
-}
+export { Code } from './ui/Code'

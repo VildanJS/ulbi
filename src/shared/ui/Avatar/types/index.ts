@@ -1,4 +1,4 @@
-import {PropsWithChildren} from 'react'
+import { PropsWithChildren } from 'react'
 
 export enum AvatarThemes {
   PRIMARY = 'primary',
@@ -10,7 +10,8 @@ interface IAvatar extends PropsWithChildren {
   theme?: AvatarThemes,
   size?: number,
   alt: string,
-  src?: string
+  src?: string,
+  invertedFallback?: boolean
 }
 
 export {

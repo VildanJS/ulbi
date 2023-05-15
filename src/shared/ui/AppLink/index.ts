@@ -1,7 +1,2 @@
-import { AppLinkThemes } from './types'
-import {AppLink} from './ui/AppLink'
-
-export {
-  AppLink,
-  AppLinkThemes
-}
+export { AppLink } from './ui/AppLink'
+export { AppLinkThemes } from './types'

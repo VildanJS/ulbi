@@ -1,15 +1,16 @@
-import { AxiosInstance } from 'axios'
 import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
+import { AxiosInstance } from 'axios'
+import { ProfileSchema } from 'features/profile'
+
+import { ArticleDetailsSchema } from '@/entities/Article'
 import { CounterSchema } from '@/entities/Counter'
 import { UserSchema } from '@/entities/User'
+import { ArticlesFiltersSchema } from '@/features/articles'
+import { ArticleDetailsRecommendationsSchema } from '@/features/articles'
+import { ArticleDetailsCommentsSchema } from '@/features/articles'
 import { LoginSchema } from '@/features/AuthByUserName'
-import { ProfileSchema } from '@/features/profile/getProfileCardData'
-import { ArticleDetailsSchema } from '@/entities/Article'
-import { ArticleDetailsCommentsSchema } from '@/features/articles/articleDetails/ArticleDetailsCommentList'
-import { ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { UISchema } from '@/features/scrollPositionSaver'
-import { ArticlesFiltersSchema } from '@/features/articles/filtersAndView/ArticlesFilters'
-import { ArticleDetailsRecommendationsSchema } from '@/features/articles/articleDetails/ArticleDetailsRecommendations'
+import { ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { rtkApi } from '@/shared/api/rtkApi'
 
 export interface StateSchema {

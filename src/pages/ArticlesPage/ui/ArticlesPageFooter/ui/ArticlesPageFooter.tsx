@@ -1,9 +1,11 @@
-import React, { FC } from 'react'
-import cls from './ArticlesPageFooter.module.scss'
+
 import classNames from 'classnames'
-import { ArticleViewType } from '@/entities/Article'
-import { SkeletonItem } from '@/entities/Article/ui/ArticleItem'
 import { useSelector } from 'react-redux'
+
+import { ArticleViewType } from '@/entities/Article'
+import { SkeletonItem } from '@/entities/Article'
+
+import cls from './ArticlesPageFooter.module.scss'
 import { getArticlesPageHasMore } from '../../../model/selectors/articlesPageSelectors'
 
 
@@ -21,8 +23,6 @@ export const ArticlesPageFooter = (view: ArticleViewType, isLoading?: boolean) =
     const skeletons = new Array(view === 'cards' ? numberOfCards : numberOfFullCards)
       .fill(null)
       .map((item, index) => (<SkeletonItem key={index} view={view} />))
-
-
 
     return (
       <div className={skeletonsClass}>

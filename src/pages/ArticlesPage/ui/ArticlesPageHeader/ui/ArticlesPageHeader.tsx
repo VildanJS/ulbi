@@ -1,11 +1,15 @@
-import React, { useCallback } from 'react'
-import cls from './ArticlesPageHeader.module.scss'
-import { ArticlesFilters } from '@/features/articles/filtersAndView/ArticlesFilters'
-import { SwitchArticlesView } from '@/features/articles/filtersAndView/SwitchArticlesView'
+import { useCallback } from 'react'
+
 import { useSelector } from 'react-redux'
+
+import { SwitchArticlesView } from '@/features/articles'
+import { ArticlesFilters } from '@/features/articles'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+
+import cls from './ArticlesPageHeader.module.scss'
 import { getArticlesPageView } from '../../../model/selectors/articlesPageSelectors'
 import { setView } from '../../../model/slices/ArticlesPageSlice'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+
 
 export const ArticlesPageHeader = () => {
 

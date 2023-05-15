@@ -1,5 +1,1 @@
-import { AppDialog } from './ui/AppDialog'
-
-export {
-  AppDialog,
-}
+export { AppDialog } from './ui/AppDialog'

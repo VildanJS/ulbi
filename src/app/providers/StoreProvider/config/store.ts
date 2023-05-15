@@ -1,12 +1,14 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-import { StateSchema, ThunkExtraArg } from './StateSchema'
-import { createReducerManager } from '@/app/providers/StoreProvider/config/reducerManager'
-import { $api } from '@/shared/api/api'
+
 import { counterReducer } from '@/entities/Counter'
 import userReducer from '@/entities/User'
+import { articlesFiltersReducer } from '@/features/articles'
 import { UIReducer } from '@/features/scrollPositionSaver'
-import { articlesFiltersReducer } from '@/features/articles/filtersAndView/ArticlesFilters'
+import { $api } from '@/shared/api/api'
 import { rtkApi } from '@/shared/api/rtkApi'
+
+import { createReducerManager } from './reducerManager'
+import { StateSchema, ThunkExtraArg } from './StateSchema'
 
 
 export const createReduxStore = (

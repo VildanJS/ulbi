@@ -1,4 +1,5 @@
 // import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+//
 // import { StarRatingSchema } from '../types'
 //
 // const initialState: StarRatingSchema = {}

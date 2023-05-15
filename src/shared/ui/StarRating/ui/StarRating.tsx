@@ -1,8 +1,11 @@
 import { FC, useState } from 'react'
+
+import classNames from 'classnames'
+
+import Star from '@/shared/assets/icons/star.svg'
+
 import cls from './StarRating.module.scss'
 import { StarRatingProps } from '../types'
-import classNames from 'classnames'
-import Star from '@/shared/assets/icons/star.svg'
 
 const stars = [1, 2, 3, 4, 5]
 
@@ -19,8 +22,7 @@ export const StarRating: FC<StarRatingProps> = (props) => {
   const starRatingClass = classNames(className, cls.starRating)
   return (
     <div className={starRatingClass}>
-      {stars.map((star, index) => (
-
+      {stars.map((star) => (
         <Star
           onMouseLeave={() => setHoveredRating(0)}
           onMouseEnter={() => setHoveredRating(star)}

@@ -1,4 +1,4 @@
-import {ArticleDetails} from './ui/ArticleDetails'
+import { ArticleDetails } from './ui/ArticleDetails'
 
 export {
   ArticleDetails,

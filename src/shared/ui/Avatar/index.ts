@@ -1,5 +1,1 @@
-import {Avatar} from './ui/Avatar'
-
-export {
-  Avatar,
-}
+export { Avatar } from './ui/Avatar'

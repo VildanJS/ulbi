@@ -1,8 +1,11 @@
 import { FC, memo } from 'react'
+
+import classNames from 'classnames'
+
+import { Text } from '@/shared/ui/Text'
+
 import cls from './ImageBlock.module.scss'
 import { IImageBlock } from '../types'
-import classNames from 'classnames'
-import { Text } from '@/shared/ui/Text/Text'
 
 
 export const ImageBlock: FC<IImageBlock> = memo((props) => {

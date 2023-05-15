@@ -1,14 +1,28 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { AppButton } from './AppButton'
+import { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'widgets/AppButton',
+import AppButton from './AppButton'
+
+const meta: Meta<typeof AppButton> = {
+  title: 'Shared/AppButton',
   component: AppButton,
-} as ComponentMeta<typeof AppButton>
-
-const Template: ComponentStory<typeof AppButton> = (args) => <AppButton {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Primary'
 }
+export default meta
+
+type Story = StoryObj<typeof AppButton>
+export const Default: Story = {
+  render: () => <AppButton>Subscribe</AppButton>
+}
+
+export const Inverted: Story = {
+  render: () => <AppButton theme='background-inverted'>Inverted</AppButton>
+}
+export const Outline: Story = {
+  render: () => <AppButton theme='outline'>Outline</AppButton>
+}
+
+export const Clear: Story = {
+  render: () => <AppButton theme='clear'>Clear</AppButton>
+}
+
+
+

@@ -1,4 +1,4 @@
-import {FC, PropsWithChildren, SVGAttributes} from 'react'
+import { FC, PropsWithChildren, SVGAttributes } from 'react'
 
 export enum SidebarItemThemes {
   PRIMARY = 'primary',

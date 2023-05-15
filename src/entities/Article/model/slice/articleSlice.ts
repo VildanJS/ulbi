@@ -1,14 +1,13 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IArticle } from '../types/index'
-import { ArticleDetailsSchema } from '../types/ArticleDetailsSchema'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { fetchArticleById } from '../services/fetchArticleById'
+import { ArticleDetailsSchema } from '../types/ArticleDetailsSchema'
+import { IArticle } from '../types/index'
 
 const initialState: ArticleDetailsSchema = {
   error: '',
   isLoading: false
 }
-
-
 
 export const articleSlice = createSlice({
   name: 'articleDetails',

@@ -1,15 +1,18 @@
-import React, { FC, PropsWithChildren, Suspense, useEffect } from 'react'
+import { FC, PropsWithChildren, useEffect } from 'react'
+
 import classNames from 'classnames'
-import articleDetailsCommentsReducer, { getArticleDetailsComments } from '../model/slices/articleDetailsCommentsSlice'
-import { DynamicModuleLoader, ReducersList } from '@/shared/utils/components/DynamicModuleLoader'
-import { CommentList } from '@/entities/Comment'
-import cls from './ArticleDetailsCommentList.module.scss'
 import { useSelector } from 'react-redux'
+
+import { CommentList } from '@/entities/Comment'
+import { DynamicModuleLoader, ReducersList } from '@/shared/utils/components/DynamicModuleLoader'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+
+import cls from './ArticleDetailsCommentList.module.scss'
 import {
   getArticleDetailsCommentListIsLoading
 } from '../model/selectors/getArticleDetailsCommentListIsLoading'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
-import fetchCommentsByArticleId from '@/features/articles/articleDetails/ArticleDetailsCommentList/model/services/fetchCommentsByArticleId'
+import fetchCommentsByArticleId from '../model/services/fetchCommentsByArticleId'
+import articleDetailsCommentsReducer, { getArticleDetailsComments } from '../model/slices/articleDetailsCommentsSlice'
 
 
 
@@ -32,7 +35,7 @@ export const ArticleDetailsCommentList: FC<ArticleDetailsCommentListProps> = (pr
     if(PROJECT_NAME  !== 'storybook') {
       id && dispatch(fetchCommentsByArticleId(id))
     }
-  }, [dispatch])
+  }, [dispatch, id])
 
   const { className } = props
   const commentListClass = classNames(className, cls.commentList)

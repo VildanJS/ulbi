@@ -1,9 +1,13 @@
-import React, { FC, useCallback } from 'react'
-import cls from './Code.module.scss'
-import { ICode } from '../types'
+import { FC, useCallback } from 'react'
+
 import classNames from 'classnames'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
+
 import CopyIcon from '@/shared/assets/icons/copy.svg'
+
+import cls from './Code.module.scss'
+import { AppButton } from '../../AppButton'
+import { ICode } from '../types'
+
 
 export const Code: FC<ICode> = (props) => {
 
@@ -16,10 +20,10 @@ export const Code: FC<ICode> = (props) => {
 
   return (
     <pre className={codeClass}>
-      <Button onClick={onCopy} className={cls.copyBtn} theme={ButtonThemes.CLEAR}>
+      <AppButton onPress={onCopy} className={cls.copyBtn} theme='outline'>
         <CopyIcon className={cls.copyIcon} />
-      </Button>
-      <code >
+      </AppButton>
+      <code>
         {text}
       </code>
     </pre>

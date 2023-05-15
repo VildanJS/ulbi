@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
-import cls from './AppDialog.module.scss'
-import { IAppDialog } from '../types'
+
 import classNames from 'classnames'
 import { AriaDialogProps, useDialog } from 'react-aria'
 
+import cls from './AppDialog.module.scss'
+
 interface DialogProps extends AriaDialogProps {
-  title?: React.ReactNode;
-  children: React.ReactNode;
+  title?: string;
+  children?: React.ReactNode;
   className?: string;
 }
 

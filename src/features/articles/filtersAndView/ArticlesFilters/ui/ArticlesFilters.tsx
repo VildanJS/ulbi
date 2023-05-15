@@ -1,23 +1,30 @@
-import React, { FC, useCallback } from 'react'
-import cls from './ArticlesFilters.module.scss'
-import { IArticlesFilter } from '../types'
+// TODO refactor for setPage and fetchArticles
+/* eslint-disable vildan/layer-imports */
+import React, { FC, Key, useCallback } from 'react'
+
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import * as Yup from 'yup'
-import { ArticlesFiltersSchema } from '../model/types'
-import { ArticlesSortFields, ArticleType } from '@/entities/Article'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
-import { setOrder, setSearch, setSort, setType } from '../model/slices/articlesFilterSlice'
+import { t } from 'i18next'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { AppItem, AppSelect } from 'shared/ui/AppSelect'
+import { forFormikField } from 'shared/ui/AppSelect/ui/AppSelect'
+import * as Yup from 'yup'
+
+import { ArticlesSortFields } from '@/entities/Article'
+import { setPage } from '@/pages/ArticlesPage'
+import { fetchArticles } from '@/pages/ArticlesPage'
+import { TabItem, Tabs } from '@/shared/ui/Tabs'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
+
+import cls from './ArticlesFilters.module.scss'
 import {
   getArticlesFiltersOrder, getArticlesFiltersSearch,
   getArticlesFiltersSort, getArticlesFiltersType
-} from '@/features/articles/filtersAndView/ArticlesFilters/model/selectors/getArticlesFilters'
-import { setPage } from '@/pages/ArticlesPage/model/slices/ArticlesPageSlice'
-import fetchArticles from '@/pages/ArticlesPage/model/services/fetchArticles'
-import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
-import { useTranslation } from 'react-i18next'
-import { t } from 'i18next'
-import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs'
+} from '../model/selectors/getArticlesFilters'
+import { setOrder, setSearch, setSort, setType } from '../model/slices/articlesFilterSlice'
+import { ArticlesFiltersSchema } from '../model/types'
+import { IArticlesFilter } from '../types'
 
 
 const tabs: TabItem[] = [
@@ -38,8 +45,9 @@ const tabs: TabItem[] = [
     content: t('Наука'),
   },
 ]
+const AppSelectWithFormik = forFormikField(AppSelect)
 
-const ArticlesFilters: FC<IArticlesFilter> = () => {
+export const ArticlesFilters: FC<IArticlesFilter> = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
@@ -55,13 +63,13 @@ const ArticlesFilters: FC<IArticlesFilter> = () => {
   const debouncedFetchArticlesHandler = useDebounce(fetchArticlesHandler, 500)
 
 
-  const onSortSelect = (e: React.FormEvent<HTMLInputElement>) => {
-    dispatch(setSort(e.currentTarget.value))
+  const onSortSelect = (key: Key) => {
+    dispatch(setSort(key))
     fetchArticlesHandler()
   }
 
-  const onOrderSelect = (e: React.FormEvent<HTMLInputElement>) => {
-    dispatch(setOrder(e.currentTarget.value))
+  const onOrderSelect = (key: Key) => {
+    dispatch(setOrder(key))
     dispatch(setPage(1))
     fetchArticlesHandler()
   }
@@ -76,7 +84,7 @@ const ArticlesFilters: FC<IArticlesFilter> = () => {
     dispatch(setType(tab.value))
     dispatch(setPage(1))
     fetchArticlesHandler()
-  }, [])
+  }, [dispatch, fetchArticlesHandler])
 
 
   const initialValues: ArticlesFiltersSchema = {
@@ -112,32 +120,28 @@ const ArticlesFilters: FC<IArticlesFilter> = () => {
         }) => (
           <Form className={cls.articlesFilter}>
             <div className={cls.filtersWrapper}>
-              <Field
-                as="select"
+              <AppSelectWithFormik
                 className={cls.sort}
                 id="sort"
-                type="text"
                 name="sort"
                 placeholder={t('Упорядочить по')}
-                onChange={onSortSelect}
+                onSelectionChange={onSortSelect}
               >
-                <option value={ArticlesSortFields.VIEWS}>{t('Просмотры')}</option>
-                <option value={ArticlesSortFields.CREATED}>{t('Создание')}</option>
-                <option value={ArticlesSortFields.TITLE}>{t('Заголовок')}</option>
-              </Field>
+                <AppItem  id={ArticlesSortFields.VIEWS}>{t('Просмотры')}</AppItem>
+                <AppItem id={ArticlesSortFields.CREATED}>{t('Создание')}</AppItem>
+                <AppItem id={ArticlesSortFields.TITLE}>{t('Заголовок')}</AppItem>
+              </AppSelectWithFormik>
 
-              <Field
-                as="select"
+              <AppSelectWithFormik
                 className={cls.sort}
                 id="order"
-                type="text"
                 name="order"
                 placeholder={t('Сортировать')}
-                onChange={onOrderSelect}
+                onSelectionChange={onOrderSelect}
               >
-                <option value={'asc'}>{t('По возрастанию')}</option>
-                <option value={'desc'}>{t('По убыванию')}</option>
-              </Field>
+                <AppItem id={'asc'}>{t('По возрастанию')}</AppItem>
+                <AppItem id={'desc'}>{t('По убыванию')}</AppItem>
+              </AppSelectWithFormik>
             </div>
             <div className={cls.searchWrapper}>
               <label htmlFor="search">{t('Search')}</label>
@@ -172,4 +176,4 @@ const ArticlesFilters: FC<IArticlesFilter> = () => {
     </Formik>
   )
 }
-export default ArticlesFilters
+

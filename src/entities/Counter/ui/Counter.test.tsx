@@ -1,28 +1,30 @@
-import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react'
-import { Counter } from './Counter'
+import userEvent from '@testing-library/user-event'
+
 import { renderWithOptions } from '@/shared/utils/tests/renderWithOptions'
 
-describe('counter', () => {
-  test('increment', () => {
-    renderWithOptions(
-      <Counter/>, {
-        initialState: {
-          counter: { value: 10 }
-        }
-      })
-    userEvent.click(screen.getByTestId('increment-button'))
-    expect(screen.getByTestId('value-title')).toHaveTextContent('11')
-  })
+import { Counter } from './Counter'
 
-  test('decrement', () => {
+
+describe('counter', () => {
+  test('increment', async () => {
     renderWithOptions(
-      <Counter/>, {
+      <Counter />, {
         initialState: {
           counter: { value: 10 }
         }
       })
-    userEvent.click(screen.getByTestId('decrement-button'))
+    await userEvent.click(screen.getByTestId('increment-button'))
+    expect(screen.getByTestId('value-title')).toHaveTextContent('15')
+  })
+  test('decrement', async () => {
+    renderWithOptions(
+      <Counter />, {
+        initialState: {
+          counter: { value: 10 }
+        }
+      })
+    await userEvent.click(screen.getByTestId('decrement-button'))
     expect(screen.getByTestId('value-title')).toHaveTextContent('9')
   })
 })

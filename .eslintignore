@@ -1,2 +1,10 @@
 /node_modules
 /build
+/config
+/public
+/server
+/scripts
+/reports
+/storybook-static
+/.loki
+/.github

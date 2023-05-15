@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+
 import { ThunkConfig } from '@/app/providers/StoreProvider'
+import { getArticleDetailsData } from '@/entities/Article'
 import { IComment } from '@/entities/Comment'
 import { getUserAuthData } from '@/entities/User'
-import { getArticleDetailsData } from '@/entities/Article'
-import { articleDetailsCommentAdd } from '@/features/articles/articleDetails/ArticleDetailsCommentList'
+
+import { articleDetailsCommentAdd } from '../../../ArticleDetailsCommentList'
 
 // import {AxiosError} from 'axios'
 const sendComment = createAsyncThunk<IComment, string, ThunkConfig<string>>(
@@ -13,7 +15,6 @@ const sendComment = createAsyncThunk<IComment, string, ThunkConfig<string>>(
 
     try {
       const user = getUserAuthData(getState())
-      console.log('-> user', user)
       const article = getArticleDetailsData(getState())
 
       if (!user && !article && text) rejectWithValue('No params')

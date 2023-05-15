@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+
 import { ArticleTextBlock } from '../../../model/types'
 
 export enum TextBlockThemes {

@@ -1,15 +1,17 @@
 import { FC, useCallback } from 'react'
-import cls from './ArticleDetailsPageHeader.module.scss'
-import { IArticleDetailsPageHeader } from '../types'
+
 import classNames from 'classnames'
-import { AppRoutePaths } from '@/app/config/routeConfig/routeConfig'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { getIsEditable } from '../model/selectors/getIsEditable'
-import { getUserAuthData } from '@/entities/User'
+import { useNavigate } from 'react-router-dom'
+import { getRouteArticleEdit, getRouteArticles } from 'shared/const/router'
+
 import { getArticleDetailsData } from '@/entities/Article'
+import { AppButton } from '@/shared/ui/AppButton'
+
+import cls from './ArticleDetailsPageHeader.module.scss'
+import { getIsEditable } from '../model/selectors/getIsEditable'
+import { IArticleDetailsPageHeader } from '../types'
 
 
 export const ArticleDetailsPageHeader: FC<IArticleDetailsPageHeader> = (props) => {
@@ -24,27 +26,27 @@ export const ArticleDetailsPageHeader: FC<IArticleDetailsPageHeader> = (props) =
   const articleDetailsPageHeaderClass = classNames(className, cls.articleDetailsPageHeader)
 
   const onClickPreviousPage = useCallback(() => {
-    navigate(AppRoutePaths.articles)
+    navigate(getRouteArticles())
   }, [navigate])
 
   const onClickEdit = useCallback(() => {
-    navigate(`${AppRoutePaths.articles}/${article?.id}/edit`)
-  }, [navigate, article?.id])
+    article && navigate(getRouteArticleEdit(article?.id))
+  }, [article, navigate])
 
   return (
     <div className={articleDetailsPageHeaderClass}>
-      <Button
-        onClick={onClickPreviousPage}
-        theme={ButtonThemes.OUTLINE}
+      <AppButton
+        onPress={onClickPreviousPage}
+        theme='outline'
       >
         {translateComments('Previous Page')}
-      </Button>
-      {isEditable && <Button
-        onClick={onClickEdit}
-        theme={ButtonThemes.OUTLINE}
-      >
-        {t('Edit')}
-      </Button>}
+      </AppButton>
+      {isEditable &&
+        <AppButton
+          onPress={onClickEdit}
+          theme='outline'
+        >{t('Edit')}
+        </AppButton>}
     </div>
   )
 }

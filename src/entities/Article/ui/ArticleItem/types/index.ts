@@ -1,4 +1,5 @@
-import { HTMLAttributeAnchorTarget, LegacyRef, MutableRefObject, PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
+
 import { ArticleViewType, IArticle } from '../../../model/types'
 
 export enum ArticleItemThemes {

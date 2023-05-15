@@ -1,15 +1,16 @@
 import { FC, useCallback, useState } from 'react'
-import cls from './RatingCard.module.scss'
+
 import classNames from 'classnames'
-import { Card } from '@/shared/ui/Card/Card'
-import { HStack, VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text/Text'
-import { StarRating } from '@/shared/ui/StarRating'
-import { Modal } from '@/shared/ui/Modal'
+
+import { AppButton } from '@/shared/ui/AppButton'
+import { Card } from '@/shared/ui/Card'
 import { Input } from '@/shared/ui/Input'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
-import { detectDevice } from '@/shared/utils/detectDevice'
-import { IRating } from '@/entities/Rating'
+import { Modal } from '@/shared/ui/Modal'
+import { HStack, VStack } from '@/shared/ui/Stack'
+import { StarRating } from '@/shared/ui/StarRating'
+import { Text } from '@/shared/ui/Text'
+
+import cls from './RatingCard.module.scss'
 
 
 interface RatingProps {
@@ -59,7 +60,7 @@ export const RatingCard: FC<RatingProps> = (props) => {
 
   return (
     <Card className={ratingClass}>
-      <VStack align={'center'} gap={'8'}>
+      <VStack align={'Center'} gap={'8'}>
         <Text title={title} />
         <StarRating currentStar={currentStar} onSelectStar={onSelectStars} />
       </VStack>
@@ -68,9 +69,9 @@ export const RatingCard: FC<RatingProps> = (props) => {
           <Text title={feedbackTitle} />
           <Input value={feedback} onChange={setFeedback} placeholder={'Введите ваш отзыв'} />
         </VStack>
-        <HStack className={cls.modalWrap} max gap={'16'} justify={'end'}>
-          <Button onClick={cancelHandle} theme={ButtonThemes.OUTLINE}>Отменить</Button>
-          <Button onClick={sendHandle} theme={ButtonThemes.OUTLINE}>Отправить</Button>
+        <HStack className={cls.modalWrap} max gap={'16'} justify={'End'}>
+          <AppButton onPress={cancelHandle} theme='outline'>Отменить</AppButton>
+          <AppButton onPress={sendHandle} theme='outline'>Отправить</AppButton>
         </HStack>
       </Modal>
     </Card>

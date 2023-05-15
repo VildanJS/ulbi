@@ -1,5 +1,6 @@
-import {PropsWithChildren} from 'react'
-import {IComment} from '@/entities/Comment/model/types'
+import { PropsWithChildren } from 'react'
+
+import { IComment } from '../../../model/types'
 
 export enum CommentListThemes {
   PRIMARY = 'primary',

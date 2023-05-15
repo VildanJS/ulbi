@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import cls from './Loader.module.scss'
-import { ILoader, LoaderThemes } from '../types'
+
 import classNames from 'classnames'
+
+import cls from './Loader.module.scss'
+import { ILoader } from '../types'
 
 export const Loader: FC<ILoader> = (props) => {
   const {
     className,
-    theme = LoaderThemes.PRIMARY
+    theme = 'primary'
   } = props
   const loaderClass = classNames(className, cls[theme], cls.loader )
 

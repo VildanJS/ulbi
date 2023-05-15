@@ -1,4 +1,4 @@
-import {TextBlock} from './ui/TextBlock'
+import { TextBlock } from './ui/TextBlock'
 
 export {
   TextBlock,

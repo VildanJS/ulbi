@@ -1,14 +1,17 @@
 import { FC, useCallback } from 'react'
-import cls from './ProfilePageHeader.module.scss'
-import { IProfilePageHeader } from '../types'
+
 import classNames from 'classnames'
-import { Text } from '@/shared/ui/Text/Text'
-import { Button, ButtonThemes } from '@/shared/ui/Button'
+import { getProfileData, getProfileIsReadonly, setReadonly } from 'features/profile'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { getProfileData, getProfileIsReadonly, setReadonly } from '@/features/profile/getProfileCardData'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+
 import { getUserAuthData } from '@/entities/User'
+import { AppButton } from '@/shared/ui/AppButton'
+import { Text } from '@/shared/ui/Text'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
+
+import cls from './ProfilePageHeader.module.scss'
+import { IProfilePageHeader } from '../types'
 
 
 export const ProfilePageHeader: FC<IProfilePageHeader> = (props) => {
@@ -37,22 +40,22 @@ export const ProfilePageHeader: FC<IProfilePageHeader> = (props) => {
       {
         isEditable &&
           (readonly
-            ? (<Button
+            ? (<AppButton
               data-testid='ProfileCard.EditButton'
-              onClick={onEdit}
+              onPress={onEdit}
               className={cls.editBtn}
-              theme={ButtonThemes.OUTLINE}
+              theme={'outline'}
             >
               {t('Edit')}
-            </Button>)
-            : (<Button
+            </AppButton>)
+            : (<AppButton
               data-testid='ProfileCard.CancelButton'
-              onClick={onCancelEdit}
+              onPress={onCancelEdit}
               className={cls.editBtn}
-              theme={ButtonThemes.OUTLINE}
+              theme={'outline'}
             >
               {t('Cancel')}
-            </Button>))
+            </AppButton>))
       }
     </div>
   )

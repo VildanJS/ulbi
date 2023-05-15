@@ -1,6 +1,8 @@
 import { FC } from 'react'
-import { IPortal } from '../types'
+
 import { createPortal } from 'react-dom'
+
+import { IPortal } from '../types'
 
 export const Portal: FC<IPortal> = (props) => {
   const {

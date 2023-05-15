@@ -1,14 +1,26 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
+
 import { AppMenu } from './AppMenu'
+import { AppItem } from '../../AppSelect'
 
-export default {
-  title: 'widgets/AppMenu',
+const meta: Meta<typeof AppMenu> = {
+  title: 'Shared/AppMenu',
   component: AppMenu,
-} as ComponentMeta<typeof AppMenu>
+}
+export default meta
 
-const Template: ComponentStory<typeof AppMenu> = (args) => <AppMenu {...args} />
+type Story = StoryObj<typeof AppMenu>
 
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Primary'
+
+export const Default: Story = {
+  render: () => (
+    <AppMenu label={'☰'}>
+      <AppItem>Aardvark</AppItem>
+      <AppItem>Cat</AppItem>
+      <AppItem>Dog</AppItem>
+      <AppItem>Kangaroo</AppItem>
+      <AppItem>Panda</AppItem>
+      <AppItem>Snake</AppItem>
+    </AppMenu>
+  )
 }

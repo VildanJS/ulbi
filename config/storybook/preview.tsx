@@ -1,13 +1,12 @@
 import 'loki/configure-react'
 import '../../src/app/styles/style.scss' // чтобы стили появились в сторибук
-import {addDecorator, Story} from '@storybook/react'
-import {Theme} from '../../src/app/providers/ThemeProvider'
-import {withThemes} from 'storybook-addon-themes'
 
+import { Theme } from '../../src/shared/const/theme'
 
 export const parameters = {
+  layout: 'fullscreen',
   themes: {
-    default: Theme.DARK,
+    default: Theme.LIGHT,
     list: [
       {
         name: Theme.LIGHT,
@@ -22,6 +21,10 @@ export const parameters = {
 
 }
 
+// добавляем декоратор для поддержки тем
+// addDecorator(withThemes)
+
+
 // декораторы для роутера
 // export const decorators = [
 //   (StoryComponent: Story) => (
@@ -31,7 +34,6 @@ export const parameters = {
 //   )
 // ]
 
-// добавляем декоратор для поддержки тем
-addDecorator(withThemes)
+
 
 

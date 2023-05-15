@@ -1,5 +1,5 @@
-import { SortOrder } from '@/shared/types'
 import { ArticlesSortFields, ArticleType } from '@/entities/Article'
+import { SortOrder } from '@/shared/types'
 
 export interface ArticlesFiltersSchema {
   order: SortOrder,

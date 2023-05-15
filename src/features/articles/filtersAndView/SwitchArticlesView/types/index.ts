@@ -1,6 +1,6 @@
-import { MouseEventHandler, PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
+
 import { ArticleViewType } from '@/entities/Article'
-import * as events from 'events'
 
 export enum SwitchArticlesViewThemes {
   PRIMARY = 'primary',

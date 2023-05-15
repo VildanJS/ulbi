@@ -1,10 +1,12 @@
 import { FC, memo } from 'react'
-import cls from './SidebarItem.module.scss'
-import { ISidebarItem } from '../types'
+
 import classNames from 'classnames'
-import { AppLink, AppLinkThemes } from '@/shared/ui/AppLink'
 import { useTranslation } from 'react-i18next'
 
+import { AppLink, AppLinkThemes } from '@/shared/ui/AppLink'
+
+import cls from './SidebarItem.module.scss'
+import { ISidebarItem } from '../types'
 
 
 export const SidebarItem: FC<ISidebarItem> = memo((props) => {

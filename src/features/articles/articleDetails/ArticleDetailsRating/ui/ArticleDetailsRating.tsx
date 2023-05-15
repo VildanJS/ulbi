@@ -1,16 +1,19 @@
-import React, { FC, useCallback } from 'react'
-import cls from './ArticleDetailsRating.module.scss'
+import { FC, useCallback } from 'react'
+
 import classNames from 'classnames'
+import { useSelector } from 'react-redux'
+
+import { getUserAuthData } from '@/entities/User'
+import { Skeleton } from '@/shared/ui/Skeleton'
+import { Text } from '@/shared/ui/Text'
+
+import cls from './ArticleDetailsRating.module.scss'
 import { RatingCard } from '../../../../../entities/Rating'
-import { Text } from '@/shared/ui/Text/Text'
 import {
   useGetArticleRating,
   useRateArticleRatingMutation,
   useUpdateArticleRatingMutation
 } from '../api/articleRatingApi'
-import { useSelector } from 'react-redux'
-import { getUserAuthData } from '@/entities/User'
-import { Skeleton } from '@/shared/ui/Skeleton'
 
 interface ArticleDetailsRatingProps {
   className?: string,

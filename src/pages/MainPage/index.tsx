@@ -1,4 +1,5 @@
-import React from 'react'
-import { lazyLoadingTimeout } from '@/shared/utils/lazyLoadingWrap'
+import MainPage from './MainPage'
 
-export default React.lazy(() => lazyLoadingTimeout(import('./MainPage'), 1000))
+
+// export default React.lazy(() => lazyLoadingTimeout(import('./MainPage'), 1000))
+export default MainPage

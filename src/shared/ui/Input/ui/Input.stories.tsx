@@ -1,15 +1,25 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { Meta, StoryObj } from '@storybook/react'
+
 import { Input } from './Input'
 
-export default {
-  title: 'shared/Input',
+const meta: Meta<typeof Input> = {
+  title: 'Shared/Input',
   component: Input,
-} as ComponentMeta<typeof Input>
+}
+export default meta
 
-const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />
+type Story = StoryObj<typeof Input>
 
-export const Primary = Template.bind({})
-Primary.args = {
+
+export const Default: Story = {
+  render: (args) => (
+    <Input {...args} />
+  )
+}
+
+Default.args = {
   placeholder: 'Example placeholder',
-  value: 'Example value'
+  value: 'Example value',
+  onChange: action('onSelectStar')
 }

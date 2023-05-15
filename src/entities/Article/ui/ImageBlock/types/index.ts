@@ -1,5 +1,6 @@
-import {PropsWithChildren} from 'react'
-import {ArticleImageBlock} from '../../../model/types'
+import { PropsWithChildren } from 'react'
+
+import { ArticleImageBlock } from '../../../model/types'
 
 export enum ImageBlockThemes {
   PRIMARY = 'primary',

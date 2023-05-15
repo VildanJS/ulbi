@@ -1,8 +1,10 @@
 import { FC, useEffect, useState } from 'react'
+
+import classNames from 'classnames'
+import { AppButton } from 'shared/ui/AppButton'
+
 import cls from './BugButton.module.scss'
 import { IBugButton } from '../types'
-import classNames from 'classnames'
-import { Button } from '@/shared/ui/Button'
 
 export const BugButton: FC<IBugButton> = (props) => {
   const [error, setError] = useState(false)
@@ -18,10 +20,12 @@ export const BugButton: FC<IBugButton> = (props) => {
   const bugButtonClass = classNames(className, cls.bugButton)
 
   return (
-    <Button
-      onClick={throwError}
-      className={bugButtonClass}>
+    <AppButton
+      theme='outline'
+      onPress={throwError}
+      className={bugButtonClass}
+    >
       Выбросить ошибку
-    </Button>
+    </AppButton>
   )
 }

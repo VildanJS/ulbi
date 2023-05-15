@@ -1,5 +1,3 @@
-import { AppPopoverTrigger } from './ui/AppPopoverTrigger'
+export { AppPopoverTrigger } from './ui/AppPopoverTrigger'
+export { AppPopover } from './ui/AppPopover'
 
-export {
-  AppPopoverTrigger,
-}

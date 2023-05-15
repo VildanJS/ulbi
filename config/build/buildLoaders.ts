@@ -1,7 +1,8 @@
 import webpack from 'webpack'
-import {IBuildOptions} from './types/config'
+
 import { buildCssLoader } from './loaders/buildCssLoaders'
 import { buildSvgLoader } from './loaders/buildSvgLoader'
+import { IBuildOptions } from './types/config'
 
 export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
 

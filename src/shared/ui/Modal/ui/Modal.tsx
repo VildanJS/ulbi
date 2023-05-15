@@ -1,8 +1,10 @@
 import React, { FC, useCallback, useEffect } from 'react'
-import cls from './Modal.module.scss'
-import { IModal } from '../types'
+
 import classNames from 'classnames'
-import { Overlay } from '@/shared/ui/Overlay/Overlay'
+
+import cls from './Modal.module.scss'
+import { Overlay } from '../../Overlay'
+import { IModal } from '../types'
 // import { Portal } from 'shared/ui/Portal'
 
 export const Modal: FC<IModal> = (props) => {

@@ -1,8 +1,9 @@
-import { Story } from '@storybook/react'
-import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider'
 import { DeepPartial } from '@reduxjs/toolkit'
-import { loginReducer } from '@/features/AuthByUserName/model/slice/loginSlice'
-import profileReducer from '@/features/profile/getProfileCardData'
+import { Story } from '@storybook/react'
+
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider'
+import { loginReducer } from '@/features/AuthByUserName/testing'
+import profileReducer from '@/features/profile/testing'
 import { ReducersList } from '@/shared/utils/components/DynamicModuleLoader'
 
 const defaultAsyncReducers: ReducersList = {

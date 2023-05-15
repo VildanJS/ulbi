@@ -1,10 +1,15 @@
 import { FC } from 'react'
-import cls from './CommentList.module.scss'
-import { ICommentList } from '../types'
+
 import classNames from 'classnames'
-import { CommentCard } from '../../CommentCard'
-import { Text } from '@/shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
+
+import { Text } from '@/shared/ui/Text'
+
+import cls from './CommentList.module.scss'
+import { CommentCard } from '../../CommentCard'
+import { ICommentList } from '../types'
+
+
 
 
 export const CommentList: FC<ICommentList> = (props) => {

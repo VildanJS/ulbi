@@ -1,13 +1,15 @@
 import { FC, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
-import { IProfile, ProfileCard } from '@/entities/Profile'
+
 import {
   fetchProfileData,
   getProfileData,
   getProfileError,
-  getProfileIsLoading } from '@/features/profile/getProfileCardData'
+  getProfileIsLoading } from 'features/profile'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+
+import { IProfile, ProfileCard } from '@/entities/Profile'
+import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
 export const ProfilePageCard: FC = () => {
   const { id } = useParams<{ id: string }>()

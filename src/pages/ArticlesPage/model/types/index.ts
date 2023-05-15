@@ -1,4 +1,5 @@
 import { EntityState } from '@reduxjs/toolkit'
+
 import { ArticleViewType, IArticle } from '@/entities/Article'
 
 export interface ArticlesPageSchema extends EntityState<IArticle> {
