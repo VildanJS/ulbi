@@ -4,7 +4,7 @@ on:
   - push
   - pull_request
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -122,10 +122,10 @@ jobs:
 
   build-and-test-storybook:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
     strategy:
       matrix:
         node: [ 19.x ]
-    concurrency: ci-${{ github.ref }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
