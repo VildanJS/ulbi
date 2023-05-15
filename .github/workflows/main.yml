@@ -96,6 +96,7 @@ jobs:
         run: |
           npm run test:unit
             - name: Setup Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v2
         if: always()
       - name: Upload artifact
@@ -105,6 +106,7 @@ jobs:
           path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
+        if: always()
         uses: actions/deploy-pages@v1
 
   build:
