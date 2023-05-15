@@ -8,9 +8,7 @@ import cls from './Code.module.scss'
 import { AppButton } from '../../AppButton'
 import { ICode } from '../types'
 
-
 export const Code: FC<ICode> = (props) => {
-
   const { className, text } = props
   const codeClass = classNames(className, cls.code)
 
