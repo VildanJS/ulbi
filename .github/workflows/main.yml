@@ -69,6 +69,10 @@ jobs:
 
   unit-test:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node: [19.x]
@@ -91,6 +95,18 @@ jobs:
       - name: Test unit
         run: |
           npm run test:unit
+            - name: Setup Pages
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        if: always()
+        with:
+          path: 'reports'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: always()
+        uses: actions/deploy-pages@v1
 
   build:
     runs-on: ubuntu-latest
