@@ -11,7 +11,7 @@ export const AddNewComment: FC<IAddNewComment> = (props) => {
   const addNewCommentClass = classNames(className, cls.addNewComment)
 
   return (
-    <div className={addNewCommentClass}>
+    <div data-testid='AddNewCommentElement' className={addNewCommentClass}>
       <Formik
         initialValues={{
           message: ''
@@ -28,9 +28,10 @@ export const AddNewComment: FC<IAddNewComment> = (props) => {
             name="message"
             placeholder="Enter a message"
             type="text"
+            data-testid='AddNewComment.Input'
           />
           <ErrorMessage name="message" />
-          <button type="submit">Submit</button>
+          <button data-testid='AddNewComment.Button' type="submit">Submit</button>
         </Form>
       </Formik>
     </div>

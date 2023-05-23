@@ -5,7 +5,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { IArticle } from '@/entities/Article'
 
 // First, create the thunk
-const fetchRecommendedArticles = createAsyncThunk<IArticle[], void, ThunkConfig<string>>(
+export const fetchRecommendedArticles = createAsyncThunk<IArticle[], void, ThunkConfig<string>>(
   'articleDetails/fetchRecommendedArticles',
   async (_, thunkAPI) => {
     const { extra, rejectWithValue } = thunkAPI
@@ -29,5 +29,3 @@ const fetchRecommendedArticles = createAsyncThunk<IArticle[], void, ThunkConfig<
     }
   }
 )
-
-export default fetchRecommendedArticles

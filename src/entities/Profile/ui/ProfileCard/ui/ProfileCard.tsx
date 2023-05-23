@@ -240,6 +240,7 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
                 >Reset
                 </AppButton>
                 <AppButton
+                  data-testid="ProfileCard.SubmitButton"
                   type="submit"
                   theme='outline'
                   disabled={isSubmitting}

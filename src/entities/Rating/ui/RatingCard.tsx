@@ -59,7 +59,7 @@ export const RatingCard: FC<RatingProps> = (props) => {
   const ratingClass = classNames(className, cls.rating)
 
   return (
-    <Card className={ratingClass}>
+    <Card data-testid='RatingCard' className={ratingClass}>
       <VStack align={'Center'} gap={'8'}>
         <Text title={title} />
         <StarRating currentStar={currentStar} onSelectStar={onSelectStars} />
@@ -67,11 +67,11 @@ export const RatingCard: FC<RatingProps> = (props) => {
       <Modal isOpen={isModalOpen}>
         <VStack gap={'32'}>
           <Text title={feedbackTitle} />
-          <Input value={feedback} onChange={setFeedback} placeholder={'Введите ваш отзыв'} />
+          <Input data-testid='RatingCard.Input' value={feedback} onChange={setFeedback} placeholder={'Введите ваш отзыв'} />
         </VStack>
         <HStack className={cls.modalWrap} max gap={'16'} justify={'End'}>
-          <AppButton onPress={cancelHandle} theme='outline'>Отменить</AppButton>
-          <AppButton onPress={sendHandle} theme='outline'>Отправить</AppButton>
+          <AppButton data-testid='RatingCard.Cancel' onPress={cancelHandle} theme='outline'>Отменить</AppButton>
+          <AppButton data-testid='RatingCard.Send' onPress={sendHandle} theme='outline'>Отправить</AppButton>
         </HStack>
       </Modal>
     </Card>

@@ -35,7 +35,7 @@ export const CommentCard: FC<ICommentCard> = (props) => {
   }
 
   return (
-    <div className={commentCardClass}>
+    <div data-testid='CommentCard.Content' className={commentCardClass}>
       <AppLink className={cls.gridUsernameAvatar} to={getRouteProfile(comment.user.id)}>
         {comment?.user?.avatar &&
           <Avatar size={50} alt={'avatar'} src={comment?.user?.avatar} />

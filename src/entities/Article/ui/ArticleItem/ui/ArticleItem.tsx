@@ -38,7 +38,7 @@ export const ArticleItem: FC<IArticleItem> = (props) => {
       (block) => block.type === 'TEXT'
     ) as ArticleTextBlock
     return (
-      <div className={articleItemClass}>
+      <div data-testid="ArticleListItem" className={articleItemClass}>
         <div className={cls.card}>
           <div className={cls.header}>
             <Avatar
@@ -74,6 +74,7 @@ export const ArticleItem: FC<IArticleItem> = (props) => {
   }
   return (
     <AppLink
+      data-testid="ArticleListItem"
       className={classNames(articleItemClass, cls.resetLink)}
       to={getRouteArticleDetails(article.id)}>
       <div className={cls.card}>

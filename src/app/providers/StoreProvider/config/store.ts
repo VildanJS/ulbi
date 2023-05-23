@@ -2,7 +2,7 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
 
 import { counterReducer } from '@/entities/Counter'
 import userReducer from '@/entities/User'
-import { articlesFiltersReducer } from '@/features/articles'
+import { articlesFilterReducer } from '@/features/articles'
 import { UIReducer } from '@/features/scrollPositionSaver'
 import { $api } from '@/shared/api/api'
 import { rtkApi } from '@/shared/api/rtkApi'
@@ -20,7 +20,7 @@ export const createReduxStore = (
     counter: counterReducer,
     user: userReducer,
     ui: UIReducer,
-    articlesFilters: articlesFiltersReducer,
+    articlesFilters: articlesFilterReducer,
     [rtkApi.reducerPath]: rtkApi.reducer
   }
 

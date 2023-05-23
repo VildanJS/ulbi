@@ -1,15 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
-import { getRouteArticles } from 'shared/const/router'
+
 
 import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { IArticle } from '@/entities/Article'
+// TODO Refactor Selectors for fetch articles
+// eslint-disable-next-line
 import {
   getArticlesFiltersSort,
   getArticlesFiltersOrder,
   getArticlesFiltersSearch,
   getArticlesFiltersType
-} from '@/features/articles'
+} from '@/features/articles/filtersAndView/ArticlesFilters/model/selectors/getArticlesFilters'
+import { getRouteArticles } from '@/shared/const/router'
 import { addQueryParams } from '@/shared/utils/url/addQueryParams'
 
 import {
@@ -23,7 +26,7 @@ interface FetchArticlesListProps {
 }
 
 // First, create the thunk
-const fetchArticles = createAsyncThunk<IArticle[], FetchArticlesListProps, ThunkConfig<string>>(
+export const fetchArticles = createAsyncThunk<IArticle[], FetchArticlesListProps, ThunkConfig<string>>(
   'articlesPage/fetchArticles',
   async (_, thunkAPI) => {
     const { extra, rejectWithValue, getState } = thunkAPI
@@ -64,5 +67,3 @@ const fetchArticles = createAsyncThunk<IArticle[], FetchArticlesListProps, Thunk
     }
   }
 )
-
-export default fetchArticles

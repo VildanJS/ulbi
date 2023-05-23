@@ -6,7 +6,7 @@ import { setType } from '@/features/articles'
 import { setSearch, setSort, setOrder } from '@/features/articles'
 import { SortOrder } from '@/shared/types'
 
-import fetchArticles from './fetchArticles'
+import { fetchArticles } from './fetchArticles'
 import { getArticlesPageIsInited } from '../selectors/articlesPageSelectors'
 import { initState } from '../slices/ArticlesPageSlice'
 

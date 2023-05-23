@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 import { ArticleDetails } from '@/entities/Article'
 import { ArticleDetailsRating } from '@/features/articles'
+import { ArticleDetailsRecommendations } from '@/features/articles'
 import { Page } from '@/shared/ui/Page'
 
 import cls from './ArticleDetailsPage.module.scss'
@@ -26,7 +27,7 @@ const ArticleDetailsPage: FC<IArticleDetailsPage> = (props) => {
     <Page className={articleDetailsPageClass}>
       <ArticleDetailsPageHeader />
       <ArticleDetails id={id} />
-      {/*<ArticleDetailsRecommendations className={cls.recommendations} />*/}
+      <ArticleDetailsRecommendations className={cls.recommendations} />
       <ArticleDetailsRating articleId={id} />
       <ArticleDetailsComments id={id} />
     </Page>

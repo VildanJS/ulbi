@@ -11,7 +11,7 @@ export const ArticlesPageList: Components['List'] = React.forwardRef(({ style, c
   const view = useSelector(getArticlesPageView)
   const ListClass = classNames(cls.wrapper, cls[view])
   return (
-    <div className={ListClass} style={style} ref={ref}>
+    <div data-testid="ArticleList" className={ListClass} style={style} ref={ref}>
       {children}
     </div>
   )

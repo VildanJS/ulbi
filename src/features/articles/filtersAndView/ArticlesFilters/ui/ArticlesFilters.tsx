@@ -6,13 +6,13 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { t } from 'i18next'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { AppItem, AppSelect } from 'shared/ui/AppSelect'
-import { forFormikField } from 'shared/ui/AppSelect/ui/AppSelect'
 import * as Yup from 'yup'
 
 import { ArticlesSortFields } from '@/entities/Article'
-import { setPage } from '@/pages/ArticlesPage'
-import { fetchArticles } from '@/pages/ArticlesPage'
+import { setPage } from '@/pages/ArticlesPage/model/slices/ArticlesPageSlice'
+import { fetchArticles } from '@/pages/ArticlesPage/model/services/fetchArticles'
+import { AppItem, AppSelect } from '@/shared/ui/AppSelect'
+import { forFormikField } from '@/shared/ui/AppSelect'
 import { TabItem, Tabs } from '@/shared/ui/Tabs'
 import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
@@ -25,6 +25,7 @@ import {
 import { setOrder, setSearch, setSort, setType } from '../model/slices/articlesFilterSlice'
 import { ArticlesFiltersSchema } from '../model/types'
 import { IArticlesFilter } from '../types'
+
 
 
 const tabs: TabItem[] = [

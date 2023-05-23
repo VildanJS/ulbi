@@ -24,6 +24,8 @@ export const StarRating: FC<StarRatingProps> = (props) => {
     <div className={starRatingClass}>
       {stars.map((star) => (
         <Star
+          data-testid={`Star.${star}`}
+          data-selected={star <= currentStar}
           onMouseLeave={() => setHoveredRating(0)}
           onMouseEnter={() => setHoveredRating(star)}
           onClick={onClickHandler(star)}

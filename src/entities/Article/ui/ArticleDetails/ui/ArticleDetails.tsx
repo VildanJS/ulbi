@@ -78,7 +78,7 @@ export const ArticleDetails: FC<IArticleDetails> = memo((props) => {
     )
   } else {
     content = (
-      <>
+      <div data-testid='ArticleDetails'>
         <Avatar
           src={article?.img}
           alt={'аватар пользовтеля'}
@@ -95,7 +95,7 @@ export const ArticleDetails: FC<IArticleDetails> = memo((props) => {
           </div>
           {article?.blocks.map(renderBlock)}
         </div>
-      </>
+      </div>
     )
   }
 

@@ -10,7 +10,7 @@ import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispat
 
 import cls from './ArticleDetailsRecommendations.module.scss'
 import { fetchRecommendedArticles }
-  from '../../ArticleDetailsRecommendations/'
+  from '../../ArticleDetailsRecommendations/model'
 import { IArticleDetailsRecommendations } from '../types'
 
 const recommendationsApi = rtkApi.injectEndpoints({
