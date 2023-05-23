@@ -1,3 +1,4 @@
+import CopyPlugin from 'copy-webpack-plugin'
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
@@ -43,6 +44,11 @@ export const buildPlugin = ({
       IS_DEV: JSON.stringify(isDev),
       API_URL: JSON.stringify(apiUrl),
       PROJECT_NAME: JSON.stringify(projectName)
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: paths.locales, to: paths.buildLocales },
+      ],
     }),
   ]
   if (isDev) {

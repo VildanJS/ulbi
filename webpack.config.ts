@@ -11,6 +11,9 @@ export default (env: IBuildEnv): webpack.Configuration => {
     entry: path.join(__dirname, 'src', 'index.tsx'),
     html: path.join(__dirname, 'public', 'index.html'),
     src: path.join(__dirname, 'src'),
+    locales: path.join(__dirname, 'public', 'locales'),
+    buildLocales: path.join(__dirname, 'build', 'locales'),
+
   }
   const mode = env.mode || 'development'
   const isDev = mode === 'development'
