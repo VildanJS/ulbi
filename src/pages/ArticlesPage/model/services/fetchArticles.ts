@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 
-
 import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { IArticle } from '@/entities/Article'
 // TODO Refactor Selectors for fetch articles
@@ -10,7 +9,7 @@ import {
   getArticlesFiltersSort,
   getArticlesFiltersOrder,
   getArticlesFiltersSearch,
-  getArticlesFiltersType
+  getArticlesFiltersType,
 } from '@/features/articles/filtersAndView/ArticlesFilters/model/selectors/getArticlesFilters'
 import { getRouteArticles } from '@/shared/const/router'
 import { addQueryParams } from '@/shared/utils/url/addQueryParams'
@@ -20,50 +19,48 @@ import {
   getArticlesPageNumber,
 } from '../selectors/articlesPageSelectors'
 
-
 interface FetchArticlesListProps {
-  replace?: boolean;
+  replace?: boolean
 }
 
 // First, create the thunk
-export const fetchArticles = createAsyncThunk<IArticle[], FetchArticlesListProps, ThunkConfig<string>>(
-  'articlesPage/fetchArticles',
-  async (_, thunkAPI) => {
-    const { extra, rejectWithValue, getState } = thunkAPI
+export const fetchArticles = createAsyncThunk<
+  IArticle[],
+  FetchArticlesListProps,
+  ThunkConfig<string>
+>('articlesPage/fetchArticles', async (_, thunkAPI) => {
+  const { extra, rejectWithValue, getState } = thunkAPI
 
-    const limit = getArticlesPageLimit(getState())
-    const sort = getArticlesFiltersSort(getState())
-    const order = getArticlesFiltersOrder(getState())
-    const search = getArticlesFiltersSearch(getState())
-    const page = getArticlesPageNumber(getState())
-    const type = getArticlesFiltersType(getState())
+  const limit = getArticlesPageLimit(getState())
+  const sort = getArticlesFiltersSort(getState())
+  const order = getArticlesFiltersOrder(getState())
+  const search = getArticlesFiltersSearch(getState())
+  const page = getArticlesPageNumber(getState())
+  const type = getArticlesFiltersType(getState())
 
-    try {
-      addQueryParams(
-        { search, sort, order, type }
-      )
+  try {
+    addQueryParams({ search, sort, order, type })
 
-      const params = {
-        _expand: 'user',
-        _limit: limit,
-        _page: page,
-        _sort: sort,
-        _order: order,
-        q: search,
-        type: type === 'ALL' ? undefined : type
-      }
-
-      const response = await extra.api.get<IArticle[]>(getRouteArticles(), {
-        params
-      })
-
-      if (!response.data) {
-        throw new Error()
-      }
-      return response.data
-    } catch (error: unknown) {
-      const err = error as AxiosError
-      return rejectWithValue(err.message)
+    const params = {
+      _expand: 'user',
+      _limit: limit,
+      _page: page,
+      _sort: sort,
+      _order: order,
+      q: search,
+      type: type === 'ALL' ? undefined : type,
     }
+
+    const response = await extra.api.get<IArticle[]>(getRouteArticles(), {
+      params,
+    })
+
+    if (!response.data) {
+      throw new Error()
+    }
+    return response.data
+  } catch (error: unknown) {
+    const err = error as AxiosError
+    return rejectWithValue(err.message)
   }
-)
+})

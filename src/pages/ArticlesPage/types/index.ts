@@ -6,17 +6,13 @@ export enum ArticlesPageThemes {
 }
 
 interface IArticlesPage extends PropsWithChildren {
-  className?: string,
-  theme?: ArticlesPageThemes,
+  className?: string
+  theme?: ArticlesPageThemes
 
   // pagination
-  page?: number,
-  limit?: number,
-  hasMore?: boolean,
-
-
+  page?: number
+  limit?: number
+  hasMore?: boolean
 }
 
-export {
-  IArticlesPage
-}
+export { IArticlesPage }

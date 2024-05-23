@@ -6,10 +6,10 @@ describe('getLoginError.test', () => {
   test('should return "error" value', () => {
     const state: DeepPartial<StateSchema> = {
       loginForm: {
-        error: 'error'
-      }
+        error: 'error',
+      },
     }
-    expect(getLoginError(state as StateSchema)).toEqual( 'error' )
+    expect(getLoginError(state as StateSchema)).toEqual('error')
   })
 
   test('should return "undefined" value', () => {

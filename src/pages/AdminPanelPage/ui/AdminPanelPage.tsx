@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import classNames from 'classnames'
 
-import { Page } from '@/shared/ui/Page'
+import { Page } from '@/shared/ui/deprecated/Page'
 
 import cls from './AdminPanelPage.module.scss'
 import { IAdminPanelPage } from '../types'

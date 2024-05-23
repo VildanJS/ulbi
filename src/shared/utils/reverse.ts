@@ -1,1 +1,1 @@
-export default (str: string):string => str.split('').reverse().join('')
+export default (str: string): string => str.split('').reverse().join('')

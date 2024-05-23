@@ -1,5 +1,3 @@
 import { SwitchArticlesView } from './ui/SwitchArticlesView'
 
-export {
-  SwitchArticlesView,
-}
+export { SwitchArticlesView }

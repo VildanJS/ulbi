@@ -13,7 +13,6 @@
     "esModuleInterop": true,              // включает import
     "paths": {
       "@/*": ["./src/*"],
-      "*": ["./src/*"],
     }
   },
   "ts-node": {

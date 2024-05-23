@@ -31,10 +31,19 @@
   --secondary-color: #eaeaeaff;
   --inverted-primary-color: #5855b9;
   --inverted-secondary-color: #090909;
+  --dark-bg-redesigned: #090F11;
+  --bg-redesigned: #0C1214;
+  --light-bg-redesigned: #151C1F;
+  --text-redesigned: #DBDBDB;
+  --hint-redesigned: #555555;
+  --cancel-redesigned: #D95757;
+  --save-redesigned: #6CD98B;
+  --icon-redesigned: #74A2B2;
+  --accent-redesigned: #5ED3F3;
   --skeleton-color: #1515ad;
   --skeleton-shadow: #2b2be8;
   --code-bg: #1212a1;
-  --article-bg: #232625 ;
+  --article-bg: #232625;
 }
 
 /*# sourceMappingURL=dark.css.map */

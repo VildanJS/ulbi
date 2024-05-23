@@ -1,7 +1,7 @@
 import { cleanup } from '@testing-library/react'
-import { UserRole } from 'entities/User'
-import { getRouteAbout, getRouteAdminPanel, getRouteProfile } from 'shared/const/router'
-import { renderWithOptions } from 'shared/utils/tests/renderWithOptions'
+import { UserRole } from '@/entities/User'
+import { getRouteAbout, getRouteAdminPanel, getRouteProfile } from '@/shared/const/router'
+import { renderWithOptions } from '@/shared/utils/tests/renderWithOptions'
 
 import AppRouter from './AppRouter'
 

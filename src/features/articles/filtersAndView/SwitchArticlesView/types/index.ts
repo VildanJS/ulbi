@@ -8,12 +8,10 @@ export enum SwitchArticlesViewThemes {
 }
 
 interface ISwitchArticlesView extends PropsWithChildren {
-  className?: string,
-  theme?: SwitchArticlesViewThemes,
+  className?: string
+  theme?: SwitchArticlesViewThemes
   changeViewHandler: (view: string) => void
   view: ArticleViewType
 }
 
-export {
-  ISwitchArticlesView
-}
+export { ISwitchArticlesView }

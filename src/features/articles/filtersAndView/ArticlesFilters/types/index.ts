@@ -6,10 +6,8 @@ export enum articlesFilterThemes {
 }
 
 interface IArticlesFilter extends PropsWithChildren {
-  className?: string,
-  theme?: articlesFilterThemes,
+  className?: string
+  theme?: articlesFilterThemes
 }
 
-export {
-  IArticlesFilter
-}
+export { IArticlesFilter }

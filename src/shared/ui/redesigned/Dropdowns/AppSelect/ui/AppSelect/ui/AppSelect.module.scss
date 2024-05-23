@@ -1,0 +1,33 @@
+.select {
+  display: flex;
+  align-items: center;
+}
+.button-wrapper {
+  background-color: var(--dark-bg-redesigned) !important;
+  padding: 8px 16px;
+  paddig-right: 8px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapsed-btn {
+  transform: rotate(180deg);
+}
+
+.list-box {
+  border-radius: 16px;
+  border: 1px solid var(--accent-redesigned);
+  background: var(--dark-bg-redesigned);
+  z-index: 10000;
+  min-width: 150px;
+  padding: 6px;
+  overflow: auto;
+  outline: none;
+
+  &:focus {
+    outline-width: 0;
+  }
+}

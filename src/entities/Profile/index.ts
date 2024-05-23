@@ -1,7 +1,3 @@
-export {
-  ProfileCard
-} from './ui/ProfileCard'
+export { ProfileCard } from './ui/ProfileCard'
 
-export type {
-  IProfile
-} from './model/types'
+export type { IProfile } from './model/types'

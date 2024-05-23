@@ -6,10 +6,8 @@ export enum ArticleEditPageThemes {
 }
 
 interface IArticleEditPage extends PropsWithChildren {
-  className?: string,
-  theme?: ArticleEditPageThemes,
+  className?: string
+  theme?: ArticleEditPageThemes
 }
 
-export {
-  IArticleEditPage
-}
+export { IArticleEditPage }

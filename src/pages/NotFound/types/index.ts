@@ -6,10 +6,8 @@ export enum NotFoundThemes {
 }
 
 interface INotFound extends PropsWithChildren {
-  className?: string,
-  theme?: NotFoundThemes,
+  className?: string
+  theme?: NotFoundThemes
 }
 
-export {
-  INotFound
-}
+export { INotFound }

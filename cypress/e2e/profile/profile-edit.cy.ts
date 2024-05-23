@@ -2,7 +2,7 @@ let profileId = '4'
 describe('Редактирование профиля', () => {
   beforeEach(() => {
     cy.visit('')
-    cy.login().then(data => {
+    cy.login().then((data) => {
       cy.resetProfile(profileId)
       cy.visit(`profile/${data.id}`)
       profileId = data.id
@@ -20,7 +20,13 @@ describe('Редактирование профиля', () => {
     const newFirstName = 'first'
     const newSecondName = 'second'
     cy.updateProfile(newFirstName, newSecondName)
-    cy.get('[data-testid="ProfileCard.firstname"]').should('have.value', newFirstName)
-    cy.get('[data-testid="ProfileCard.lastname"]').should('have.value', newSecondName)
+    cy.get('[data-testid="ProfileCard.firstname"]').should(
+      'have.value',
+      newFirstName,
+    )
+    cy.get('[data-testid="ProfileCard.lastname"]').should(
+      'have.value',
+      newSecondName,
+    )
   })
 })

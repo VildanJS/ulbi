@@ -1,5 +1,3 @@
 import { LoginModal } from './ui/LoginModal'
 
-export {
-  LoginModal,
-}
+export { LoginModal }

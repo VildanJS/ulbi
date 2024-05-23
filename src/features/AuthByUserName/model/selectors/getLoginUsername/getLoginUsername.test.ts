@@ -6,8 +6,8 @@ describe('getLoginUsername.test', () => {
   test('should return "admin" value', () => {
     const state: DeepPartial<StateSchema> = {
       loginForm: {
-        username: 'admin'
-      }
+        username: 'admin',
+      },
     }
     expect(getLoginUsername(state as StateSchema)).toEqual('admin')
   })

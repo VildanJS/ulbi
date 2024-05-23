@@ -1,25 +1,39 @@
-import '@/shared/config/i18n/i18next'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import React, { Suspense } from 'react'
 
+import { createRoot } from 'react-dom/client'
+
+import '@/shared/config/i18n/i18next'
 import App from '@/app/App'
-import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
 import { StoreProvider } from '@/app/providers/StoreProvider'
 import { ThemeProvider } from '@/app/providers/ThemeProvider'
+
 import '@/app/styles/style.scss'
-import { Theme } from '@/shared/const/theme'
+import { useJsonSettings } from '@/entities/User'
+import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
+
 
 const root = createRoot(document.getElementById('root') as Element)
 
+
+const withThemeHOC = (Component: React.ComponentType) => {
+  return () => {
+    const { theme } = useJsonSettings()
+    return (
+      <ThemeProvider initialTheme={theme}>
+        <Component />
+      </ThemeProvider>
+    )
+  }
+}
+
+const AppWithTheme = withThemeHOC(App)
+
 root.render(
-  <BrowserRouter>
-    <StoreProvider>
-      <ErrorBoundary>
-        <ThemeProvider initialTheme={Theme.LIGHT}>
-          <App />
-        </ThemeProvider>
-      </ErrorBoundary>
-    </StoreProvider>
-  </BrowserRouter>
+  <ErrorBoundary>
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <StoreProvider>
+        <AppWithTheme />
+      </StoreProvider>
+    </Suspense>
+  </ErrorBoundary>
 )
-export { Theme } from 'shared/const/theme'

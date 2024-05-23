@@ -14,7 +14,4 @@ interface ErrorBoundaryState {
   hasError: boolean
 }
 
-export {
-  ErrorBoundaryProps,
-  ErrorBoundaryState
-}
+export { ErrorBoundaryProps, ErrorBoundaryState }

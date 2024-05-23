@@ -6,12 +6,10 @@ export enum LoginModalThemes {
 }
 
 interface ILoginModal extends PropsWithChildren {
-  className?: string,
-  theme?: LoginModalThemes,
-  isOpen: boolean,
+  className?: string
+  theme?: LoginModalThemes
+  isOpen: boolean
   onClose: () => void
 }
 
-export {
-  ILoginModal
-}
+export { ILoginModal }

@@ -6,10 +6,8 @@ export enum AddCommentFormThemes {
 }
 
 interface ArticleDetailsAddCommentSchema extends PropsWithChildren {
-  className?: string,
-  theme?: AddCommentFormThemes,
+  className?: string
+  theme?: AddCommentFormThemes
 }
 
-export {
-  ArticleDetailsAddCommentSchema
-}
+export { ArticleDetailsAddCommentSchema }

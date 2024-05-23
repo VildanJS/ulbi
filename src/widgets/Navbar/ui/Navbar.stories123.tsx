@@ -1,16 +1,16 @@
 // import { ComponentStory, ComponentMeta } from '@storybook/react'
-// import { Navbar } from './Navbar'
+// import { NavbarDeprecated } from './NavbarDeprecated'
 // import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator'
 // import profileReducer from '@/features/profile/getProfileCardData'
 //
 // export default {
-//   title: 'widgets/Navbar',
-//   component: Navbar,  parameters: {
+//   title: 'widgets/NavbarDeprecated',
+//   component: NavbarDeprecated,  parameters: {
 //     chromatic: { disable: true },
 //   }
-// } as ComponentMeta<typeof Navbar>
+// } as ComponentMeta<typeof NavbarDeprecated>
 //
-// const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
+// const Template: ComponentStory<typeof NavbarDeprecated> = (args) => <NavbarDeprecated {...args} />
 //
 // export const LoggedIn = Template.bind({})
 // LoggedIn.args = {}

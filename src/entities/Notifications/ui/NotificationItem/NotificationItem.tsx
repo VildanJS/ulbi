@@ -3,7 +3,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 import { Dialog, Heading, DialogProps  } from 'react-aria-components'
 
-import { Text } from '@/shared/ui/Text'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 import cls from './NotificationItem.module.scss'
 import { INotification } from '../../model/types'

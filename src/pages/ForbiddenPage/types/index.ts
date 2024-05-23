@@ -6,10 +6,8 @@ export enum ForbiddenPageThemes {
 }
 
 interface IForbiddenPage extends PropsWithChildren {
-  className?: string,
-  theme?: ForbiddenPageThemes,
+  className?: string
+  theme?: ForbiddenPageThemes
 }
 
-export {
-  IForbiddenPage
-}
+export { IForbiddenPage }

@@ -4,8 +4,8 @@ import classNames from 'classnames'
 import { useSelector } from 'react-redux'
 
 import { getUserAuthData } from '@/entities/User'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { Text } from '@/shared/ui/Text'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 import cls from './ArticleDetailsRating.module.scss'
 import { RatingCard } from '../../../../../entities/Rating'

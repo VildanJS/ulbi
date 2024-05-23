@@ -1,7 +1,7 @@
 import '@/shared/config/i18n/i18nForTest'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import profileReducer from 'features/profile/testing'
+import profileReducer from '@/features/profile/testing'
 import { withTranslation } from 'react-i18next'
 
 import { IProfile } from '@/entities/Profile'

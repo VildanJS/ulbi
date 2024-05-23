@@ -6,10 +6,8 @@ export enum ThemeSwitcherThemes {
 }
 
 interface IThemeSwitcher extends PropsWithChildren {
-  className?: string,
-  theme?: ThemeSwitcherThemes,
+  className?: string
+  theme?: ThemeSwitcherThemes
 }
 
-export {
-  IThemeSwitcher
-}
+export { IThemeSwitcher }

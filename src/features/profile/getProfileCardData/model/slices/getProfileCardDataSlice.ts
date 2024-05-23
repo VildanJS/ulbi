@@ -18,7 +18,7 @@ const initialState: ProfileSchema = {
     country: Country.Russia,
     city: '',
     avatar: '',
-    age: ''
+    age: '',
   },
 }
 
@@ -31,7 +31,7 @@ export const profileSlice = createSlice({
     },
     setProfileData: (state, action) => {
       state.data = action.payload
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -43,34 +43,24 @@ export const profileSlice = createSlice({
         state.isLoading = false
         state.error = action.payload
       })
-      .addCase(
-        fetchProfileData.fulfilled,
-        (state: ProfileSchema, action) => {
-          state.isLoading = false
-          state.data = action.payload
-        })
-      .addCase(
-        updateProfileData.pending, (state) => {
-          state.error = null
-          state.isLoading = true
-        })
-      .addCase(
-        updateProfileData.rejected, (state, action) => {
-          state.isLoading = false
-          state.error = action.payload
-        })
-      .addCase(
-        updateProfileData.fulfilled,
-        (state: ProfileSchema, action) => {
-          state.isLoading = false
-          state.data = action.payload
-        })
+      .addCase(fetchProfileData.fulfilled, (state: ProfileSchema, action) => {
+        state.isLoading = false
+        state.data = action.payload
+      })
+      .addCase(updateProfileData.pending, (state) => {
+        state.error = null
+        state.isLoading = true
+      })
+      .addCase(updateProfileData.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
+      .addCase(updateProfileData.fulfilled, (state: ProfileSchema, action) => {
+        state.isLoading = false
+        state.data = action.payload
+      })
   },
 })
 
 export const { setReadonly, setProfileData } = profileSlice.actions
 export default profileSlice.reducer
-
-
-
-

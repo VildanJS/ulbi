@@ -8,11 +8,9 @@ export enum ImageBlockThemes {
 }
 
 interface IImageBlock extends PropsWithChildren {
-  className?: string,
-  theme?: ImageBlockThemes,
+  className?: string
+  theme?: ImageBlockThemes
   block: ArticleImageBlock
 }
 
-export {
-  IImageBlock
-}
+export { IImageBlock }

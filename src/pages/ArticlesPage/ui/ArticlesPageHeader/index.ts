@@ -1,5 +1,3 @@
 import { ArticlesPageHeader } from './ui/ArticlesPageHeader'
 
-export {
-  ArticlesPageHeader,
-}
+export { ArticlesPageHeader }

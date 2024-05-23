@@ -10,15 +10,21 @@ describe('Пользователь заходит на страницу со с�
       return false
     })
     cy.get('[data-testid="ArticleList"]').should('exist')
-    cy.get('[data-testid="ArticleListItem"]').should('have.length.greaterThan', 2)
+    cy.get('[data-testid="ArticleListItem"]').should(
+      'have.length.greaterThan',
+      2,
+    )
   })
   it('Пользователь переходит на страницу списка статей (стаб)', () => {
     cy.on('uncaught:exception', (err, runnable) => {
       console.log(err.message)
       return false
     })
-    cy.intercept('GET', '**/articles?*', { fixture: 'articles.json' });
+    cy.intercept('GET', '**/articles?*', { fixture: 'articles.json' })
     cy.get('[data-testid="ArticleList"]').should('exist')
-    cy.get('[data-testid="ArticleListItem"]').should('have.length.greaterThan', 2)
+    cy.get('[data-testid="ArticleListItem"]').should(
+      'have.length.greaterThan',
+      2,
+    )
   })
 })

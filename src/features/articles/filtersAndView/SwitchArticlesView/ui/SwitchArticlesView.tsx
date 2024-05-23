@@ -3,9 +3,11 @@ import { FC, FunctionComponent, SVGAttributes } from 'react'
 import classNames from 'classnames'
 
 import { ArticleViewType } from '@/entities/Article'
-import ListIcon from '@/shared/assets/icons/list.svg'
-import TileIcon from '@/shared/assets/icons/tiled.svg'
-import { AppButton } from '@/shared/ui/AppButton'
+import ListIcon from '@/shared/assets/icons/burger.svg'
+import TileIcon from '@/shared/assets/icons/tile.svg'
+import { AppButton } from '@/shared/ui/redesigned/AppButton'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { Icon } from '@/shared/ui/redesigned/Icon'
 
 import cls from './SwitchArticlesView.module.scss'
 import { ISwitchArticlesView } from '../types'
@@ -38,17 +40,20 @@ export const SwitchArticlesView: FC<ISwitchArticlesView> = (props) => {
   }
 
   return (
-    <div className={switchArticlesViewClass}>
-      {Object.entries(viewTypes).map(([key, { Icon, view }]) => {
+    <Card borderRadius={'round'} className={switchArticlesViewClass}>
+      {Object.entries(viewTypes).map(([key, { Icon: IconSvg, view }]) => {
         return (
           <AppButton
-            theme={'clear'}
+            variant={'clear'}
             key={key}
             onPress={onChangeView(view)}>
-            <Icon className={classNames(cls.icon, { [cls.notSelected]: currentView !== view })} />
+            <Icon
+              Svg={IconSvg}
+              className={classNames(cls.icon, { [cls.notSelected]: currentView !== view })}
+            />
           </AppButton>
         )
       })}
-    </div>
+    </Card>
   )
 }

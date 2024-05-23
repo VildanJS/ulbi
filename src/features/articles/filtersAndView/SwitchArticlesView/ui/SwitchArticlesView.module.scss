@@ -1,15 +1,13 @@
 .switch-articles-view {
   display: flex;
   justify-content: center;
-
 }
 
 .icon {
-  fill: var(--primary-color);
-
+  color: var(--icon-redesigned);
 }
 
 .not-selected {
-  fill: var(--secondary-color);
+  fill: var(--llight-bg-redesigned);
   opacity: 0.5;
 }

@@ -1,6 +1,5 @@
 .profile-card {
-  padding: 20px;
-  border: 2px solid var(--inverted-primary-color);
+  margin-top: 1em;
 }
 
 .content {
@@ -29,26 +28,19 @@
 
 .readonly {
   opacity: 0.5;
+  pointer-events: none;
 }
 
 .input-wrapper {
   list-style: none;
+  width: 100%;
 }
 
-.grid-error {
-  grid-column: 1/4;
-  grid-row: -1
-}
-
-.grid-input {
-  grid-column: 2/4;
-  grid-row: 1/2;
-}
 
 .avatar-wrapper {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin: 0.5em 0;
+  margin: 0.5em 0 2em;
 }

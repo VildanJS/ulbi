@@ -16,6 +16,4 @@ Cypress.Commands.add('addComment', addComment)
 
 Cypress.Commands.add('setRate', setRate)
 
-
-
 export {}

@@ -1,0 +1,64 @@
+.app-button {
+  margin: 0;
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  color: var(--text-redesigned);
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.filled {
+  border: none;
+  outline: none;
+  border-radius: 34px;
+  background: var(--btn-redesigned);
+}
+
+.s {
+  font-size: var(--font-size-s);
+}
+
+.m {
+  font-size: var(--font-size-m);
+}
+
+.l {
+  font-size: var(--font-size-l);
+}
+
+.xl {
+  font-size: var(--font-size-xl);
+}
+
+
+.clear {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.outline {
+  background: none;
+  border: 2px solid var(--btn-redesigned);
+  border-radius: 34px;
+  &:hover {
+    border: 2px solid var(--accent-redesigned);
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.fullWidth {
+  width: 100%;
+}

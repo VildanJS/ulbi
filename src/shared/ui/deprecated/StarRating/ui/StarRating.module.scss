@@ -1,0 +1,17 @@
+.star-rating {
+
+}
+
+.star-icon {
+  cursor: pointer;
+  color: var(--hint-redesigned);
+}
+
+.active {
+  fill: var(--icon-redesigned);
+  color: var(--dark-bg-redesigned);
+}
+.notActive {
+  color: var(--hint-redesigned);
+  fill: none;
+}

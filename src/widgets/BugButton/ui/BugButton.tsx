@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import classNames from 'classnames'
-import { AppButton } from 'shared/ui/AppButton'
+import { AppButton } from '@/shared/ui/redesigned/AppButton'
 
 import cls from './BugButton.module.scss'
 import { IBugButton } from '../types'
@@ -21,7 +21,7 @@ export const BugButton: FC<IBugButton> = (props) => {
 
   return (
     <AppButton
-      theme='outline'
+      variant='outline'
       onPress={throwError}
       className={bugButtonClass}
     >

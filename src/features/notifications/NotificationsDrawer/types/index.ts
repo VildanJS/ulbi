@@ -6,10 +6,8 @@ export enum NotificationsDrawerThemes {
 }
 
 interface INotificationsDrawer extends PropsWithChildren {
-  className?: string,
-  theme?: NotificationsDrawerThemes,
+  className?: string
+  theme?: NotificationsDrawerThemes
 }
 
-export {
-  INotificationsDrawer
-}
+export { INotificationsDrawer }

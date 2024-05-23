@@ -1,0 +1,14 @@
+.menu {
+  border-radius: 16px;
+  border: 1px solid var(--accent-redesigned);
+  background: var(--bg-redesigned);
+  z-index: 10000;
+  min-width: 150px;
+  padding: 6px;
+  overflow: auto;
+  outline: none;
+
+  &:focus {
+    outline-width: 0;
+  }
+}

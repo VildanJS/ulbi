@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { FormikConfig, FormikValues, useFormik } from 'formik'
 
@@ -20,3 +20,5 @@ export const FormikProvider = (props: FormikContextProps) => {
     </FormikContext.Provider>
   )
 }
+
+const useFormik_ = () => useContext(FormikContext)

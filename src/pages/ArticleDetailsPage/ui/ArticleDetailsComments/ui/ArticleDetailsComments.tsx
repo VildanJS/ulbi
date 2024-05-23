@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ArticleDetailsAddComment } from '@/features/articles'
 import { ArticleDetailsCommentList } from '@/features/articles'
-import { Text } from '@/shared/ui/Text'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 import cls from './ArticleDetailsComments.module.scss'
 import { IArticleDetailsComments } from '../types'
@@ -19,7 +19,7 @@ export const ArticleDetailsComments: FC<IArticleDetailsComments> = (props) => {
   return (
 
     <div className={articleDetailsCommentsClass}>
-      <Text title={commentsTranslation('Comments')} />
+      <Text size={'M'} title={commentsTranslation('Comments')} />
       <ArticleDetailsAddComment />
       <ArticleDetailsCommentList id={id} />
     </div>

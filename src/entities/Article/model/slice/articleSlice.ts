@@ -6,7 +6,7 @@ import { IArticle } from '../types/index'
 
 const initialState: ArticleDetailsSchema = {
   error: '',
-  isLoading: false
+  isLoading: false,
 }
 
 export const articleSlice = createSlice({
@@ -15,28 +15,23 @@ export const articleSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticleById.pending,
-        (state) => {
-          state.error = null
-          state.isLoading = true
-        })
-      .addCase(fetchArticleById.rejected,
-        (state, action) => {
-          state.isLoading = false
-          state.error = action.payload
-        })
+      .addCase(fetchArticleById.pending, (state) => {
+        state.error = null
+        state.isLoading = true
+      })
+      .addCase(fetchArticleById.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
       .addCase(
         fetchArticleById.fulfilled,
         (state, action: PayloadAction<IArticle>) => {
           state.isLoading = false
           state.data = action.payload
-        })
-  }
+        },
+      )
+  },
 })
 
 export const { actions: articleActions } = articleSlice
 export default articleSlice.reducer
-
-
-
-

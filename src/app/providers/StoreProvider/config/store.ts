@@ -10,10 +10,9 @@ import { rtkApi } from '@/shared/api/rtkApi'
 import { createReducerManager } from './reducerManager'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 
-
 export const createReduxStore = (
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>
+  asyncReducers?: ReducersMapObject<StateSchema>,
 ) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -21,13 +20,13 @@ export const createReduxStore = (
     user: userReducer,
     ui: UIReducer,
     articlesFilters: articlesFilterReducer,
-    [rtkApi.reducerPath]: rtkApi.reducer
+    [rtkApi.reducerPath]: rtkApi.reducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)
 
   const extraArgument: ThunkExtraArg = {
-    api: $api
+    api: $api,
   }
 
   const store = configureStore({
@@ -35,13 +34,12 @@ export const createReduxStore = (
     devTools: IS_DEV,
     preloadedState: initialState,
 
-
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
-          extraArgument
-        }
-      }).concat(rtkApi.middleware)
+          extraArgument,
+        },
+      }).concat(rtkApi.middleware),
   })
 
   // NEED TO GET TYPED!!!
@@ -50,8 +48,7 @@ export const createReduxStore = (
 
   store.reducerManager = reducerManager
 
-
   return store
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

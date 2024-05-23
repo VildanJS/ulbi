@@ -1,5 +1,3 @@
 import { ArticlesPageFooter } from './ui/ArticlesPageFooter'
 
-export {
-  ArticlesPageFooter,
-}
+export { ArticlesPageFooter }

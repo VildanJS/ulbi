@@ -5,11 +5,9 @@ export enum SidebarThemes {
   INVERTED = 'inverted',
 }
 
-interface ISidebar extends PropsWithChildren {
-  className?: string,
-  theme?: SidebarThemes,
+interface SidebarDeprecatedProps extends PropsWithChildren {
+  className?: string
+  theme?: SidebarThemes
 }
 
-export {
-  ISidebar
-}
+export { SidebarDeprecatedProps }

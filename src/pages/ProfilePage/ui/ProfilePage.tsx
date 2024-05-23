@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import profileReducer from '@/features/profile'
-import { Page } from '@/shared/ui/Page'
+import { Page } from '@/shared/ui/deprecated/Page'
 import { DynamicModuleLoader, ReducersList } from '@/shared/utils/components/DynamicModuleLoader'
 
 import { ProfilePageCard } from './PofilePageCard'

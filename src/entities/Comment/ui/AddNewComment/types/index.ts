@@ -7,10 +7,8 @@ export enum AddNewCommentThemes {
 
 interface IAddNewComment extends PropsWithChildren {
   sendComment: (text: string) => void
-  className?: string,
-  theme?: AddNewCommentThemes,
+  className?: string
+  theme?: AddNewCommentThemes
 }
 
-export {
-  IAddNewComment
-}
+export { IAddNewComment }

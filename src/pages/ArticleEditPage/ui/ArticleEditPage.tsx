@@ -3,7 +3,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 import { useParams } from 'react-router-dom'
 
-import { Page } from '@/shared/ui/Page'
+import { Page } from '@/shared/ui/deprecated/Page'
 
 import cls from './ArticleEditPage.module.scss'
 import { IArticleEditPage } from '../types'

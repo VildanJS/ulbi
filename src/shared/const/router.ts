@@ -5,7 +5,7 @@ export enum AppRouteNames {
   NOT_FOUND = 'not_found',
   FORBIDDEN = 'forbidden',
   ADMIN_PANEL = 'admin_panel',
-  ARTICLES = 'articles',  //id
+  ARTICLES = 'articles', //id
   ARTICLE_DETAILS = 'article_details',
   ARTICLE_EDIT = 'article_edit',
   ARTICLE_CREATE = 'article_create',

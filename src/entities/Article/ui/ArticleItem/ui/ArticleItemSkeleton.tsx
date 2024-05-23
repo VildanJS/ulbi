@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
 import classNames from 'classnames'
+import { VStack } from '@/shared/ui/redesigned/Stack'
 
-import { Skeleton } from '@/shared/ui/Skeleton'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 
 import cls from './ArticleItem.module.scss'
 import { ArticleViewType } from '../../../model/types'
@@ -18,34 +20,32 @@ export const SkeletonItem: FC<SkeletonProps> = (props) => {
 
   if (view === 'full') {
     return (
-      <div className={articleItemClass}>
-        <div className={cls.card}>
-          <div className={cls.header}>
-            <Skeleton border={'50%'} width={30} height={30} />
-            <Skeleton width={150} height={16} className={cls.username} />
-            <Skeleton width={150} height={16} className={cls.createdAt} />
-          </div>
-          <Skeleton width={250} height={24} className={cls.title} />
-          <Skeleton height={200} className={cls.image} />
-          <div className={cls.footer}>
-            <Skeleton width={200} height={36} />
-          </div>
+      <Card max padding={'32'} borderRadius={'round'} className={cls.card}>
+        <div className={cls.header}>
+          <Skeleton border={'50%'} width={30} height={30} />
+          <Skeleton width={150} height={16} className={cls.username} />
+          <Skeleton width={150} height={16} className={cls.createdAt} />
         </div>
-      </div>
+        <Skeleton width={250} height={24} className={cls.title} />
+        <Skeleton height={200} className={cls.image} />
+        <div className={cls.footer}>
+          <Skeleton width={200} height={36} />
+        </div>
+      </Card>
     )
   }
 
   return (
-    <div className={articleItemClass}>
-      <div className={cls.card}>
-        <div className={cls.imageWrapper}>
-          <Skeleton height={200} className={cls.image} />
-        </div>
-        <div className={cls.infoWrapper}>
-          <Skeleton width={130} height={16} className={cls.types} />
-        </div>
+    <Card className={cls.card}>
+      <Skeleton height={200} className={cls.image} />
+
+      <VStack  justify={'SpaceBetween'} gap={'4'}>
+        <Skeleton width={40} height={16} className={cls.types} />
+        <Skeleton width={60} height={16} className={cls.types} />
         <Skeleton width={150} height={16} className={cls.title} />
-      </div>
-    </div>
+      </VStack>
+
+    </Card>
+
   )
 }

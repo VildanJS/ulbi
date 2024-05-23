@@ -4,7 +4,7 @@ import {
   fetchProfileData,
   getProfileData,
   getProfileError,
-  getProfileIsLoading } from 'features/profile'
+  getProfileIsLoading } from '@/features/profile'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 

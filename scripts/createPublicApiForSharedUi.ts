@@ -10,13 +10,17 @@ project.addSourceFilesAtPaths('src/**/*.tsx')
 const layer = process.argv[2] || 'shared'
 const slice = 'ui'
 const indexFilename = 'index.ts'
-const dest = project.getDirectory(path.resolve(__dirname, '..', 'src', layer, slice))
+const dest = project.getDirectory(
+  path.resolve(__dirname, '..', 'src', layer, slice),
+)
 const directories = dest?.getDirectories()
 
 directories?.forEach((directory) => {
   const folderName = directory.getPath()
-  const isIndexFileExist = directory.getSourceFile(`${folderName}/${indexFilename}`)
-  if(isIndexFileExist) {
+  const isIndexFileExist = directory.getSourceFile(
+    `${folderName}/${indexFilename}`,
+  )
+  if (isIndexFileExist) {
     const filesInFolder = directory.getSourceFiles([
       '**/*.tsx',
       '!**/*.stories.tsx',

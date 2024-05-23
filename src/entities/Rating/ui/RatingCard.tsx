@@ -1,16 +1,18 @@
-import { FC, useCallback, useState } from 'react'
+import { ChangeEventHandler, FC, useCallback, useState } from 'react'
 
 import classNames from 'classnames'
+import { AppTextField } from '@/shared/ui/redesigned/AppInput'
 
-import { AppButton } from '@/shared/ui/AppButton'
-import { Card } from '@/shared/ui/Card'
-import { Input } from '@/shared/ui/Input'
-import { Modal } from '@/shared/ui/Modal'
-import { HStack, VStack } from '@/shared/ui/Stack'
-import { StarRating } from '@/shared/ui/StarRating'
-import { Text } from '@/shared/ui/Text'
+import { Modal } from '@/shared/ui/deprecated/Modal'
+import { StarRating } from '@/shared/ui/deprecated/StarRating'
+import { AppButton } from '@/shared/ui/redesigned/AppButton'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 import cls from './RatingCard.module.scss'
+
+
 
 
 interface RatingProps {
@@ -40,6 +42,8 @@ export const RatingCard: FC<RatingProps> = (props) => {
   const [currentStar, setCurrentStar] = useState(initialStarsCount)
   const [feedback, setFeedback] = useState(initialFeedback)
 
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => setFeedback(e.target.value)
+
   const onSelectStars = useCallback((star: number) => {
     setIsModalOpen(true)
     setCurrentStar(star)
@@ -59,19 +63,19 @@ export const RatingCard: FC<RatingProps> = (props) => {
   const ratingClass = classNames(className, cls.rating)
 
   return (
-    <Card data-testid='RatingCard' className={ratingClass}>
+    <Card borderRadius={'round'} data-testid='RatingCard' className={ratingClass}>
       <VStack align={'Center'} gap={'8'}>
-        <Text title={title} />
+        <Text size={'M'} title={title} />
         <StarRating currentStar={currentStar} onSelectStar={onSelectStars} />
       </VStack>
       <Modal isOpen={isModalOpen}>
         <VStack gap={'32'}>
           <Text title={feedbackTitle} />
-          <Input data-testid='RatingCard.Input' value={feedback} onChange={setFeedback} placeholder={'Введите ваш отзыв'} />
+          <AppTextField data-testid='RatingCard.Input' value={feedback} onChange={onChange} placeholder={'Введите ваш отзыв'} />
         </VStack>
         <HStack className={cls.modalWrap} max gap={'16'} justify={'End'}>
-          <AppButton data-testid='RatingCard.Cancel' onPress={cancelHandle} theme='outline'>Отменить</AppButton>
-          <AppButton data-testid='RatingCard.Send' onPress={sendHandle} theme='outline'>Отправить</AppButton>
+          <AppButton data-testid='RatingCard.Cancel' onPress={cancelHandle} variant='outline'>Отменить</AppButton>
+          <AppButton data-testid='RatingCard.Send' onPress={sendHandle} variant='outline'>Отправить</AppButton>
         </HStack>
       </Modal>
     </Card>

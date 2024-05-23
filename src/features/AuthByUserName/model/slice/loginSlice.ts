@@ -10,7 +10,7 @@ const initialState = {
 } as LoginSchema
 
 export const loginSlice = createSlice({
-  name: 'counter',
+  name: 'login',
   initialState,
   reducers: {
     setUsername: (state, action: PayloadAction<string>) => {
@@ -18,7 +18,7 @@ export const loginSlice = createSlice({
     },
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,7 +40,3 @@ export const { actions: loginActions } = loginSlice
 export const { setUsername, setPassword } = loginSlice.actions
 
 export const { reducer: loginReducer } = loginSlice
-
-
-
-

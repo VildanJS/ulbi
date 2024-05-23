@@ -1,4 +1,4 @@
-import { AppRoutesProps } from 'shared/types/router'
+import { AppRoutesProps } from '@/shared/types/router'
 
 import { UserRole } from '@/entities/User'
 import AboutPage from '@/pages/AboutPage'

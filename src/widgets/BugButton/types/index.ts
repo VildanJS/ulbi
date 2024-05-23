@@ -6,10 +6,8 @@ export enum BugButtonThemes {
 }
 
 interface IBugButton extends PropsWithChildren {
-  className?: string,
-  theme?: BugButtonThemes,
+  className?: string
+  theme?: BugButtonThemes
 }
 
-export {
-  IBugButton
-}
+export { IBugButton }

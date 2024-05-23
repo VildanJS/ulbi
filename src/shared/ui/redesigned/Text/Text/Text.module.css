@@ -1,0 +1,46 @@
+.text {
+  margin: 0;
+  font-size: var(--font-m);
+  color: var(--primary-color);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-m);
+  color: var(--primary-color);
+}
+
+.error .text {
+  color: var(--red-dark);
+}
+.error .title {
+  color: var(--red-light);
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.M .text {
+  font-size: var(--font-size-m);
+}
+.M .title {
+  font-size: var(--font-size-l);
+}
+
+.L .text {
+  font-size: var(--font-size-l);
+}
+.L .title {
+  color: var(--font-size-xl);
+}
+
+/*# sourceMappingURL=Text.module.css.map */

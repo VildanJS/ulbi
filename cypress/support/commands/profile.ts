@@ -1,5 +1,3 @@
-import { IProfile } from 'entities/Profile'
-
 export const updateProfile = (firstname: string, secondname: string) => {
   cy.get('[data-testid="ProfileCard.EditButton"]').click()
   cy.get('[data-testid="ProfileCard.firstname"]').clear().type(firstname)
@@ -21,11 +19,11 @@ export const resetProfile = (profileId: string) => {
       country: 'Ukraine',
       city: 'Moscow',
       username: 'testuser',
-      avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
+      avatar:
+        'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
   })
 }
-
 
 declare global {
   namespace Cypress {

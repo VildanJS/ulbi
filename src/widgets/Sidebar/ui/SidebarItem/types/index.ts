@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react'
 
 export enum SidebarItemThemes {
   PRIMARY = 'primary',
@@ -6,19 +6,9 @@ export enum SidebarItemThemes {
 }
 
 export interface SidebarItemType {
-  path: string,
-  text: string,
-  Icon: FC<SVGAttributes<SVGElement>>,
-  authOnly?: boolean;
-}
-
-interface ISidebarItem extends PropsWithChildren {
-  item: SidebarItemType,
-  collapsed: boolean
-  theme?: SidebarItemThemes,
-
-}
-
-export {
-  ISidebarItem
+  path: string
+  text: string
+  Icon: FC<SVGAttributes<SVGElement>>
+  icon?: string
+  authOnly?: boolean
 }

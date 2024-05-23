@@ -7,8 +7,8 @@ const notificationsApi = rtkApi.injectEndpoints({
     getNotifications: build.query<INotification[], null>({
       query: () => ({
         url: '/notifications',
-      })
-    })
-  })
+      }),
+    }),
+  }),
 })
 export const useGetNotifications = notificationsApi.useGetNotificationsQuery

@@ -1,11 +1,13 @@
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Page } from 'shared/ui/Page'
+import { Page } from '@/shared/ui/deprecated/Page'
 
 import { Counter } from '@/entities/Counter'
 import { BugButton } from '@/widgets/BugButton'
 
 import cls from './MainPage.module.scss'
+
+
 
 const MainPage = () => {
   const { t } = useTranslation('main')

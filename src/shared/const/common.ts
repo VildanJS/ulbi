@@ -1,7 +1,7 @@
 export enum Currency {
   'RUB' = 'RUB',
   'TNG' = 'TNG',
-  'USD' = 'USD'
+  'USD' = 'USD',
 }
 
 export enum Country {
@@ -9,5 +9,5 @@ export enum Country {
   'Kazakhstan' = 'Kazakhstan',
   'Belarus' = 'Belarus',
   'Ukraine' = 'Ukraine',
-  'Armenia' = 'Armenia'
+  'Armenia' = 'Armenia',
 }

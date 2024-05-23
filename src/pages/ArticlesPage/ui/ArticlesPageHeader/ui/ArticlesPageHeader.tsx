@@ -2,8 +2,6 @@ import { useCallback } from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { SwitchArticlesView } from '@/features/articles'
-import { ArticlesFilters } from '@/features/articles'
 import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
 import cls from './ArticlesPageHeader.module.scss'
@@ -24,8 +22,7 @@ export const ArticlesPageHeader = () => {
 
   return (
     <div className={cls.articlesPageHeader}>
-      <ArticlesFilters />
-      <SwitchArticlesView view={view} changeViewHandler={changeViewHandler} />
+
     </div>
   )
 }

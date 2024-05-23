@@ -6,10 +6,8 @@ export enum PageLoaderThemes {
 }
 
 interface IPageLoader extends PropsWithChildren {
-  className?: string,
-  theme?: PageLoaderThemes,
+  className?: string
+  theme?: PageLoaderThemes
 }
 
-export {
-  IPageLoader
-}
+export { IPageLoader }

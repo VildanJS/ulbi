@@ -1,15 +1,13 @@
 import { PropsWithChildren } from 'react'
 
-export enum UserThemes {
+enum UserThemes {
   PRIMARY = 'primary',
   INVERTED = 'inverted',
 }
 
-interface IUser extends PropsWithChildren {
-  className?: string,
-  theme?: UserThemes,
+interface UserProps extends PropsWithChildren {
+  className?: string
+  theme?: UserThemes
 }
 
-export {
-  IUser
-}
+export { UserProps, UserThemes }

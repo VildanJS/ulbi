@@ -11,7 +11,7 @@ const profile = {
   first: 'asd',
   city: 'asf',
   currency: Currency.USD,
-  id: '1'
+  id: '1',
 }
 
 describe('updateProfileData.test', () => {
@@ -29,7 +29,6 @@ describe('updateProfileData.test', () => {
   test('error', async () => {
     const thunk = new TestAsyncThunk(updateProfileData)
     thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }))
-
 
     const result = await thunk.callThunk(profile)
 

@@ -8,11 +8,9 @@ export enum TextBlockThemes {
 }
 
 interface ITextBlock extends PropsWithChildren {
-  className?: string,
-  theme?: TextBlockThemes,
+  className?: string
+  theme?: TextBlockThemes
   block: ArticleTextBlock
 }
 
-export {
-  ITextBlock
-}
+export { ITextBlock }

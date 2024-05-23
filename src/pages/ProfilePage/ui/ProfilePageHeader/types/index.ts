@@ -6,10 +6,8 @@ export enum ProfilePageHeaderThemes {
 }
 
 interface IProfilePageHeader extends PropsWithChildren {
-  className?: string,
-  theme?: ProfilePageHeaderThemes,
+  className?: string
+  theme?: ProfilePageHeaderThemes
 }
 
-export {
-  IProfilePageHeader
-}
+export { IProfilePageHeader }

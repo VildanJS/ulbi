@@ -6,10 +6,8 @@ export enum PageErrorThemes {
 }
 
 interface IPageError extends PropsWithChildren {
-  className?: string,
-  theme?: PageErrorThemes,
+  className?: string
+  theme?: PageErrorThemes
 }
 
-export {
-  IPageError
-}
+export { IPageError }

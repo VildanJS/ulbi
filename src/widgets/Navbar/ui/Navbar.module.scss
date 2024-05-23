@@ -1,16 +1,11 @@
 .navbar {
   width: 100%;
   height: var(--navbar-height);
-  background: var(--inverted-bg-color);
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.align-right {
-  display: flex;
-  margin-left: auto;
-}
 
 .btn {
   background: none;
@@ -19,7 +14,6 @@
 
 .link-to-create {
   text-decoration: none;
-  margin-left: 260px;
 }
 
 .my-overlay {

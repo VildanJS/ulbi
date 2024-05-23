@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Page } from 'shared/ui/Page'
+import { Page } from '@/shared/ui/deprecated/Page'
 
 import cls from './NotFound.module.scss'
 import { INotFound } from '../types'

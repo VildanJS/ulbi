@@ -1,13 +1,15 @@
 import { FC, useCallback } from 'react'
 
 import classNames from 'classnames'
-import { getProfileData, getProfileIsReadonly, setReadonly } from 'features/profile'
+import { getProfileData, getProfileIsReadonly, setReadonly } from '@/features/profile'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 
 import { getUserAuthData } from '@/entities/User'
-import { AppButton } from '@/shared/ui/AppButton'
-import { Text } from '@/shared/ui/Text'
+import { AppButton } from '@/shared/ui/redesigned/AppButton'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { Text } from '@/shared/ui/redesigned/Text'
 import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
 import cls from './ProfilePageHeader.module.scss'
@@ -35,16 +37,17 @@ export const ProfilePageHeader: FC<IProfilePageHeader> = (props) => {
   }, [dispatch])
 
   return (
-    <div className={profilePageHeaderClass}>
-      <Text text={t('Profile')}></Text>
-      {
-        isEditable &&
+    <Card max padding={'24'} borderRadius={'round'} className={profilePageHeaderClass}>
+      <HStack max justify={'SpaceBetween'} align={'Center'}>
+        <Text size={'L'} text={t('Profile')}></Text>
+        {
+          isEditable &&
           (readonly
             ? (<AppButton
               data-testid='ProfileCard.EditButton'
               onPress={onEdit}
               className={cls.editBtn}
-              theme={'outline'}
+              variant={'outline'}
             >
               {t('Edit')}
             </AppButton>)
@@ -52,11 +55,13 @@ export const ProfilePageHeader: FC<IProfilePageHeader> = (props) => {
               data-testid='ProfileCard.CancelButton'
               onPress={onCancelEdit}
               className={cls.editBtn}
-              theme={'outline'}
+              variant={'outline'}
             >
               {t('Cancel')}
             </AppButton>))
-      }
-    </div>
+        }
+      </HStack>
+
+    </Card>
   )
 }

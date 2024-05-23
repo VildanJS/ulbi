@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import classNames from 'classnames'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 
 import cls from './ArticleItemList.module.scss'
 import { ArticleViewType, IArticle } from '../../../model/types'
@@ -48,12 +49,12 @@ export const ArticleItemList: FC<IArticleItemList> = (props) => {
 
 
   return (
-    <div className={articleItemListClass}>
+    <HStack max justify={'Center'} gap={'32'} className={articleItemListClass}>
       {
         articles.length > 0
           ? articles.map(renderArticle)
           : null
       }
-    </div>
+    </HStack>
   )
 }

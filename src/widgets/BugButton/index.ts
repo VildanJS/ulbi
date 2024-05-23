@@ -1,5 +1,3 @@
 import { BugButton } from './ui/BugButton'
 
-export {
-  BugButton,
-}
+export { BugButton }

@@ -1,10 +1,6 @@
 import LoginSchema from './model/types/loginSchema'
 import { LoginModal } from './ui/LoginModal'
 
-export {
-  LoginModal,
-}
+export { LoginModal }
 
-export type {
-  LoginSchema
-}
+export type { LoginSchema }

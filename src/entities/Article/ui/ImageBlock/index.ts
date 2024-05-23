@@ -1,5 +1,3 @@
 import { ImageBlock } from './ui/ImageBlock'
 
-export {
-  ImageBlock,
-}
+export { ImageBlock }

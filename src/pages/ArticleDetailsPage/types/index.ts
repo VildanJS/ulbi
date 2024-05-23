@@ -6,10 +6,8 @@ export enum ArticleDetailsPageThemes {
 }
 
 interface IArticleDetailsPage extends PropsWithChildren {
-  className?: string,
-  theme?: ArticleDetailsPageThemes,
+  className?: string
+  theme?: ArticleDetailsPageThemes
 }
 
-export {
-  IArticleDetailsPage
-}
+export { IArticleDetailsPage }

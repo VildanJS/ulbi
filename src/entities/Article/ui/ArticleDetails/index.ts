@@ -1,5 +1,3 @@
 import { ArticleDetails } from './ui/ArticleDetails'
 
-export {
-  ArticleDetails,
-}
+export { ArticleDetails }

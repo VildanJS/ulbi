@@ -6,7 +6,7 @@ export enum ArticleDetailsThemes {
 }
 
 export interface IArticleDetails extends PropsWithChildren {
-  className?: string,
-  theme?: ArticleDetailsThemes,
+  className?: string
+  theme?: ArticleDetailsThemes
   id?: string
 }

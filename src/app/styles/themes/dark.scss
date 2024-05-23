@@ -1,12 +1,28 @@
 @import "global";
 $test: #303846;
-.app.dark {
+
+.dark {
   --bg-color: #08020d;
   --inverted-bg-color: #fff;
   --primary-color: #34c176;
   --secondary-color: #eaeaeaff;
   --inverted-primary-color: #5855b9;
   --inverted-secondary-color: #090909;
+
+
+  //redesigned
+  --dark-bg-redesigned: #1d1d1d;
+  --light-bg-redesigned: #323232;
+  --bg-redesigned: #262626;
+
+  --btn-redesigned: #3f3f3f;
+  --text-redesigned: #ebebeb;
+  --hint-redesigned: #555555;
+  --cancel-redesigned: #D95757;
+  --save-redesigned: #6CD98B;
+  --icon-redesigned: #ebebeb;
+  --accent-redesigned: #0367e0;
+
 
   // skeleton
   --skeleton-color: #1515ad;

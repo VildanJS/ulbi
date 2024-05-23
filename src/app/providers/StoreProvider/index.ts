@@ -12,5 +12,5 @@ export {
   ReduxStoreWithManager,
   StateSchema,
   StateSchemaKey,
-  ThunkConfig
+  ThunkConfig,
 }

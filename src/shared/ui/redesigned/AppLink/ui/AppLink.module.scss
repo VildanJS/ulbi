@@ -1,0 +1,15 @@
+/* stylelint-disable-next-line block-no-empty  */
+.app-link {
+  color: var(--text-redesigned);
+
+  &:hover {
+    color: var(--accent-redesigned);
+  }
+}
+.red {
+  color: var(--cancel-redesigned);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

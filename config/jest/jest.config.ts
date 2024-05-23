@@ -17,13 +17,9 @@ export default {
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
-  coveragePathIgnorePatterns: [
-    '\\\\node_modules\\\\'
-  ],
+  coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
-  moduleDirectories: [
-    'node_modules', 'src'
-  ],
+  moduleDirectories: ['node_modules', 'src'],
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
@@ -35,27 +31,19 @@ export default {
     'tsx',
     'json',
     'node',
-    'scss'
+    'scss',
   ],
   testEnvironment: 'jsdom',
-  testMatch: [
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[tj]s?(x)'
-  ],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
   rootDir: '../../',
-  roots: [
-    '<rootDir>'
-  ],
-  modulePaths: [
-    '<rootDir>src'
-  ],
+  roots: ['<rootDir>'],
+  modulePaths: ['<rootDir>src'],
   setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
   moduleNameMapper: {
     '\\.(s?css)$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'EmptyJestComponent.tsx'),
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
-
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -67,7 +55,6 @@ export default {
   // coverageDirectory: undefined,
 
   // An array of regexp pattern strings used to skip coverage collection
-
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
@@ -105,9 +92,9 @@ export default {
 
   // A set of global variables that need to be available in all test environments
   globals: {
-    'IS_DEV': true,
-    'API_URL': '',
-    'PROJECT_NAME': 'jest'
+    IS_DEV: true,
+    API_URL: '',
+    PROJECT_NAME: 'jest',
   },
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
@@ -136,12 +123,15 @@ export default {
   // Use this configuration option to add custom reporters to Jest
   reporters: [
     'default',
-    ['jest-html-reporters', {
-      publicPath: '<rootDir>/reports/unit',
-      filename: 'report.html',
-      // openReport: true,
-      inlineSource: true
-    }]
+    [
+      'jest-html-reporters',
+      {
+        publicPath: '<rootDir>/reports/unit',
+        filename: 'report.html',
+        // openReport: true,
+        inlineSource: true,
+      },
+    ],
   ],
 
   // Automatically reset mock state before every test
@@ -158,9 +148,7 @@ export default {
 
   // The root directory that Jest should scan for tests and modules within
 
-
   // A list of paths to directories that Jest should use to search for files in
-
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -179,7 +167,6 @@ export default {
 
   // The test environment that will be used for testing
 
-
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
 
@@ -187,7 +174,6 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

@@ -4,7 +4,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 
 import { Notifications } from '@/entities/Notifications'
-import { AppDrawer } from '@/shared/ui/AppDrawer'
+import { AppDrawer } from '@/shared/ui/deprecated/AppDrawer'
 
 import cls from './NotificationsDrawer.module.scss'
 import { INotificationsDrawer } from '../types'

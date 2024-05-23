@@ -12,26 +12,25 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config!.resolve?.extensions?.push('.tsx', '.ts')
   config!.resolve!.alias = {
     ...config.resolve!.alias,
-    '@': src
+    '@': src,
   }
-
 
   const rules = config.module?.rules as RuleSetRule[]
 
-  config.module!.rules = rules.map((rule) => (
-    /svg/.test(rule.test as string)
-      ? { ...rule, exclude: /\.svg$/i }
-      : rule
-  ))
+  config.module!.rules = rules.map((rule) =>
+    /svg/.test(rule.test as string) ? { ...rule, exclude: /\.svg$/i } : rule,
+  )
 
   config.module?.rules?.push(buildSvgLoader())
   config!.module!.rules!.push(buildCssLoader(true))
 
-  config.plugins?.push(new DefinePlugin({
-    IS_DEV: JSON.stringify(true),
-    API_URL: JSON.stringify('https://testapi.ru'),
-    PROJECT_NAME: JSON.stringify('storybook')
-  }))
+  config.plugins?.push(
+    new DefinePlugin({
+      IS_DEV: JSON.stringify(true),
+      API_URL: JSON.stringify('https://testapi.ru'),
+      PROJECT_NAME: JSON.stringify('storybook'),
+    }),
+  )
 
   return config
 }

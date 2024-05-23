@@ -6,16 +6,10 @@ export { getProfileIsLoading } from './selectors/getProfileIsLoading/getProfileI
 export { getProfileError } from './selectors/getProfileError/getProfileError'
 export { getProfileIsReadonly } from './selectors/getProfileIsReadonly/getProfileIsReadonly'
 
-export {
-  fetchProfileData
-} from './services/fetchProfileData/fetchProfileData'
+export { fetchProfileData } from './services/fetchProfileData/fetchProfileData'
 
-export {
-  updateProfileData
-} from './services/updateProfileData/updateProfileData'
+export { updateProfileData } from './services/updateProfileData/updateProfileData'
 
-export {
-  setReadonly, setProfileData
-} from './slices/getProfileCardDataSlice'
+export { setReadonly, setProfileData } from './slices/getProfileCardDataSlice'
 
 export default profileReducer

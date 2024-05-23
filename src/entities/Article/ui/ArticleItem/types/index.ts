@@ -8,12 +8,10 @@ export enum ArticleItemThemes {
 }
 
 interface IArticleItem extends PropsWithChildren {
-  className?: string,
-  theme?: ArticleItemThemes,
-  article: IArticle,
-  view: ArticleViewType,
+  className?: string
+  theme?: ArticleItemThemes
+  article: IArticle
+  view: ArticleViewType
 }
 
-export {
-  IArticleItem
-}
+export { IArticleItem }

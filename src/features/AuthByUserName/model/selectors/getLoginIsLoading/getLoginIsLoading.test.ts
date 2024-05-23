@@ -6,8 +6,8 @@ describe('getLoginIsLoading.test', () => {
   test('should return false', () => {
     const state: DeepPartial<StateSchema> = {
       loginForm: {
-        isLoading: false
-      }
+        isLoading: false,
+      },
     }
     expect(getLoginIsLoading(state as StateSchema)).toBeFalsy()
   })
@@ -15,8 +15,8 @@ describe('getLoginIsLoading.test', () => {
   test('should return false', () => {
     const state: DeepPartial<StateSchema> = {
       loginForm: {
-        isLoading: true
-      }
+        isLoading: true,
+      },
     }
     expect(getLoginIsLoading(state as StateSchema)).toBeTruthy()
   })

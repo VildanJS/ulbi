@@ -2,10 +2,11 @@ import { FC, useEffect } from 'react'
 
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
+import { VStack } from '@/shared/ui/redesigned/Stack'
 
 import { ArticleItemList } from '@/entities/Article'
 import { rtkApi } from '@/shared/api/rtkApi'
-import { Text } from '@/shared/ui/Text'
+import { Text } from '@/shared/ui/redesigned/Text'
 import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
 import cls from './ArticleDetailsRecommendations.module.scss'
@@ -19,7 +20,8 @@ const recommendationsApi = rtkApi.injectEndpoints({
       query: (limit) => ({
         url: '/articles',
         params: {
-          _limit: limit
+          _limit: limit,
+          _expand: 'user'
         }
       })
     })
@@ -44,13 +46,13 @@ export const ArticleDetailsRecommendations: FC<IArticleDetailsRecommendations> =
   )
 
   return (
-    <div className={articleDetailsRecommendationsClass}>
-      <Text title={t('Рекомендации')}></Text>
+    <VStack gap={'16'} className={articleDetailsRecommendationsClass}>
+      <Text size={'M'} title={t('Рекомендации')}></Text>
       <ArticleItemList
         target="_blank" className={cls.noWrap}
         articles={recommendations}
         isLoading={isLoading} view={'cards'}
       />
-    </div>
+    </VStack>
   )
 }

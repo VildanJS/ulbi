@@ -7,6 +7,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import "@/../node_modules/@spectrum-css/vars/dist/spectrum-global.css";
 html {
   line-height: 1.15; /* 1 */
   text-size-adjust: 100%; /* 2 */
@@ -342,10 +343,19 @@ template {
   --secondary-color: #eaeaeaff;
   --inverted-primary-color: #5855b9;
   --inverted-secondary-color: #090909;
+  --dark-bg-redesigned: #090F11;
+  --bg-redesigned: #0C1214;
+  --light-bg-redesigned: #151C1F;
+  --text-redesigned: #DBDBDB;
+  --hint-redesigned: #555555;
+  --cancel-redesigned: #D95757;
+  --save-redesigned: #6CD98B;
+  --icon-redesigned: #74A2B2;
+  --accent-redesigned: #5ED3F3;
   --skeleton-color: #1515ad;
   --skeleton-shadow: #2b2be8;
   --code-bg: #1212a1;
-  --article-bg: #232625 ;
+  --article-bg: #232625;
 }
 
 :root {
@@ -416,6 +426,28 @@ body {
 
 .mr-2 {
   margin-right: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.grid_1 {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.grid_2 {
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+
+.grid_3 {
+  grid-column: 3/4;
+  grid-row: 1/2;
 }
 
 * {

@@ -14,18 +14,24 @@ const articleDetailsCommentsAdapter = createEntityAdapter<IComment>({
   selectId: (comment) => comment.id,
 })
 
-export const getArticleDetailsComments = articleDetailsCommentsAdapter.getSelectors<StateSchema>(
-  (state) => state.articleDetailsComments || articleDetailsCommentsAdapter.getInitialState()
-)
+export const getArticleDetailsComments =
+  articleDetailsCommentsAdapter.getSelectors<StateSchema>(
+    (state) =>
+      state.articleDetailsComments ||
+      articleDetailsCommentsAdapter.getInitialState(),
+  )
 
 const articleDetailsCommentsSlice = createSlice({
   name: 'articleDetailsComments',
-  initialState: articleDetailsCommentsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
-    error: null,
-    isLoading: false,
-    ids: [],
-    entities: {}
-  }),
+  initialState:
+    articleDetailsCommentsAdapter.getInitialState<ArticleDetailsCommentsSchema>(
+      {
+        error: null,
+        isLoading: false,
+        ids: [],
+        entities: {},
+      },
+    ),
   reducers: {
     articleDetailsCommentAdd: articleDetailsCommentsAdapter.addOne,
     articleDetailsCommentsAdapterReceived(state, action) {
@@ -34,25 +40,26 @@ const articleDetailsCommentsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCommentsByArticleId.pending,
-        (state) => {
-          state.error = null
-          state.isLoading = true
-        })
-      .addCase(fetchCommentsByArticleId.rejected,
-        (state, action) => {
-          state.isLoading = false
-          state.error = action.payload
-        })
+      .addCase(fetchCommentsByArticleId.pending, (state) => {
+        state.error = null
+        state.isLoading = true
+      })
+      .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
       .addCase(
         fetchCommentsByArticleId.fulfilled,
         (state, action: PayloadAction<IComment[]>) => {
           state.isLoading = false
           articleDetailsCommentsAdapter.setAll(state, action.payload)
-        })
-
-  }
+        },
+      )
+  },
 })
 
-export const { articleDetailsCommentAdd, articleDetailsCommentsAdapterReceived } = articleDetailsCommentsSlice.actions
+export const {
+  articleDetailsCommentAdd,
+  articleDetailsCommentsAdapterReceived,
+} = articleDetailsCommentsSlice.actions
 export default articleDetailsCommentsSlice.reducer

@@ -8,6 +8,7 @@ extends:
   - plugin:react/jsx-runtime
   - plugin:@typescript-eslint/recommended
   - plugin:react-redux/recommended
+  - prettier
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
@@ -39,6 +40,11 @@ rules:
   semi:
     - error
     - never
+  "react/jsx-max-props-per-line":
+    - error
+    - maximum: 2
+      when: multiline
+  "@typescript-eslint/no-namespace": off
   '@typescript-eslint/no-non-null-assertion': off
   '@typescript-eslint/ban-ts-ignore': off
   "object-curly-spacing":

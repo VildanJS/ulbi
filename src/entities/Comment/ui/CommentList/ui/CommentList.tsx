@@ -3,7 +3,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 
-import { Text } from '@/shared/ui/Text'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 import cls from './CommentList.module.scss'
 import { CommentCard } from '../../CommentCard'

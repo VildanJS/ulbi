@@ -8,11 +8,9 @@ export enum CodeBlockThemes {
 }
 
 interface ICodeBlock extends PropsWithChildren {
-  className?: string,
-  theme?: CodeBlockThemes,
+  className?: string
+  theme?: CodeBlockThemes
   block: ArticleCodeBlock
 }
 
-export {
-  ICodeBlock
-}
+export { ICodeBlock }

@@ -7,7 +7,7 @@ import { ArticlesFiltersSchema } from '../types'
 const initialState: ArticlesFiltersSchema = {
   order: 'ask',
   sort: ArticlesSortFields.CREATED,
-  type: 'ALL'
+  type: 'ALL',
 }
 
 export const articlesFilterSlice = createSlice({
@@ -25,11 +25,11 @@ export const articlesFilterSlice = createSlice({
     },
     setType: (state, action) => {
       state.type = action.payload
-    }
+    },
   },
 })
 
-
-export const { setOrder, setSort, setSearch, setType } = articlesFilterSlice.actions
+export const { setOrder, setSort, setSearch, setType } =
+  articlesFilterSlice.actions
 
 export const { reducer: articlesFilterReducer } = articlesFilterSlice

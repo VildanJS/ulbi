@@ -12,9 +12,7 @@ import { getArticlesPageHasMore } from '../../../model/selectors/articlesPageSel
 export const ArticlesPageFooter = (view: ArticleViewType, isLoading?: boolean) => {
   const hasMore = useSelector(getArticlesPageHasMore)
 
-  if (!isLoading) return undefined
-
-  const numberOfCards = 8
+  const numberOfCards = 6
   const numberOfFullCards = 3
 
   const skeletonsClass = classNames(cls.wrapper, cls[view])
@@ -31,5 +29,6 @@ export const ArticlesPageFooter = (view: ArticleViewType, isLoading?: boolean) =
     )
   }
 
-  return () => hasMore ? renderSkeleton(view, isLoading) : null
+  return () => (hasMore && view !== 'cards' ) ? renderSkeleton(view, isLoading) : null
 }
+

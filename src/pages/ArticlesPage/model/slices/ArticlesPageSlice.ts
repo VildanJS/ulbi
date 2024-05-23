@@ -1,4 +1,8 @@
-import { createEntityAdapter, createSlice, PayloadAction, } from '@reduxjs/toolkit'
+import {
+  createEntityAdapter,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { ArticleViewType, IArticle } from '@/entities/Article'
@@ -12,7 +16,7 @@ const articlesAdapter = createEntityAdapter<IArticle>({
 })
 
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(
-  (state) => state.articlesPage || articlesAdapter.getInitialState()
+  (state) => state.articlesPage || articlesAdapter.getInitialState(),
 )
 
 const articlePageSlice = createSlice({
@@ -24,7 +28,7 @@ const articlePageSlice = createSlice({
     limit: 1,
     hasMore: true,
     pageNumber: 1,
-    _inited: false
+    _inited: false,
   }),
   reducers: {
     setView: (state, action) => {
@@ -35,40 +39,37 @@ const articlePageSlice = createSlice({
       state.pageNumber = action.payload
     },
     initState: (state) => {
-      const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleViewType
+      const view = localStorage.getItem(
+        ARTICLES_VIEW_LOCALSTORAGE_KEY,
+      ) as ArticleViewType
       state.view = view
       state.limit = view === 'cards' ? 8 : 3
       state._inited = true
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticles.pending,
-        (state, action) => {
-          state.isLoading = true
-          state.error = null
-          if (action.meta.arg.replace) {
-            articlesAdapter.removeAll(state)
-          }
-        })
-      .addCase(fetchArticles.rejected,
-        (state, action) => {
-          state.error = action.payload
-          state.isLoading = false
-        })
-      .addCase(fetchArticles.fulfilled,
-        (state, action) => {
-          state.isLoading = false
-          state.hasMore = action.payload.length >= state.limit
-          if (action.meta.arg.replace) {
-            articlesAdapter.setAll(state, action.payload)
-          } else {
-            articlesAdapter.addMany(state, action.payload)
-          }
-
-        })
-
-  }
+      .addCase(fetchArticles.pending, (state, action) => {
+        state.isLoading = true
+        state.error = null
+        if (action.meta.arg.replace) {
+          articlesAdapter.removeAll(state)
+        }
+      })
+      .addCase(fetchArticles.rejected, (state, action) => {
+        state.error = action.payload
+        state.isLoading = false
+      })
+      .addCase(fetchArticles.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.hasMore = action.payload.length >= state.limit
+        if (action.meta.arg.replace) {
+          articlesAdapter.setAll(state, action.payload)
+        } else {
+          articlesAdapter.addMany(state, action.payload)
+        }
+      })
+  },
 })
 
 export const { setView, initState, setPage } = articlePageSlice.actions

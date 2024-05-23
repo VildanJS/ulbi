@@ -3,8 +3,10 @@
   flex-direction: column;
 }
 
-.avatar {
-  align-self: center;
+.image {
+  max-height: 420px;
+  width: 100%;
+
 }
 
 .info-wrapper {

@@ -1,12 +1,13 @@
 import { FC } from 'react'
 
 import classNames from 'classnames'
-import { getRouteProfile } from 'shared/const/router'
+import { getRouteProfile } from '@/shared/const/router'
+import { Card } from '@/shared/ui/redesigned/Card'
 
-import { AppLink } from '@/shared/ui/AppLink'
-import { Avatar } from '@/shared/ui/Avatar'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { Text } from '@/shared/ui/Text'
+import { AppLink } from '@/shared/ui/redesigned/AppLink'
+import { Avatar } from '@/shared/ui/redesigned/Avatar'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 import cls from './CommentCard.module.scss'
 import { ICommentCard } from '../types'
@@ -35,14 +36,14 @@ export const CommentCard: FC<ICommentCard> = (props) => {
   }
 
   return (
-    <div data-testid='CommentCard.Content' className={commentCardClass}>
+    <Card padding={'24'} borderRadius={'round'} data-testid='CommentCard.Content' className={commentCardClass}>
       <AppLink className={cls.gridUsernameAvatar} to={getRouteProfile(comment.user.id)}>
         {comment?.user?.avatar &&
-          <Avatar size={50} alt={'avatar'} src={comment?.user?.avatar} />
+          <Avatar size={32} alt={'avatar'} src={comment?.user?.avatar} />
         }
-        <Text className={cls.gridUsername} title={comment?.user?.username} />
+        <Text bold size={'S'} className={cls.gridUsername} title={comment?.user?.username} />
       </AppLink>
       <Text className={cls.gridComment} text={comment.text}></Text>
-    </div>
+    </Card>
   )
 }

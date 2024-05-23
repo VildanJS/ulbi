@@ -6,10 +6,8 @@ export enum AdminPanelPageThemes {
 }
 
 interface IAdminPanelPage extends PropsWithChildren {
-  className?: string,
-  theme?: AdminPanelPageThemes,
+  className?: string
+  theme?: AdminPanelPageThemes
 }
 
-export {
-  IAdminPanelPage
-}
+export { IAdminPanelPage }

@@ -3,7 +3,6 @@ import { TestAsyncThunk } from '@/shared/utils/tests/TestAsyncThunk'
 
 import { fetchProfileData } from './fetchProfileData'
 
-
 const data = {
   firstname: 'Vildan',
   lastname: 'Khabibov',
@@ -11,7 +10,7 @@ const data = {
   city: 'Oktyabrsky',
   username: 'admin',
   currency: Currency.RUB,
-  country: Country.Russia
+  country: Country.Russia,
 }
 describe('fetchProfileData.test', () => {
   // should have been called with "123" and "123" values and return "fulfilled status"
@@ -31,5 +30,4 @@ describe('fetchProfileData.test', () => {
     const result = await thunk.callThunk('1')
     expect(result.meta.requestStatus).toBe('rejected')
   })
-
 })

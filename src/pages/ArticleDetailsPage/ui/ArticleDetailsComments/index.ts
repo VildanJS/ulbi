@@ -1,5 +1,3 @@
 import { ArticleDetailsComments } from './ui/ArticleDetailsComments'
 
-export {
-  ArticleDetailsComments,
-}
+export { ArticleDetailsComments }

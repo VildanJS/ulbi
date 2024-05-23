@@ -1,5 +1,3 @@
 import { CodeBlock } from './ui/CodeBlock'
 
-export {
-  CodeBlock,
-}
+export { CodeBlock }

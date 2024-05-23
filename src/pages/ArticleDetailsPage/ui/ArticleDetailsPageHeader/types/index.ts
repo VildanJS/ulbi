@@ -6,10 +6,8 @@ export enum ArticleDetailsPageHeaderThemes {
 }
 
 interface IArticleDetailsPageHeader extends PropsWithChildren {
-  className?: string,
-  theme?: ArticleDetailsPageHeaderThemes,
+  className?: string
+  theme?: ArticleDetailsPageHeaderThemes
 }
 
-export {
-  IArticleDetailsPageHeader
-}
+export { IArticleDetailsPageHeader }

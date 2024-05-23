@@ -10,43 +10,38 @@ import { fetchArticles } from './fetchArticles'
 import { getArticlesPageIsInited } from '../selectors/articlesPageSelectors'
 import { initState } from '../slices/ArticlesPageSlice'
 
-
 export const initedFetchArticles = createAsyncThunk<
   void,
   URLSearchParams,
   ThunkConfig<string>
->(
-  'articlesPage/initArticlesPage',
-  async (searchParams, thunkApi) => {
-    const { getState, dispatch } = thunkApi
-    const inited = getArticlesPageIsInited(getState())
+>('articlesPage/initArticlesPage', async (searchParams, thunkApi) => {
+  const { getState, dispatch } = thunkApi
+  const inited = getArticlesPageIsInited(getState())
 
-    if (!inited) {
+  if (!inited) {
+    const orderFromUrl = searchParams.get('order') as SortOrder
+    const sortFromUrl = searchParams.get('sort') as ArticlesSortFields
+    const searchFromUrl = searchParams.get('search')
+    const typeFromUrl = searchParams.get('type') as ArticleType
 
-      const orderFromUrl = searchParams.get('order') as SortOrder
-      const sortFromUrl = searchParams.get('sort') as ArticlesSortFields
-      const searchFromUrl = searchParams.get('search')
-      const typeFromUrl = searchParams.get('type') as ArticleType
-
-      if (orderFromUrl) {
-        dispatch(setOrder(orderFromUrl))
-      }
-      if (sortFromUrl) {
-        dispatch(setSort(sortFromUrl))
-      }
-      if (searchFromUrl) {
-        dispatch(setSearch(searchFromUrl))
-      }
-
-      if (typeFromUrl) {
-        dispatch(setType(typeFromUrl))
-      }
-
-      dispatch(initState())
-      dispatch(fetchArticles({}))
+    if (orderFromUrl) {
+      dispatch(setOrder(orderFromUrl))
     }
-  },
-)
+    if (sortFromUrl) {
+      dispatch(setSort(sortFromUrl))
+    }
+    if (searchFromUrl) {
+      dispatch(setSearch(searchFromUrl))
+    }
+
+    if (typeFromUrl) {
+      dispatch(setType(typeFromUrl))
+    }
+
+    dispatch(initState())
+    dispatch(fetchArticles({}))
+  }
+})
 
 // TYPED MEMO
 // const typedMemo: <T>(c: T) => T = memo;

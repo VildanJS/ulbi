@@ -6,11 +6,9 @@ export enum LoginFormThemes {
 }
 
 interface ILoginForm extends PropsWithChildren {
-  className?: string,
-  theme?: LoginFormThemes,
+  className?: string
+  theme?: LoginFormThemes
   onSuccess: () => void
 }
 
-export {
-  ILoginForm
-}
+export { ILoginForm }

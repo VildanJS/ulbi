@@ -21,14 +21,14 @@ const sendComment = createAsyncThunk<IComment, string, ThunkConfig<string>>(
       const request = {
         articleId: user?.id,
         userId: user?.id,
-        text: text
+        text: text,
       }
       const response = await extra.api.post<IComment>('/comments', request)
 
       const comment: IComment = {
         id: response?.data?.id,
         text,
-        user
+        user,
       }
       if (!response.data) {
         throw new Error()
@@ -40,6 +40,6 @@ const sendComment = createAsyncThunk<IComment, string, ThunkConfig<string>>(
       // const err = error as AxiosError
       return rejectWithValue('error')
     }
-  }
+  },
 )
 export default sendComment

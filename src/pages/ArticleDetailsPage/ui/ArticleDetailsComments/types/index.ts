@@ -6,11 +6,9 @@ export enum ArticleDetailsCommentsThemes {
 }
 
 interface IArticleDetailsComments extends PropsWithChildren {
-  className?: string,
-  theme?: ArticleDetailsCommentsThemes,
+  className?: string
+  theme?: ArticleDetailsCommentsThemes
   id?: string
 }
 
-export {
-  IArticleDetailsComments
-}
+export { IArticleDetailsComments }

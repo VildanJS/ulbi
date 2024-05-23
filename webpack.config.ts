@@ -13,21 +13,17 @@ export default (env: IBuildEnv): webpack.Configuration => {
     src: path.join(__dirname, 'src'),
     locales: path.join(__dirname, 'public', 'locales'),
     buildLocales: path.join(__dirname, 'build', 'locales'),
-
   }
   const mode = env.mode || 'development'
   const isDev = mode === 'development'
   const PORT = env.port || 3000
   const apiUrl = env.apiUrl || 'http://localhost:8000'
-  return BuildWebPackConfig(
-    {
-      apiUrl,
-      mode,
-      paths,
-      isDev,
-      port: PORT,
-      projectName: 'frontend'
-    }
-  )
+  return BuildWebPackConfig({
+    apiUrl,
+    mode,
+    paths,
+    isDev,
+    port: PORT,
+    projectName: 'frontend',
+  })
 }
-

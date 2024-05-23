@@ -3,12 +3,14 @@ import { FC, memo, useEffect } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { AppImage } from '@/shared/ui/deprecated/AppImage'
+import { Card } from '@/shared/ui/redesigned/Card'
 
 import CalendarIcon from '@/shared/assets/icons/calendar.svg'
 import EyeIcon from '@/shared/assets/icons/eye.svg'
-import { Avatar } from '@/shared/ui/Avatar'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { Text } from '@/shared/ui/Text/'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { Text } from '@/shared/ui/redesigned/Text/'
 import { DynamicModuleLoader, ReducersList } from '@/shared/utils/components/DynamicModuleLoader'
 import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
@@ -30,6 +32,7 @@ const reducers: ReducersList = {
 }
 
 const renderBlock = (block: ArticleBlock) => {
+  console.log('=>(ArticleDetails.tsx:35) block', block)
   switch (block.type) {
   case 'CODE':
     return <CodeBlock key={block.id} block={block} />
@@ -78,24 +81,27 @@ export const ArticleDetails: FC<IArticleDetails> = memo((props) => {
     )
   } else {
     content = (
-      <div data-testid='ArticleDetails'>
-        <Avatar
+      <Card max borderRadius={'round'} data-testid='ArticleDetails' padding="24" className={className}>
+        <Text bold size={'L'} title={article?.title} />
+        <Text size={'M'} title={article?.subtitle} />
+        <AppImage
+          className={cls.image}
+          fallback={<Skeleton border={'16px'} height={420} width={'100%'} />}
           src={article?.img}
-          alt={'аватар пользовтеля'}
-          className={cls.avatar} />
-        <Text title={article?.title} text={article?.subtitle} />
-        <div>
-          <div className={cls.infoWrapper}>
+        />
+        <VStack gap={'4'}>
+          <HStack align={'Center'} gap={'8'} className={cls.infoWrapper}>
             <EyeIcon className={cls.icon} />
             <Text text={String(article?.views)} />
-          </div>
-          <div className={cls.infoWrapper}>
+          </HStack>
+          <HStack align={'Center'} gap={'8'} className={cls.infoWrapper}>
             <CalendarIcon className={cls.icon} />
             <Text text={article?.createdAt} />
-          </div>
-          {article?.blocks.map(renderBlock)}
-        </div>
-      </div>
+          </HStack>
+        </VStack>
+
+        {article?.blocks.map(renderBlock)}
+      </Card>
     )
   }
 

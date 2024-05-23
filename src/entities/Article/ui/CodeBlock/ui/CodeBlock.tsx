@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import classNames from 'classnames'
 
-import { Code } from '@/shared/ui/Code'
+import { Code } from '@/shared/ui/deprecated/Code'
 
 import cls from './CodeBlock.module.scss'
 import { ICodeBlock } from '../types'

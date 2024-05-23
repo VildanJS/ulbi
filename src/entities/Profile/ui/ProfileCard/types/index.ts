@@ -8,13 +8,11 @@ export enum ProfileCardThemes {
 }
 
 interface IProfileCard extends PropsWithChildren {
-  className?: string,
-  theme?: ProfileCardThemes,
-  data: IProfile,
-  isLoading?: boolean,
-  error?: string | null,
+  className?: string
+  theme?: ProfileCardThemes
+  data: IProfile
+  isLoading?: boolean
+  error?: string | null
 }
 
-export {
-  IProfileCard
-}
+export { IProfileCard }

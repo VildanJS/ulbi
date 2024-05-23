@@ -8,13 +8,11 @@ export enum CommentListThemes {
 }
 
 interface ICommentList extends PropsWithChildren {
-  className?: string,
-  theme?: CommentListThemes,
-  comments?: IComment[],
-  isLoading?: boolean,
+  className?: string
+  theme?: CommentListThemes
+  comments?: IComment[]
+  isLoading?: boolean
   error?: string
 }
 
-export {
-  ICommentList
-}
+export { ICommentList }

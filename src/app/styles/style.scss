@@ -1,16 +1,25 @@
-@import "normilize";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "./themes/dark";
 @import "./themes/light";
 
 body {
   font: var(--font-m);
-  color: var(--primary-color);
+  color: var(--primary-color)
 }
 
 .app {
   background-color: var(--bg-color);
   min-height: 100vh;
   color: var(--primary-color);
+}
+
+.app-redesigned {
+  background-color: var(--light-bg-redesigned);
+  min-height: 100vh;
+  font: var(--font-m);
+  color: var(--text-redesigned);
 }
 
 .d-flex {
@@ -57,7 +66,7 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--primary-color) var(--inverted-bg-color);
+  scrollbar-color: var(--text-redesigned) var(--bg-redesigned);
 }
 
 *::-webkit-scrollbar {
@@ -66,10 +75,10 @@ body {
 }
 
 *::-webkit-scrollbar-thumb { /* плашка-бегунок */
-  background: var(--primary-color);
-  border-radius: 6px;
+  background: var(--text-redesigned);
+  border-right: 3px var(--bg-redesigned) solid;
 }
 
 *::-webkit-scrollbar-track { /* фон */
-  background: var(--inverted-bg-color);
+  background: var(--bg-redesigned);
 }

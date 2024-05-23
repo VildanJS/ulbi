@@ -9,7 +9,7 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
   const typeScriptLoader = {
     test: /\.(js|jsx|ts|tsx)$/,
     exclude: /node_modules/,
-    use: 'babel-loader'
+    use: ['babel-loader'],
   }
 
   const cssLoader = buildCssLoader(options.isDev)

@@ -2,8 +2,8 @@ import { FC, Suspense } from 'react'
 
 import classNames from 'classnames'
 
-import { Loader } from '@/shared/ui/Loader'
-import { Modal } from '@/shared/ui/Modal'
+import { Loader } from '@/shared/ui/deprecated/Loader'
+import { Modal } from '@/shared/ui/deprecated/Modal'
 
 import cls from './LoginModal.module.scss'
 import { LoginFormAsync } from '../../LoginForm/'

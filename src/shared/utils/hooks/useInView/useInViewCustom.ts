@@ -1,21 +1,25 @@
 import { MutableRefObject, useEffect, useRef } from 'react'
 
-
 export interface UseInfiniteScrollOptions {
-  callback?: () => void;
-  triggerRef: MutableRefObject<HTMLElement>;
-  wrapperRef: MutableRefObject<HTMLElement>;
-  isLoading?: boolean,
+  callback?: () => void
+  triggerRef: MutableRefObject<HTMLElement>
+  wrapperRef: MutableRefObject<HTMLElement>
+  isLoading?: boolean
 }
 
-export function useInViewCustom({ isLoading, callback, wrapperRef, triggerRef }: UseInfiniteScrollOptions) {
+export function useInViewCustom({
+  isLoading,
+  callback,
+  wrapperRef,
+  triggerRef,
+}: UseInfiniteScrollOptions) {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
     const wrapperElement = wrapperRef.current
     const triggerElement = triggerRef.current
 
-    if (callback ) {
+    if (callback) {
       const options = {
         root: wrapperElement,
         rootMargin: '0px',

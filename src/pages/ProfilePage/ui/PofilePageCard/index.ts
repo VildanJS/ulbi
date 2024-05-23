@@ -1,5 +1,3 @@
 import { ProfilePageCard } from './ui/ProfilePageCard'
 
-export {
-  ProfilePageCard,
-}
+export { ProfilePageCard }

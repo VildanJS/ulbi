@@ -1,5 +1,3 @@
 import { ArticleItemList } from './ui/ArticleItemList'
 
-export {
-  ArticleItemList,
-}
+export { ArticleItemList }

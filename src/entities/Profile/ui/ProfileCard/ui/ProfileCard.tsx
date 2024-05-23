@@ -3,23 +3,25 @@
 import { FC } from 'react'
 
 import classNames from 'classnames'
-import { updateProfileData } from 'features/profile'
-import { getProfileIsReadonly } from 'features/profile'
-import { Formik, ErrorMessage, Field, Form } from 'formik'
+import { IProfile } from '@/entities/Profile'
+import { getProfileIsReadonly, updateProfileData } from '@/features/profile'
+import { Form, Formik } from 'formik'
 import ContentLoader from 'react-content-loader'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { forFormikField } from 'shared/ui/AppSelect/ui/AppSelect/ui/AppSelect'
+import { Country, Currency } from '@/shared/const/common'
+import { forFormikField } from '@/shared/ui/redesigned/Dropdowns/AppSelect/ui/AppSelect/ui/AppSelect'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import * as Yup from 'yup'
 
 
-
-import { Country, Currency } from '@/shared/const/common'
-import { AppButton } from '@/shared/ui/AppButton'
-import { AppSelect } from '@/shared/ui/AppSelect'
-import { AppItem } from '@/shared/ui/AppSelect'
-import { Avatar } from '@/shared/ui/Avatar'
-import { Text } from '@/shared/ui/Text'
+import { AppButton } from '@/shared/ui/redesigned/AppButton'
+import { AppTextField } from '@/shared/ui/redesigned/AppInput'
+import { Avatar } from '@/shared/ui/redesigned/Avatar'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { AppItem, AppSelect } from '@/shared/ui/redesigned/Dropdowns/AppSelect'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { Text } from '@/shared/ui/redesigned/Text'
 import { useAppDispatch } from '@/shared/utils/hooks/useAppDispatch/useAppDispatch'
 
 import cls from './ProfileCard.module.scss'
@@ -46,29 +48,60 @@ export const MyLoader: FC = (props) => (
 
 const AppSelectWithFormik = forFormikField(AppSelect)
 
+const initialValues: IProfile =  {
+  id: '',
+  firstname: '',
+  lastname: '',
+  age: '',
+  city: '',
+  username: '',
+  avatar: '',
+  currency: Currency.RUB,
+  country: Country.Russia,
+}
+
+
 export const ProfileCard: FC<IProfileCard> = (props) => {
   const readonly = useSelector(getProfileIsReadonly)
   const { t } = useTranslation('profile')
   const {
     isLoading,
-    data,
+    data = initialValues,
     error,
     className,
   } = props
+
 
   const profileCardClass = classNames(className, cls.profileCard, { [cls.readonly]: readonly })
   const loadingProfileCardClass = classNames(profileCardClass, cls.loading)
 
   const dispatch = useAppDispatch()
 
-  // const [, , { setValue: setCurrency }] = useField('currency' || '')
-  // const [, , { setValue: setCountry }] = useField('country' || '')
 
   if (isLoading) {
     return (
-      <div className={loadingProfileCardClass}>
-        <MyLoader />
-      </div>
+      <Card borderRadius={'round'} padding="24" max>
+        <VStack gap="32">
+          <HStack max justify='Center'>
+            <Skeleton border="100%" width={128} height={128} />
+          </HStack>
+          <HStack gap="32" max>
+            <VStack gap="16" max>
+              <Skeleton width="100%" height={38} />
+              <Skeleton width="100%" height={38} />
+              <Skeleton width="100%" height={38} />
+              <Skeleton width="100%" height={38} />
+            </VStack>
+
+            <VStack gap="16" max>
+              <Skeleton width="100%" height={38} />
+              <Skeleton width="100%" height={38} />
+              <Skeleton width="100%" height={38} />
+              <Skeleton width="100%" height={38} />
+            </VStack>
+          </HStack>
+        </VStack>
+      </Card>
     )
   }
 
@@ -86,10 +119,8 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
     )
   }
 
-
-
   return (
-    <div className={profileCardClass}>
+    <Card borderRadius={'round'} padding={'24'} className={profileCardClass}>
       <Formik
         initialValues={data}
         enableReinitialize={true}
@@ -119,138 +150,156 @@ export const ProfileCard: FC<IProfileCard> = (props) => {
       >
         {({
           values,
-          // errors,
-          // touched,
-          // handleChange,
-          // handleBlur,
-          // handleSubmit,
+          errors,
+          touched,
           isSubmitting,
           resetForm
         }) => {
-
-
           return (
             <Form>
-              <h2>Профиль</h2>
-              <fieldset className={cls.content}>
-                <legend>Персональные данные</legend>
-
-                {values?.avatar && (
-                  <div className={cls.avatarWrapper}>
-                    <Avatar src={values?.avatar} alt="аватар пользователя"></Avatar>
-                  </div>)
-                }
-
-                <li className={cls.inputWrapper}>
-                  <label htmlFor="username">Username</label>
-                  <Field
-                    name="username"
-                    id="username"
-                    className={cls.gridInput}
-                    readOnly={readonly}
-                    type="text"
+              { values?.avatar && (
+                <div className={cls.avatarWrapper}>
+                  <Avatar
+                    size={128}
+                    src={values?.avatar}
+                    alt='аватар пользователя'
+                  ></Avatar>
+                </div>)
+              }
+              { errors.username
+                ? <div className={cls.gridError}>{errors.username}</div>
+                : null
+              }
+              <HStack gap={'32'}>
+                <VStack max gap={'16'}>
+                  <AppTextField
+                    height='m'
+                    formikfield='username'
+                    label='Username'
+                    placeholder='Username'
+                    id='username'
+                    name='username'
+                    type='text'
                   />
-                  <ErrorMessage className={cls.gridError} name="username" component="div" />
-                </li>
 
-                <li className={cls.inputWrapper}>
-                  <label htmlFor="firstname">First Name</label>
-                  <Field
-                    className={cls.gridInput}
-                    readOnly={readonly}
-                    id="firstName"
-                    type="text"
-                    name="firstname"
-                    data-testid="ProfileCard.firstname"
-                    placeholder="First Name"
+                  <AppTextField
+                    height='m'
+                    type='text'
+                    formikfield='firstname'
+                    placeholder='First Name'
+                    label='First Name'
+                    id='firstname'
+                    name='firstname'
+                    data-testid='ProfileCard.firstname'
                   />
-                  <ErrorMessage className={cls.gridError} name="firstname" component="div" />
-                </li>
 
-                <li className={cls.inputWrapper}>
-                  <label htmlFor="lastName">Last Name</label>
-                  <Field
-                    data-testid="ProfileCard.lastname"
-                    className={cls.gridInput}
-                    readOnly={readonly}
-                    id="lastName"
-                    type="text"
-                    name="lastname"
-                    placeholder="Last Name"
+                  <AppTextField
+                    height='m'
+                    type='text'
+                    formikfield='lastname'
+                    placeholder='Last Name'
+                    label='Last Name'
+                    id='lastname'
+                    name='lastname'
+                    data-testid='ProfileCard.lastName'
                   />
-                  <ErrorMessage className={cls.gridError} name="lastname" component="div" />
-                </li>
-                <li className={cls.inputWrapper}>
-                  <label htmlFor="age">Age</label>
-                  <Field
-                    className={cls.gridInput}
-                    readOnly={readonly}
-                    id="age"
-                    type="number"
-                    name="age"
-                    placeholder="Age"
-                  />
-                  <ErrorMessage className={cls.gridError} name="age" component="div" />
-                </li>
-              </fieldset>
-              <fieldset className={cls.content}>
-                <legend>Место жительсвта</legend>
 
-                <li className={cls.inputWrapper}>
+                  <AppTextField
+                    height='m'
+                    type='text'
+                    formikfield='age'
+                    placeholder='Age'
+                    label='Age'
+                    id='age'
+                    name='age'
+                    data-testid='ProfileCard.age'
+                  />
+
+                </VStack>
+                <VStack max gap={'16'}>
+                  <AppTextField
+                    height='m'
+                    type='text'
+                    formikfield='city'
+                    placeholder='City'
+                    label='City'
+                    id='city'
+                    name='city'
+                    data-testid='ProfileCard.city'
+                  />
+
                   <AppSelectWithFormik
+                    selectedKey={values?.country}
                     formikField={'country'}
-                    label={'Country'}
+                    label={'Страна'}
                     id={'country'}
                     name={'country'}
                   >
-                    <AppItem id={Country.Russia} textValue={Country.Russia}>{Country.Russia}</AppItem>
-                    <AppItem id={Country.Kazakhstan} textValue={Country.Kazakhstan}>{Country.Kazakhstan}</AppItem>
-                    <AppItem id={Country.Armenia} textValue={Country.Armenia}>{Country.Armenia}</AppItem>
-                    <AppItem id={Country.Belarus} textValue={Country.Belarus}>{Country.Belarus}</AppItem>
-                    <AppItem id={Country.Ukraine} textValue={Country.Ukraine}>{Country.Ukraine}</AppItem>
+                    <AppItem id={Country.Russia} textValue={Country.Russia}>
+                      {Country.Russia}
+                    </AppItem>
+                    <AppItem
+                      id={Country.Kazakhstan}
+                      textValue={Country.Kazakhstan}
+                    >
+                      {Country.Kazakhstan}
+                    </AppItem>
+                    <AppItem id={Country.Armenia} textValue={Country.Armenia}>
+                      {Country.Armenia}
+                    </AppItem>
+                    <AppItem id={Country.Belarus} textValue={Country.Belarus}>
+                      {Country.Belarus}
+                    </AppItem>
+                    <AppItem id={Country.Ukraine} textValue={Country.Ukraine}>
+                      {Country.Ukraine}
+                    </AppItem>
                   </AppSelectWithFormik>
-                </li>
 
-                <li className={cls.inputWrapper}>
-                  <label htmlFor="city">City</label>
-                  <Field className={cls.gridInput} readOnly={readonly} id="city" type="text" name="city"
-                    placeholder="City" />
-                  <ErrorMessage className={cls.gridError} name="city" component="div" />
-                </li>
 
-                <li className={cls.inputWrapper}>
+
                   <AppSelectWithFormik
+                    selectedKey={values?.currency}
+                    label={'Валюта'}
                     formikField={'currency'}
-                    label={'Currency'}
                     id={'currency'}
                     name={'currency'}
                   >
-                    <AppItem id={Currency.USD} textValue={Currency.USD}>{Currency.USD}</AppItem>
-                    <AppItem id={Currency.RUB} textValue={Currency.RUB}>{Currency.RUB}</AppItem>
-                    <AppItem id={Currency.TNG} textValue={Currency.TNG}>{Currency.TNG}</AppItem>
+                    <AppItem id={Currency.USD} textValue={Currency.USD}>
+                      {Currency.USD}
+                    </AppItem>
+                    <AppItem id={Currency.RUB} textValue={Currency.RUB}>
+                      {Currency.RUB}
+                    </AppItem>
+                    <AppItem id={Currency.TNG} textValue={Currency.TNG}>
+                      {Currency.TNG}
+                    </AppItem>
                   </AppSelectWithFormik>
-                </li>
-              </fieldset>
+
+                </VStack>
+              </HStack>
+
               <div className={cls.buttonsWrapper}>
                 <AppButton
-                  type="button"
-                  theme='outline'
-                  data-testid="ProfileCard.ResetButton"
+                  type='button'
+                  variant='outline'
+                  data-testid='ProfileCard.ResetButton'
                   onPress={() => resetForm({ values: data })}
-                >Reset
+                >
+                  Reset
                 </AppButton>
                 <AppButton
-                  data-testid="ProfileCard.SubmitButton"
-                  type="submit"
-                  theme='outline'
+                  data-testid='ProfileCard.SubmitButton'
+                  type='submit'
+                  variant='outline'
                   disabled={isSubmitting}
-                >Submit
+                >
+                  Submit
                 </AppButton>
               </div>
             </Form>
           )
         }}
       </Formik>
-    </div>
+    </Card>
   )
 }

@@ -1,4 +1,4 @@
-import { AppButton } from '@/shared/ui/AppButton'
+import { AppButton } from '@/shared/ui/redesigned/AppButton'
 
 import { useCounterValue } from '../../Counter/model/selectors/getCounterValue/getCounterValue'
 import { useBindCounterActions } from '../../Counter/model/slice/counterSlice'
@@ -25,14 +25,14 @@ export const Counter = () => {
 
       <AppButton
         data-testid={'increment-button'}
-        theme='outline'
+        variant='outline'
         onPress={increment}
       >Increment by 5
       </AppButton>
 
       <AppButton
         data-testid={'decrement-button'}
-        theme='outline'
+        variant='outline'
         onPress={decrement}
       >Decrement
       </AppButton>

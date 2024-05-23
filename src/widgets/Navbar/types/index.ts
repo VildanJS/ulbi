@@ -1,9 +1,7 @@
 import { PropsWithChildren } from 'react'
 
-interface NavbarProps extends PropsWithChildren{
+interface NavbarProps extends PropsWithChildren {
   className?: string
 }
 
-export {
-  NavbarProps
-}
+export { NavbarProps }

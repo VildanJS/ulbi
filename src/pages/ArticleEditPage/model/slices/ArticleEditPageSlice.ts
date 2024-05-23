@@ -4,9 +4,7 @@ interface ArticleEditPageSchema {
   index?: number
 }
 
-const initialState: ArticleEditPageSchema = {
-
-}
+const initialState: ArticleEditPageSchema = {}
 
 export const ArticleEditPageSlice = createSlice({
   name: 'ArticleEditPage',
@@ -17,7 +15,6 @@ export const ArticleEditPageSlice = createSlice({
     // },
   },
 })
-
 
 // export const { setArticleEditPage } = ArticleEditPageSlice.actions
 
