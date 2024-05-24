@@ -1,0 +1,39 @@
+.text-field {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+}
+
+.input {
+  padding: 8px 16px;
+  margin: 0;
+  border-radius: 48px;
+  flex-grow: 1;
+  background: none;
+  border: 1px solid var(--icon-redesigned);
+  color: var(--text-redesigned);
+
+  &.focused {
+    border: 1px solid var(--accent-redesigned);
+  }
+
+  &[data-focused] {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--hint-redesigned);
+  }
+}
+.s {
+  height: 32px;
+}
+
+.m {
+  height: 38px;
+}
+
+.l {
+  height: 44px;
+}
