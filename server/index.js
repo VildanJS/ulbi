@@ -1,10 +1,17 @@
 const fs = require('fs')
 const jsonServer = require('json-server')
 const path = require('path')
+const https = require('node:https')
 
 const server = jsonServer.create()
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'))
+
+const options = {
+  key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
+  cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
+}
+
 
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
@@ -51,7 +58,10 @@ server.use((req, res, next) => {
 
 server.use(router)
 
+
+const httpsServer = https.createServer(options, server)
+
 // запуск сервера
-server.listen(8000, () => {
+httpsServer.listen(443, () => {
   console.log('server is running on 8000 port')
 })
