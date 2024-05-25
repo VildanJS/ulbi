@@ -17,7 +17,6 @@
     "prettier": "npx prettier --write \"**/*.{ts, tsx, json}\"",
     "lint:ts:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\" --fix",
-    "build:prod": "npx webpack --env mode=production",
     "build:prod": "npx webpack --env mode=production apiUrl=http://34.16.139.145:8000",
     "build:dev": "npx webpack --env mode=development",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
